@@ -1,0 +1,155 @@
+﻿body {
+}
+
+.title {
+    
+    font-size: 68px;
+    color: #ff4c00;
+    margin-bottom: 100px;
+}
+
+.user-vehicle {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1300px;
+}
+
+.user-vehicle-edit {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1300px;
+    margin-bottom: 100px;
+}
+
+
+.user-vehicle-title {
+    color: #333333;
+    text-align: center;
+
+}
+.vehicle-details {
+    margin-right: 20px;
+    color: #333333;
+}
+
+.vehicle-details h2{
+    font-size: 100px;
+}
+
+.vehicle-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+.vehicle-image img {
+    margin-left: 100px;
+    width: 75%;
+    border-radius: 10px;
+}
+
+.line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+    margin-top: 80px;
+}
+
+.find-parts-button,
+.create-configuration-button,
+.edit-configuration-button{
+    width: 390px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.find-parts-button:hover{
+    background-color: #ff4c00;
+}
+
+.create-configuration-button:hover,
+.edit-configuration-button:hover{
+    color: white;
+    transition: color 0.9s ease;
+    background-color: #c21807;
+}
+
+.part-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align elements from left to right */
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.part-view {
+    flex: 0 0 auto; /* Maintain the original width of each part view */
+    margin: 10px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.part-model {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.part-manufacturer {
+    font-size: 20px;
+    color: #666666;
+}
+
+.part-horsepower,
+.part-torque,
+.part-pressure,
+.part-price {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #999999;
+}
+
+.part-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.part-price {
+    font-weight: bold;
+    color: #333333;
+}
+
+.part-view.selectable {
+    cursor: pointer;
+}
+
+.part-view:hover,
+.part-view.selected {
+    background-color: #ff4c00;
+    color: white;
+}
+.part-tcu-description {
+    width: 300px;
+    height: 6em;
+}

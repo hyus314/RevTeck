@@ -1,0 +1,41 @@
+﻿body {
+}
+.line {
+    text-align: center; /* Add this line to center the .configuration-button div */
+}
+
+.select-vehicle-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 400px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+
+.begin-text {
+    margin-top: 80px;
+    margin-left: 180px;
+    color: orangered;
+}
+
+.begin-text h2{
+    font-size: 48px;
+}
+
+
+.select-vehicle-button:hover {
+    background-color: red;
+    color: white;
+}
+
+.select-vehicle-button span {
+    color: white;
+}

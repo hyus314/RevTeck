@@ -1,0 +1,53 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
+.introduction_img{
+    width: 50%;
+    height: auto;
+}
+
+.introduction_text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+    color: orangered;
+    text-align: center;
+    margin: 20px;
+}
+.line {
+    text-align: center; /* Add this line to center the .configuration-button div */
+}
+
+.configuration-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 200px;
+    margin-right: 50px;
+}
+
+.configuration-button:hover {
+    background-color: red;
+    color: white;
+}
+
+.configuration-button span {
+    color: white;
+}
+
+.introduction_video {
+    max-width: 800px;
+    margin-bottom: 100px;
+}
+
+.video_title {
+    color: orangered;
+    font-size: 24px;
+}
+

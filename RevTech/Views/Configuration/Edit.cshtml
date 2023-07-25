@@ -1,0 +1,31 @@
+﻿@model UserEditConfigurationViewModel;
+<link rel="stylesheet" href="~/css/chooseParts.css">
+<script src="~/js/edit.js"></script>
+<h1 class="title">Edit Configuration</h1>
+<div class="user-vehicle-edit">
+    <h1 class="user-vehicle-title">Your Vehicle:</h1>
+    <div class="vehicle-info">
+        <div class="vehicle-details">
+            <h2>@Model.CarModel.ManufacturerName</h2>
+            <h3>@Model.CarModel.ModelName @Model.Engine.Name</h3>
+            <p>Horsepower: @Model.Engine.HorsePower</p>
+            <p>Torque: @Model.Engine.Torque</p>
+        </div>
+        <div class="vehicle-image">
+            <img src="@Model.CarModel.ImageURL">
+        </div>
+    </div>
+</div>
+<div class="line">
+    <button id="edit-configuration-button" class="edit-configuration-button" style="display: none;" onclick="editConfiguration()">Edit Configuration</button>
+</div>
+
+<div class="part-container" id="turbo-container"></div>
+<div class="part-container" id="supercharger-container"></div>
+<div class="part-container" id="exhaustKit-container"></div>
+<div class="part-container" id="ecu-container"></div>
+<div class="part-container" id="tcu-container"></div>
+<div class="part-container" id="fuelPump-container"></div>
+<div class="part-container" id="injectorKit-container"></div>
+<div class="part-container" id="sparkPlug-container"></div>
+<div class="part-container" id="oilCooler-container"></div>

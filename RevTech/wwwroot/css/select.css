@@ -1,0 +1,185 @@
+﻿body {
+}
+.model-car {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.model-info {
+    flex: 1;
+    padding-top: 30px;
+}
+
+    .model-info h2 {
+        color: #333333;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .model-info p {
+        color: #777777;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+        .model-info p:last-child {
+            margin-bottom: 0;
+        }
+
+.model-car-img {
+    width: 150%;
+    margin-right: 5px;
+    filter: grayscale(10%);
+    transition: all 0.3s ease;
+}
+
+    .model-car-img:hover {
+        transform: scale(1.0);
+        filter: none;
+        opacity: 1;
+    }
+
+.model-year {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 250px;
+}
+
+    .model-year p {
+        color: #555555;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+.select-button {
+    background-color: black;
+    color: white;
+    border: none;
+    text-decoration: none;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    margin-right: 50px;
+    display: inline-block;
+    width: 200px;
+}
+
+    .select-button:hover {
+        background-color: red;
+    }
+
+
+.manufacturers-container {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.selected {
+    border: 2px solid black;
+    transition: border-color 0.3s ease;
+}
+
+.modal-title {
+    letter-spacing: 2px;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: white;
+    font-size: 48px;
+}
+
+#enginesModal .btn-close {
+    color: white; /* Set the button color to white */
+    font-size: 24px; /* Increase the font size */
+    width: 40px; /* Adjust the width */
+    height: 40px; /* Adjust the height */
+    background-color: transparent; /* Remove the background color */
+    opacity: 1; /* Ensure the button is fully opaque */
+}
+
+    #enginesModal .btn-close:hover {
+        color: #ccc; /* Set a different color on hover if desired */
+    }
+
+.modal-content {
+    background-color: #333;
+}
+
+#enginesModal .engine {
+    /* Custom CSS modifications for the .engine class within the modal */
+    margin: 20px;
+    background-color: white;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+    #enginesModal .engine:hover {
+        /* Custom CSS modifications for the .engine class when hovered within the modal */
+        background-color: #ff4c00;
+    }
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+#enginesModal .engine h3 {
+    /* Custom CSS modifications for the h3 element within the .engine class in the modal */
+    font-size: 36px;
+    color: black;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#enginesModal .engine p {
+    /* Custom CSS modifications for the p elements within the .engine class in the modal */
+    color: black;
+    font-size: 16px;
+    margin: 10px 0;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#enginesModal .select-engine-button {
+    width: 390px;
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    #enginesModal .select-engine-button:hover {
+        background-color: black;
+        color: white;
+    }
+
+.manufacturer_img {
+    width: 30%;
+    height: auto;
+    padding: 10px;
+    margin: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .manufacturer_img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }

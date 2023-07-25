@@ -1,0 +1,31 @@
+﻿@model ICollection<UserConfigurationViewModel>;
+
+<link rel="stylesheet" href="~/css/myConfigurations.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/myConfigurations.js"></script>
+<h1 class="title">Your Configurations:</h1>
+
+<div class="configurations-container">
+    @foreach (var configuration in Model)
+    {
+        <div class="configuration-box">
+            <h2>@configuration.Manufacturer</h2>
+            <h3>@configuration.CarModel </h3>
+            <img src="@configuration.CarModelImageURL" alt="@configuration.CarModel" />
+            <p class="price">Configuration Price: $@configuration.Price</p>
+            <p class="horsePower">Total Horse Power Boost: @configuration.HorsePowerBoost</p>
+            <div class="buttons-container">
+                <a class="edit-btn" asp-controller="Configuration" asp-action="Edit" asp-route-configurationId="@configuration.ConfigurationId" onclick="storeInformation(@configuration.ConfigurationId, @configuration.EngineId, @configuration.CarModelId)">Edit</a>
+                <button class="checkout-btn" onclick="checkoutConfiguration(@configuration.ConfigurationId)">Checkout</button>
+                <button class="remove-btn" onclick="showConfirmation(@configuration.ConfigurationId,'@configuration.Manufacturer', '@configuration.CarModel')">Remove</button>
+            </div>
+        </div>
+    }
+</div>
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <p id="confirmationMessage"></p>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+</div>

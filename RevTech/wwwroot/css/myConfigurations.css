@@ -1,0 +1,165 @@
+﻿body {
+}
+.title {
+    font-size: 80px;
+    color: #ff4c00;
+    margin-bottom: 50px;
+}
+
+.configurations-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 100px;
+}
+
+.configuration-box {
+    position: relative;
+    background-color: #e8e7e7;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    height: 520px;
+    flex-direction: column;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.configuration-box h2,
+.configuration-box h3,
+.configuration-box p {
+    overflow-wrap: break-word;
+}
+
+.configuration-box h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px; 
+}
+
+.configuration-box h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.configuration-box img {
+    width: 100%;
+    height: auto;
+}
+
+.configuration-box .price{
+    position: absolute;
+    top: 350px;
+    left: 20px;
+}
+
+.configuration-box .horsePower {
+    position: absolute;
+    top: 325px;
+    left: 20px;
+}
+
+.buttons-container .edit-btn {
+    display: inline-block;
+    padding: 4px 10px;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border: 1px solid #e8e7e7;
+    text-decoration: none;
+    font-size: 18px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    position: absolute;
+    height: 30px;
+    top: 380px;
+    left: 20px;
+    height: 35px;
+    width: 260px;
+}
+
+.buttons-container .edit-btn:hover{
+    background-color: cornflowerblue;
+}
+
+
+.buttons-container .checkout-btn {
+    background-color: white;
+    height: 35px;
+    border: 1px solid #e8e7e7;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    top: 420px;
+    width: 260px;
+}
+
+.buttons-container .checkout-btn:hover {
+    background-color: green;
+}
+.buttons-container .remove-btn {
+    background-color: white;
+    border: 1px solid #e8e7e7;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    height: 35px;
+    position: absolute;
+    left: 20px;
+    top: 460px;
+    width: 260px;
+}
+
+.buttons-container .remove-btn:hover {
+    background-color: red;
+}
+
+/* Styling for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #f9f9f9;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+}
+
+/* Styling for the buttons */
+#yesButton, #noButton {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%; /* Set both buttons to have the same width */
+    margin-bottom: 10px; /* Add space between the buttons */
+    background-color: #fff; /* Set the default background color to white */
+}
+
+    #yesButton:hover, #noButton:hover {
+        background-color: #f44336; /* Red background color on hover */
+    }
+
+/* Text color for the buttons */
+#yesButton {
+    color: #000; /* Set the text color for the "Yes" button */
+}
+
+#noButton {
+    color: #000; /* Set the text color for the "No" button */
+}

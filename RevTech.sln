@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevTech.App", "RevTech\RevTech.App.csproj", "{AA520591-0743-4185-890B-DEB9DB106AF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevTech.Data", "RevTech.Data\RevTech.Data.csproj", "{9E33C67B-8724-4D52-95AE-96C7DA9A50DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevTech.Common", "RevTech.Common\RevTech.Common.csproj", "{015BB432-E834-48E3-A4B1-E2956403A872}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevTech.Data.Models", "RevTech.Data.Models\RevTech.Data.Models.csproj", "{8F45678F-E54F-4CAB-8A00-760AACB9E1A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevTech.Data.ViewModels", "RevTech.Data.ViewModels\RevTech.Data.ViewModels.csproj", "{2A9830F3-59A3-4508-B42C-2D4DAE7CAC4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevTech.Core", "RevTech.Services\RevTech.Core.csproj", "{45F49816-CC3A-46A3-9544-A18E10502F8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA520591-0743-4185-890B-DEB9DB106AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA520591-0743-4185-890B-DEB9DB106AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA520591-0743-4185-890B-DEB9DB106AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA520591-0743-4185-890B-DEB9DB106AF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E33C67B-8724-4D52-95AE-96C7DA9A50DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E33C67B-8724-4D52-95AE-96C7DA9A50DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E33C67B-8724-4D52-95AE-96C7DA9A50DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E33C67B-8724-4D52-95AE-96C7DA9A50DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{015BB432-E834-48E3-A4B1-E2956403A872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{015BB432-E834-48E3-A4B1-E2956403A872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{015BB432-E834-48E3-A4B1-E2956403A872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{015BB432-E834-48E3-A4B1-E2956403A872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F45678F-E54F-4CAB-8A00-760AACB9E1A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F45678F-E54F-4CAB-8A00-760AACB9E1A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F45678F-E54F-4CAB-8A00-760AACB9E1A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F45678F-E54F-4CAB-8A00-760AACB9E1A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A9830F3-59A3-4508-B42C-2D4DAE7CAC4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A9830F3-59A3-4508-B42C-2D4DAE7CAC4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A9830F3-59A3-4508-B42C-2D4DAE7CAC4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A9830F3-59A3-4508-B42C-2D4DAE7CAC4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F49816-CC3A-46A3-9544-A18E10502F8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F49816-CC3A-46A3-9544-A18E10502F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F49816-CC3A-46A3-9544-A18E10502F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F49816-CC3A-46A3-9544-A18E10502F8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ECA7E1E-914C-4E58-AC34-3336A2D285B9}
+	EndGlobalSection
+EndGlobal

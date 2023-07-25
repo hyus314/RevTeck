@@ -1,0 +1,34 @@
+﻿@model UserViewModel;
+<link rel="stylesheet" href="~/css/chooseParts.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/chooseParts.js"></script>
+<h1 class="title">Configuration Creation</h1>
+<div class="user-vehicle">
+    <h1 class="user-vehicle-title">Your Vehicle:</h1>
+    <div class="vehicle-info">
+        <div class="vehicle-details">
+            <h2>@Model.CarModel.ManufacturerName</h2>
+            <h3>@Model.CarModel.ModelName @Model.CarModel.Engine.Name</h3>
+            <p>Horsepower: @Model.CarModel.Engine.HorsePower</p>
+            <p>Torque: @Model.CarModel.Engine.Torque</p>
+        </div>
+        <div class="vehicle-image">
+            <img src="@Model.CarModel.ImageURL">
+        </div>
+    </div>
+</div>
+
+<div class="line">
+    <button id="find-parts-button" class="find-parts-button" onclick="loadAllParts(@Model.CarModel.Engine.Id, @Model.CarModelId)">Find Parts for Your Vehicle!</button>
+    <button id="create-configuration-button" class="create-configuration-button" style="display: none;" data-carModel-id="@Model.CarModelId" data-engine-id="@Model.CarModel.Engine.Id" onclick="createConfiguration()">Create Configuration</button>
+</div>
+
+<div class="part-container" id="turbo-container"></div>
+<div class="part-container" id="supercharger-container"></div>
+<div class="part-container" id="exhaustKit-container"></div>
+<div class="part-container" id="ecu-container"></div>
+<div class="part-container" id="tcu-container"></div>
+<div class="part-container" id="fuelPump-container"></div>
+<div class="part-container" id="injectorKit-container"></div>
+<div class="part-container" id="sparkPlug-container"></div>
+<div class="part-container" id="oilCooler-container"></div>
