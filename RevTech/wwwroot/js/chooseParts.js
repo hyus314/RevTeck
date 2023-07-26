@@ -82,7 +82,7 @@ function loadExhaustKits(engineId, carModelId) {
 
 function generateExhaustKitViews(exhaustKits) {
     var exhaustKitContainer = document.getElementById('exhaustKit-container');
-    exhaustKitContainer.innerHTML = ''; // Clear the existing content
+    exhaustKitContainer.innerHTML = '';
 
     var exhaustKitWrapper = document.createElement('div');
     exhaustKitWrapper.classList.add('part-wrapper');
@@ -119,11 +119,9 @@ function loadSuperchargers(engineId) {
             engineId: engineId,
         },
         success: function (data) {
-            // Process the data returned from the server
             generateSuperchargerViews(data);
         },
         error: function (error) {
-            // Handle any errors that occurred during the request
             console.error(error);
         }
     });
