@@ -32,7 +32,7 @@ function loadTurbos(engineId) {
 
 function generateTurboViews(turbos) {
     var turboContainer = document.getElementById('turbo-container');
-    turboContainer.innerHTML = ''; // Clear the existing content
+    turboContainer.innerHTML = '';
 
     var turboWrapper = document.createElement('div');
     turboWrapper.classList.add('part-wrapper');
@@ -72,11 +72,9 @@ function loadExhaustKits(engineId, carModelId) {
             carModelId: carModelId
         },
         success: function (data) {
-            // Process the data returned from the server
             generateExhaustKitViews(data);
         },
         error: function (error) {
-            // Handle any errors that occurred during the request
             console.error(error);
         }
     });
