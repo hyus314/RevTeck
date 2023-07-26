@@ -22,11 +22,9 @@ function loadTurbos(engineId) {
             engineId: engineId
         },
         success: function (data) {
-            // Process the data returned from the server
             generateTurboViews(data);
         },
         error: function (error) {
-            // Handle any errors that occurred during the request
             console.error(error);
         }
     });
