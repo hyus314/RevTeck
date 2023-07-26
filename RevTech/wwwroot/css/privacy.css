@@ -1,0 +1,16 @@
+﻿body {
+}
+body {
+    background-color: #f0f0f0; /* Set the background color as needed */
+    font-family: Arial, sans-serif; /* Set the font-family as needed */
+}
+
+h1 {
+    color: white; /* Set the text color to white */
+    text-align: center; /* Center-align the heading */
+}
+
+p {
+    color: white; /* Set the text color to white */
+    text-align: justify; /* Justify the paragraph text */
+}
