@@ -8,7 +8,7 @@ namespace RevTech.Data.User
     {
         [ForeignKey(nameof(User))]
         public string UserId { get; set; } = null!;
-        public virtual IdentityUser User { get; set; } = null!;
+        public virtual RevTeckUser User { get; set; } = null!;
         [ForeignKey(nameof(Configuration))]
         public int ConfigurationId { get; set; }
         public virtual Models.UserConfiguration.Configuration Configuration { get; set; } = null!;
