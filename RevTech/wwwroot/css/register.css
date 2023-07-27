@@ -1,0 +1,49 @@
+﻿body {
+}
+
+/* Center the form content */
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Add spacing between form elements */
+.form-floating {
+    margin-bottom: 20px;
+}
+
+/* Additional form styles */
+/* ... */
+
+/* Custom styles for the form container */
+.rounded {
+    border-radius: 10px;
+}
+
+.shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+/* Custom styles for the h2 element */
+h2 {
+    color: #ff4c00;
+}
+
+/* Center the form container within the row */
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+/* Add margin to the button */
+.btn-primary {
+    margin-top: 10px;
+}
