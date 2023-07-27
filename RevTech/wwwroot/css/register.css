@@ -1,6 +1,12 @@
 ﻿body {
 }
 
+.title-page {
+    font-size: 84px;
+    margin-bottom: 30px;
+    color: #ff4c00;
+}
+
 /* Center the form content */
 #registerForm {
     display: flex;
@@ -11,6 +17,7 @@
 /* Add spacing between form elements */
 .form-floating {
     margin-bottom: 20px;
+    width: 90%;
 }
 
 /* Additional form styles */
@@ -31,7 +38,8 @@
 
 /* Custom styles for the h2 element */
 h2 {
-    color: #ff4c00;
+    color: #000000; /* Set the color to black (#000000) */
+    text-align: center;
 }
 
 /* Center the form container within the row */
@@ -45,5 +53,20 @@ h2 {
 
 /* Add margin to the button */
 .btn-primary {
-    margin-top: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 90%;
+}
+
+.btn-primary:hover {
+    background-color: red;
+    color: white;
 }
