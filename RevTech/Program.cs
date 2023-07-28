@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RevTech.Core.Contracts;
 using RevTech.Core.Services;
 using RevTech.Data;
+using RevTech.Data.User;
 
 namespace RevTech.App
 {
@@ -22,7 +23,7 @@ namespace RevTech.App
             builder.Services.AddScoped<IConfigurationService, ConfigurationService>();
             builder.Services.AddScoped<IPerformancePartService, PerformancePartService>();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+            builder.Services.AddDefaultIdentity<RevTeckUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
                 options.Password.RequireDigit = true;
