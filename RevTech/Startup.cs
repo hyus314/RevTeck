@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using RevTech.Data;
+using RevTech.Data.User;
 
 namespace RevTech.App
 {
@@ -13,6 +16,11 @@ namespace RevTech.App
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDefaultIdentity<RevTeckUser>()
+  .AddRoles<IdentityRole>()
+  .AddEntityFrameworkStores<RevtechDbContext>();
+
+
             // Configure services here
             services.AddControllers()
                 .AddJsonOptions(options =>

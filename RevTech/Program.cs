@@ -30,7 +30,8 @@ namespace RevTech.App
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
             })
-      .AddEntityFrameworkStores<RevtechDbContext>();
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<RevtechDbContext>();
 
             builder.Services.AddSession(options =>
             {
@@ -54,6 +55,34 @@ namespace RevTech.App
                 app.UseHsts();
             }
 
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<RevtechDbContext>();
+                    context.Database.Migrate(); // apply all migrations
+
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+                    if (!roleManager.RoleExistsAsync("Admin").Result)
+                    {
+                        var role = new IdentityRole("Admin");
+                        var roleResult = roleManager.CreateAsync(role).Result;
+                    }
+
+                    if (!roleManager.RoleExistsAsync("User").Result)
+                    {
+                        var role = new IdentityRole("User");
+                        var roleResult = roleManager.CreateAsync(role).Result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while migrating or initializing the database.");
+                }
+            }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -70,5 +99,11 @@ namespace RevTech.App
 
             app.Run();
         }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
     }
 }
