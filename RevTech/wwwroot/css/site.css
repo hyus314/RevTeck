@@ -2,10 +2,8 @@ body {
     font-family: "Arial", sans-serif;
     color: orangered;
     background-image: url("https://img.freepik.com/free-vector/dark-metal-background_1048-1026.jpg?w=740&t=st=1688858830~exp=1688859430~hmac=e05bee0f87ee3914d5eceb4066be7fb6a6738faa833cc1c32e20968de134290e");
-    /* Set the background image */
 }
 
-/* Header section */
 .header {
     display: flex;
     justify-content: space-between;
@@ -15,18 +13,13 @@ body {
     background-color: red !important;
 }
 
-/* Styling for the home button */
 .home-button {
     width: 40px;
     height: 40px;
 }
 
-.nav
-
-/* Navigation menu */
 .navbar {
     background-color: #333;
-    /* Elements background color: dark gray */
     padding: 10px;
 }
 
@@ -41,12 +34,10 @@ body {
 
         .navbar li a {
             color: white;
-            /* Elements text color: white */
             text-decoration: none;
             padding: 5px;
         }
 
-/* Main content section */
 .main-content {
     margin-bottom: 20px;
 }
@@ -65,7 +56,6 @@ body {
     color: orangered;
 }
 
-/* Footer section */
 .footer {
     z-index: 1;
     position: fixed;
