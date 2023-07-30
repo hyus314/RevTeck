@@ -20,12 +20,14 @@ namespace RevTech.App.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
+        private readonly UserManager<RevTeckUser> _userManager;
         private readonly SignInManager<RevTeckUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<RevTeckUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<RevTeckUser> signInManager, ILogger<LoginModel> logger, UserManager<RevTeckUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
         }
 
