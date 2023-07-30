@@ -1,6 +1,5 @@
 ﻿body {
 }
-
 .title-page {
     font-size: 84px;
     margin-bottom: 30px;
@@ -8,7 +7,7 @@
 }
 
 /* Center the form content */
-#registerForm {
+#account {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,9 +19,6 @@
     margin-bottom: 20px;
     width: 90%;
 }
-
-/* Additional form styles */
-/* ... */
 
 /* Custom styles for the form container */
 .rounded {
@@ -37,7 +33,6 @@
     background-color: #f8f9fa;
 }
 
-/* Custom styles for the h2 element */
 h2 {
     color: #000000; /* Set the color to black (#000000) */
     text-align: center;
@@ -53,21 +48,42 @@ h2 {
 }
 
 /* Add margin to the button */
-.btn-primary {
+#login-submit {
     background-color: black;
     color: white;
     border: none;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     font-size: 16px;
     transition-duration: 0.4s;
     cursor: pointer;
-    width: 80%;
+    width: 200px;
+    margin-bottom: 25px;
 }
 
-.btn-primary:hover {
+#login-submit:hover {
+    background-color: red;
+    color: white;
+}
+
+
+#register-as-new-user {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 200px;
+}
+
+#register-as-new-user:hover {
     background-color: red;
     color: white;
 }
