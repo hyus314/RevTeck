@@ -9,6 +9,5 @@ namespace RevTech.Data.User
 {
     public class RevTeckUser : IdentityUser
     {
-        public string UserName { get; set; } = null!;
     }
 }

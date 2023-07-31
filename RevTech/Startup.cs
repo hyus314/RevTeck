@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using RevTech.Data;
 using RevTech.Data.User;
 
@@ -16,10 +17,13 @@ namespace RevTech.App
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDefaultIdentity<RevTeckUser>()
-  .AddRoles<IdentityRole>()
-  .AddEntityFrameworkStores<RevtechDbContext>();
+            services.AddDbContext<RevtechDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDefaultIdentity<RevTeckUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<RevtechDbContext>();
 
             // Configure services here
             services.AddControllers()
@@ -28,8 +32,8 @@ namespace RevTech.App
                     options.JsonSerializerOptions.PropertyNamingPolicy = null; // Use null to preserve property names as-is
                 });
 
-            // Other services configuration
         }
+
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

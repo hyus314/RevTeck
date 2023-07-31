@@ -8,7 +8,7 @@
     using RevTech.Data.Configuration;
     using System.Reflection.Emit;
 
-    public class RevtechDbContext : IdentityDbContext
+    public class RevtechDbContext : IdentityDbContext<RevTeckUser>
     {
         public RevtechDbContext(DbContextOptions<RevtechDbContext> options)
             : base(options)
