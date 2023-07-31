@@ -61,7 +61,7 @@ namespace RevTech.App
                 try
                 {
                     var context = services.GetRequiredService<RevtechDbContext>();
-                    context.Database.Migrate(); // apply all migrations
+                    //context.Database.Migrate(); // apply all migrations
 
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
