@@ -1,4 +1,5 @@
 ﻿@page
+@using RevTech.App.Areas.Identity.Pages.Account;
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -14,6 +15,16 @@
             <h2 class="text-center mb-4">Create a new account</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="Input.FirstName" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.FirstName"></label>
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.LastName" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.LastName"></label>
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
             <div class="form-floating">
                 <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" />
                 <label asp-for="Input.Username"></label>
@@ -42,4 +53,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-

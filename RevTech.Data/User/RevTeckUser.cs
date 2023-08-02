@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace RevTech.Data.User
 {
-    public class RevTeckUser : IdentityUser
+    public class 
+        RevTeckUser : IdentityUser
     {
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
     }
 }

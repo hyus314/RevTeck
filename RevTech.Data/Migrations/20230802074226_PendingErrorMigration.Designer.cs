@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RevTech.Data;
 
@@ -11,9 +12,10 @@ using RevTech.Data;
 namespace RevTech.Data.Migrations
 {
     [DbContext(typeof(RevtechDbContext))]
-    partial class RevtechDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230802074226_PendingErrorMigration")]
+    partial class PendingErrorMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
