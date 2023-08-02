@@ -6,11 +6,13 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
+<link rel="stylesheet" href="~/css/login.css">
+
+<h1 class="title-page">@ViewData["Title"]</h1>
+<div class="row justify-content-center align-items-center">
     <div class="col-md-4">
         <section>
-            <form id="account" method="post">
+            <form id="account" method="post" class="bg-white p-3 rounded shadow">
                 <h2>Use a local account to log in.</h2>
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -24,8 +26,17 @@
                     <label asp-for="Input.Password" class="form-label"></label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
+                <div class="form-check">
+                    <input asp-for="Input.RememberMe" class="form-check-input" />
+                    <label asp-for="Input.RememberMe" class="form-check-label"></label>
+                </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="btn btn-lg btn-primary">Log in</button>
+                </div>
+                <div>
+                    <p>
+                        <a id="register-as-new-user" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-lg btn-primary">Register as a new user</a>
+                    </p>
                 </div>
             </form>
         </section>
