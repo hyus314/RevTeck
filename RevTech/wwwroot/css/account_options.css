@@ -1,0 +1,47 @@
+﻿body {
+}
+.nav-item-opt {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 200px;
+    margin-bottom: 25px;
+}
+
+.nav-item-opt a {
+    color: black;
+    text-decoration: none; 
+}
+
+.nav-item-opt .nav-link {
+    background-color: #e8e7e7;
+}
+
+.nav-item-opt .nav-link active {
+    color: #e8e7e7;
+}
+
+.nav-item-opt.active a {
+    color: white;
+}
+.admin-reg-button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 50px;
+    border-radius: 5px;
+}
