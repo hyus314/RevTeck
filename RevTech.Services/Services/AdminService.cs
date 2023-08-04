@@ -1,4 +1,6 @@
-﻿using RevTech.Core.Contracts;
+﻿using Microsoft.Extensions.Configuration;
+using RevTech.Core.Contracts;
+using RevTech.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,22 @@ namespace RevTech.Core.Services
 {
     public class AdminService : IAdminService
     {
-        public Task<bool> PasswordValidation(string inputPassword)
+        private readonly RevtechDbContext data;
+        private readonly string adminPassword;
+        public AdminService(RevtechDbContext data, IConfiguration configuration)
         {
-            throw new NotImplementedException();
+            this.data = data;
+            adminPassword = configuration.GetSection("Passwords")["AdminPassword"];
+        }
 
+        public bool PasswordValidation(string inputPassword)
+        {
+            if (inputPassword == adminPassword)
+            {
+                return true;
+            }
 
+            return false;
         }
     }
 }

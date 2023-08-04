@@ -16,6 +16,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IConfigurationService, ConfigurationService>();
 builder.Services.AddScoped<IPerformancePartService, PerformancePartService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+
+builder.Services.AddTransient<AdminService>();
 
 builder.Services.AddDefaultIdentity<RevTeckUser>(options =>
 {

@@ -9,6 +9,6 @@ namespace RevTech.Core.Contracts
 
     public interface IAdminService
     {
-        public Task<bool> PasswordValidation(string inputPassword);
+        public bool PasswordValidation(string inputPassword);
     }
 }
