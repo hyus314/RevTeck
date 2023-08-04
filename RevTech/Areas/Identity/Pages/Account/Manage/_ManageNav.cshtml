@@ -19,10 +19,16 @@
 
 <div id="modal" class="modal">
     <div class="modal-content">
-        <span id="close" class="close">&times;</span>
-        <h2>Enter the Super Secret Admin Password</h2>
-        <input type="password" id="admin-password" placeholder="Enter password">
-        <button id="register-button">Register As Admin</button>
+        <div class="modal-header">
+            <h2 class="modal-title">Enter the Super Secret Admin Password</h2>
+            <span id="close" class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <input type="password" id="admin-password" placeholder="Enter password">
+        </div>
+        <div class="modal-footer">
+            <button id="register-button" onclick="submitAdminForm()">Register As Admin</button>
+        </div>
     </div>
 </div>
 

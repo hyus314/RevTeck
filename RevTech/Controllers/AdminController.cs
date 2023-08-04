@@ -9,9 +9,13 @@ namespace RevTech.App.Controllers
     public class AdminController : Controller
     {
         [Authorize(Roles = "User")]
-        public IActionResult Register()
+        [HttpPost]
+        public IActionResult Register(string inputPassword)
         {
             var userId = this.User.GetId();
+
+
+
             return View();
         }
     }

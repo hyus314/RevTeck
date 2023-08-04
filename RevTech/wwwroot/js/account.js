@@ -17,9 +17,24 @@ window.onclick = function (event) {
     }
 }
 
-registerButton.onclick = function () {
-    const password = document.getElementById("admin-password").value;
-    // Here you can add code to handle the registration logic
-    alert("Admin registration attempted with password: " + password);
-    modal.style.display = "none";
+
+function submitAdminForm() {
+    var inputPassword = $("#admin-password").val();
+
+    $.ajax({
+        url: '/Admin/Register',
+        type: 'POST',
+        data: { inputPassword: inputPassword },
+        dataType: 'json',
+        success: function (data) {
+            if (data.success) {
+                alert('Registration successful!');
+            } else {
+                alert('Registration failed: ' + data.error);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error:', error);
+        }
+    });
 }
