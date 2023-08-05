@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using RevTech.Core.Contracts;
 using RevTech.Data;
+using RevTech.Data.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,12 @@ namespace RevTech.Core.Services
         {
             this.data = data;
             adminPassword = configuration.GetSection("Passwords")["AdminPassword"];
+        }
+
+        public async Task<RevTeckUser> GetUserById(string userId)
+        {
+            return await this.data.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
         }
 
         public bool PasswordValidation(string inputPassword)
