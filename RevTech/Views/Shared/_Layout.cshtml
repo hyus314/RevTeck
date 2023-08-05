@@ -34,11 +34,16 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Configuration" asp-action="MyConfigurations">My Configurations</a>
                             </li>
-                            @if(User.IsInRole("ADMIN"))
+                            @inject Microsoft.AspNetCore.Identity.UserManager<RevTeckUser> UserManager
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Configuration" asp-action="MyConfigurations">Admin Actions</a>
-                                </li>
+                                var user = await UserManager.GetUserAsync(User);
+                                var isAdmin = await UserManager.IsInRoleAsync(user, "Admin");
+                                if (isAdmin)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Actions">Admin Actions</a>
+                                    </li>
+                                }
                             }
                         }
                     </ul>

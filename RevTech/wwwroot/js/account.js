@@ -28,7 +28,11 @@ function submitAdminForm() {
         dataType: 'json',
         success: function (data) {
             if (data.success) {
-                alert('Registration successful!');
+                alert('Registration successful! Please wait you will be redirected to the main page.');
+                
+                setTimeout(function () {
+                    window.location.href = '/Home/Index'; 
+                }, 2500);
             } else {
                 alert('Registration failed: ' + data.error);
             }

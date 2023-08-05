@@ -29,13 +29,17 @@ namespace RevTech.App.Controllers
             var user = await this.service.GetUserById(userId);
             if (resultSuccess)
             {
-                await userManager.AddToRoleAsync(user, "User");
+                await userManager.AddToRoleAsync(user, "Admin");
                 return Json(new { success = true });
             }
             else
             {
                 return Json(new { success = false, error = "Error message here" });
             }
+        }
+        public IActionResult Actions()
+        {
+            return View();
         }
     }
 }
