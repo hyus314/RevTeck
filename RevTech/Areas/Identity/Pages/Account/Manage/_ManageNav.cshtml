@@ -2,7 +2,7 @@
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
-<link rel="stylesheet" href="~/css/account_options.css">
+<link rel="stylesheet" href="~/css/user/account_options.css">
 
 <ul class="nav nav-pills flex-column">
     <li class="nav-item-opt"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
