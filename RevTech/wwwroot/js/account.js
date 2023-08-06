@@ -28,7 +28,7 @@ function submitAdminForm() {
         dataType: 'json',
         success: function (data) {
             if (data.success) {
-                alert('Registration successful! Please wait you will be redirected to the main page.');
+                alert('Registration successful! IMPORTANT!! Log out of your account and login again so you can succesfully access your new Administrator Actions!');
                 
                 setTimeout(function () {
                     window.location.href = '/Home/Index'; 

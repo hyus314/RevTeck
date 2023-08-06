@@ -28,7 +28,8 @@ builder.Services.AddDefaultIdentity<RevTeckUser>(options =>
     options.Password.RequireUppercase = true;
 })
     .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<RevtechDbContext>();
+    .AddEntityFrameworkStores<RevtechDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddSession(options =>
 {

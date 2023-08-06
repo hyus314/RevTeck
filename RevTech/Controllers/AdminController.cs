@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RevTech.App.Extensions;
 using RevTech.Core.Contracts;
 using RevTech.Data.User;
+using RevTech.Data.ViewModels.Admin;
 using System.Data;
 
 namespace RevTech.App.Controllers
@@ -45,9 +46,16 @@ namespace RevTech.App.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public IActionResult AddVehicle()
+        public async Task<IActionResult> AddVehicle()
         {
-            return View();
+            var model = await this.service.GenerateAddViewModel();
+            return View(model);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public IActionResult AddVehicle(AddVehicleViewModel model)
+        {
+            return View("Actions");
         }
     }
 }

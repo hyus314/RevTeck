@@ -1,1 +1,38 @@
-﻿
+﻿@model AddVehicleViewModel;
+<link rel="stylesheet" href="~/css/admin/addVehicle.css">
+
+
+<h1 class="title-page">Add a Vehicle</h1>
+
+<form action="/Admin/AddVehicle" method="post" class="add-vehicle-form">
+    <h2>Manufacturers</h2>
+    <!-- Replace "model.manufacturers" with your actual data from the model -->
+    <div class="manufacturer-container">
+    @foreach (var manufacturer in Model.Manufacturers)
+    {
+        <div class="manufacturer-item" data-id="@manufacturer.Id">
+            <p class="manufacturer-name">@manufacturer.Name</p>
+            <img src="@manufacturer.ImageURL" alt="Manufacturer logo">
+        </div>
+    }
+    </div>
+    <label for="modelName">Model Name:</label>
+    <input type="text" id="modelName" name="modelName" required>
+    <br>
+
+    <label for="yearStartDropdown">Year Created (Start):</label>
+    <select id="yearStartDropdown"></select>
+    <input type="hidden" id="yearCreated_Start" name="yearCreated_Start" value="">
+    <br>
+
+    <label for="yearEndDropdown">Year Created (End):</label>
+    <select id="yearEndDropdown"></select>
+    <input type="hidden" id="yearCreated_End" name="yearCreated_End" value="">
+    <br>
+
+    <div class="submit-button-line">
+        <input type="submit" value="Add Vehicle" class="submit-button">
+    </div>
+</form>
+
+<script src="~/js/addVehicle.js"></script>

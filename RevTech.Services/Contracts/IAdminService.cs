@@ -1,4 +1,5 @@
 ﻿using RevTech.Data.User;
+using RevTech.Data.ViewModels.Admin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace RevTech.Core.Contracts
     {
         public bool PasswordValidation(string inputPassword);
         public Task<RevTeckUser> GetUserById(string userId);
+        public Task<AddVehicleViewModel> GenerateAddViewModel();
     }
 }
