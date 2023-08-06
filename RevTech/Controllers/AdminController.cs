@@ -24,7 +24,7 @@ namespace RevTech.App.Controllers
         public async Task<IActionResult> Register(string inputPassword)
         {
             var userId = this.User.GetId();
-            
+
             var resultSuccess = this.service.PasswordValidation(inputPassword);
             var user = await this.service.GetUserById(userId);
             if (resultSuccess)
@@ -39,6 +39,13 @@ namespace RevTech.App.Controllers
         }
         [Authorize(Roles = "Admin")]
         public IActionResult Actions()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult AddVehicle()
         {
             return View();
         }
