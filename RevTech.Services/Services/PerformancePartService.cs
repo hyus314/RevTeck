@@ -24,6 +24,7 @@ namespace RevTech.Core.Services
         {
 
             var ecuTunings = await this.data.ECUTunings.Where(x => x.EngineId == engineId)
+                .AsNoTracking()
                 .Select(ecu => new ECUTuningViewModel()
                 {
                     Id = ecu.Id,
@@ -41,6 +42,7 @@ namespace RevTech.Core.Services
         public async Task<ICollection<ExhaustKitViewModel>> GetExhaustsForModelAndEngineAsync(int engineId, int carModelId)
         {
             var exhausts = await this.data.ExhaustKits.Where(x => x.EngineId == engineId && x.CarModelId == carModelId)
+                .AsNoTracking()
                 .Select(x => new ExhaustKitViewModel()
                 {
                     Id = x.Id,
@@ -58,6 +60,7 @@ namespace RevTech.Core.Services
         public async Task<ICollection<FuelPumpViewModel>> GetFuelPumpForEngineAsync(int engineId)
         {
             var fuelPumps = await this.data.Engine_FuelPumps.Where(x => x.EngineId == engineId)
+                .AsNoTracking()
                 .Select(fp => new FuelPumpViewModel()
                 {
                     Id = fp.FuelPumpId,
@@ -75,6 +78,7 @@ namespace RevTech.Core.Services
         public async Task<ICollection<InjectorKitViewModel>> GetInjectorKitsForEngine(int engineId)
         {
             var injectorKits = await this.data.Engine_InjectorKits.Where(x => x.EngineId == engineId)
+                .AsNoTracking()
                 .Select(ik => new InjectorKitViewModel()
                 {
                     Id = ik.InjectorKitId,
@@ -92,6 +96,7 @@ namespace RevTech.Core.Services
         public async Task<ICollection<OilCoolerViewModel>> GetOilCoolersForEngineAsync(int engineId)
         {
             var oilCoolers = await this.data.Engine_OilCoolers.Where(x => x.EngineId == engineId)
+                .AsNoTracking()
                 .Select(oc => new OilCoolerViewModel()
                 {
                     Id = oc.OilCoolerId,
@@ -107,6 +112,7 @@ namespace RevTech.Core.Services
         public async Task<ICollection<SparkPlugsViewModel>> GetSparkPlugsForEngineAsync(int engineId)
         {
             var sparkPlugs = await this.data.Engine_SparkPlugKits.Where(x => x.EngineId == engineId)
+                .AsNoTracking()
                 .Select(sp => new SparkPlugsViewModel()
                 {
                     Id = sp.SparkPlugKitId,
@@ -121,6 +127,7 @@ namespace RevTech.Core.Services
         public async Task<ICollection<SuperchargerKitViewModel>> GetSuperchargersForEngineAsync(int engineId)
         {
             var superchargers = await this.data.SuperchargerKits.Where(x => x.EngineId == engineId)
+                .AsNoTracking()
                 .Select(s => new SuperchargerKitViewModel()
                 {
                     Id = s.Id,
@@ -151,6 +158,7 @@ namespace RevTech.Core.Services
         public async Task<ICollection<TurboKitViewModel>> GetTurbosForEngineAsync(int engineId)
         {
             var turbos = await this.data.TurboKits.Where(x => x.EngineId == engineId)
+                .AsNoTracking()
                 .Select(t => new TurboKitViewModel()
                 {
                     Id = t.Id,

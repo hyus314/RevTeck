@@ -16,6 +16,7 @@
         public async Task<ICollection<EngineViewModel>> GetEnginesByModelIdAsync(int id)
         {
             var engines = await this.data.CarModelsEngines.Where(x => x.CarModelId == id)
+                .AsNoTracking()
                 .Select(e => new EngineViewModel()
                 {
                     Id = e.EngineId,
@@ -31,6 +32,7 @@
         public async Task<ICollection<ManufacturerViewModel>> GetUserWithManufacturersAsync(string userId)
         {
             return await this.data.Manufacturers
+                .AsNoTracking()
             .Select(m => new ManufacturerViewModel()
             {
                 Id = m.Id,
@@ -43,6 +45,7 @@
         public async Task<ICollection<CarModelViewModel>> GetModelsByManufacturerIdAsync(int id)
         {
             var models = await this.data.CarModels.Where(m => m.ManufacturerId == id)
+                .AsNoTracking()
                 .Select(m => new CarModelViewModel()
                 {
                     Id = m.Id,

@@ -37,6 +37,7 @@ namespace RevTech.App.Controllers
                 return Json(new { success = false, error = "Error message here" });
             }
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Actions()
         {
             return View();
