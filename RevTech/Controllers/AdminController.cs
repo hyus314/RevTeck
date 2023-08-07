@@ -59,10 +59,17 @@ namespace RevTech.App.Controllers
             return View("Actions");
         }
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllVehicles()
         {
             var models = await this.service.GenerateRemoveViewModels();
             return View(models);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> RemoveVehicle(int carModelId)
+        {
+            return Json(new { redirectUrl = Url.Action("Actions", "Admin") });
         }
     }
 }

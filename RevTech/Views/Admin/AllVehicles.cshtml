@@ -1,7 +1,7 @@
 ﻿@model ICollection<AllManufacturerViewModel>;
 
-    <link rel="stylesheet" href="~/css/admin/removeVehicle.css">
-
+    <link rel="stylesheet" href="~/css/admin/allVehicles.css">
+<script src="~/js/allVehicles.js"></script>
 <div class="manufacturer-container">
     @foreach (var manufacturer in Model)
     {
@@ -15,6 +15,7 @@
                         <h3>@carModel.ModelName</h3>
                         <img src="@carModel.ImageURL" alt="@carModel.ModelName image">
                         <p>Years Produced: @carModel.YearCreated_Start - @carModel.YearCreated_End</p>
+                        <button class="remove-btn" onclick="showConfirmation(@carModel.Id,'@manufacturer.Name', '@carModel.ModelName')">Remove</button>
                     </div>
                 }
             </div>
@@ -22,3 +23,10 @@
     }
 </div>
 
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <p id="confirmationMessage"></p>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+</div>

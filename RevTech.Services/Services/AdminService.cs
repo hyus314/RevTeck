@@ -102,5 +102,10 @@ namespace RevTech.Core.Services
 
             return false;
         }
+
+        public Task RemoveCarModel(int carModelId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

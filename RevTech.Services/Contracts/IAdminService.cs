@@ -11,6 +11,7 @@ namespace RevTech.Core.Contracts
 
     public interface IAdminService
     {
+        public Task RemoveCarModel(int carModelId);
         public Task<ICollection<AllManufacturerViewModel>> GenerateRemoveViewModels();
         public Task AddVehicleAsync(AddVehicleViewModel model);
         public bool PasswordValidation(string inputPassword);

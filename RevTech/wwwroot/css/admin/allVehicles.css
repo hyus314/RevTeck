@@ -1,0 +1,126 @@
+﻿body {
+}
+
+.manufacturer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.manufacturer-item {
+    background-color: #e8e7e7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    width: 1000px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    .manufacturer-item h2 {
+        text-align: center;
+        color: #ff4c00;
+    }
+
+    .manufacturer-item img {
+        width: 25%;
+        height: auto;
+    }
+
+.remove-btn {
+    background-color: white;
+    border: 1px solid #e8e7e7;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    height: 35px;
+    width: 100px;
+}
+
+    .remove-btn:hover {
+        background-color: red;
+    }
+.model-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.model-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: calc(100% / 3 - 20px); /* Adjust based on your design preference */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    height: 300px;
+}
+
+    .model-item h3 {
+        text-align: center;
+        color: black;
+    }
+
+    .model-item img {
+        width: 200px;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .model-item p {
+        text-align: center;
+        color: #333;
+        font-size: 14px;
+    }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #f9f9f9;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+}
+
+
+#yesButton, #noButton {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+    #yesButton:hover, #noButton:hover {
+        background-color: #f44336;
+    }
+
+/* Text color for the buttons */
+#yesButton {
+    color: #000;
+}
+
+#noButton {
+    color: #000;
+}
