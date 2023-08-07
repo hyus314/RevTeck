@@ -43,9 +43,9 @@
 
 /*#fa1c0c;*/
 
-.remove-vehicle-btn,
-.remove-vehicle-btn:link,
-.remove-vehicle-btn:visited {
+.all-vehicle-btn,
+.all-vehicle-btn:link,
+.all-vehicle-btn:visited {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -54,40 +54,15 @@
     border: none;
     border-radius: 0;
     color: white;
-    background-color: #fa1c0c;
+    background-color: #ff4c00;
     text-decoration: none;
     cursor: pointer;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
-.remove-vehicle-btn:hover {
-    background-color: white;
-    color: #fa1c0c;
-}
-
-/*#4187f0;*/
-
-
-.edit-vehicle-btn,
-.edit-vehicle-btn:link,
-.edit-vehicle-btn:visited {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 30px;
-    font-size: 16px;
-    border: none;
-    border-radius: 0;
-    color: white;
-    background-color: #4187f0;
-    text-decoration: none;
-    cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-    .edit-vehicle-btn:hover {
+    .all-vehicle-btn:hover {
         background-color: white;
-        color: #4187f0;
+        color: #ff4c00;
     }
+

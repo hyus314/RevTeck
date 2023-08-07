@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RevTech.Data.ViewModels.Admin
 {
-    public class CarModelRemoveViewModel
+    public class AllCarModelViewModel
     {
         public int Id { get; set; }
         public int ManufacturerId { get; set; }

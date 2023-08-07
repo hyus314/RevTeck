@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RevTech.Data.ViewModels.Admin
 {
-    public class ManufacturerRemoveViewModel
+    public class AllManufacturerViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string ImageURL { get; set; } = null!;
-        public ICollection<CarModelRemoveViewModel> Models { get; set; } = new HashSet<CarModelRemoveViewModel>();
+        public ICollection<AllCarModelViewModel> Models { get; set; } = new HashSet<AllCarModelViewModel>();
     }
 }

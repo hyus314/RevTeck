@@ -60,11 +60,11 @@ namespace RevTech.Core.Services
 
         }
 
-        public async Task<ICollection<ManufacturerRemoveViewModel>> GenerateRemoveViewModels()
+        public async Task<ICollection<AllManufacturerViewModel>> GenerateRemoveViewModels()
         {
             var manufacturers = await this.data.Manufacturers
                 .AsNoTracking()
-                .Select( x => new ManufacturerRemoveViewModel()
+                .Select( x => new AllManufacturerViewModel()
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -72,7 +72,7 @@ namespace RevTech.Core.Services
                 Models =  this.data.CarModels
                 .AsNoTracking()
                 .Where( y => y.ManufacturerId == x.Id)
-                .Select( z => new CarModelRemoveViewModel()
+                .Select( z => new AllCarModelViewModel()
                 {
                     Id = z.Id,
                     ManufacturerId = z.ManufacturerId,
