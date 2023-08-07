@@ -53,8 +53,9 @@ namespace RevTech.App.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult AddVehicle(AddVehicleViewModel model)
+        public async Task<IActionResult> AddVehicle(AddVehicleViewModel model)
         {
+            await this.service.AddVehicleAsync(model);
             return View("Actions");
         }
     }

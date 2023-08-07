@@ -11,6 +11,7 @@ namespace RevTech.Core.Contracts
 
     public interface IAdminService
     {
+        public Task AddVehicleAsync(AddVehicleViewModel model);
         public bool PasswordValidation(string inputPassword);
         public Task<RevTeckUser> GetUserById(string userId);
         public Task<AddVehicleViewModel> GenerateAddViewModel();

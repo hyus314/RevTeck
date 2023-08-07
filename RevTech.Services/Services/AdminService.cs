@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using RevTech.Core.Contracts;
 using RevTech.Data;
+using RevTech.Data.Models.Vehicles;
 using RevTech.Data.User;
 using RevTech.Data.ViewModels.Admin;
 using RevTech.Data.ViewModels.Vehicles;
@@ -21,6 +22,21 @@ namespace RevTech.Core.Services
         {
             this.data = data;
             adminPassword = configuration.GetSection("Passwords")["AdminPassword"];
+        }
+
+        public async Task AddVehicleAsync(AddVehicleViewModel model)
+        {
+            var car = new CarModel()
+            {
+                ManufacturerId = model.ManufacturerId,
+                ModelName = model.ModelName,
+                YearCreated_Start = model.YearCreated_Start,
+                YearCreated_End = model.YearCreated_End,
+                ImageURL = model.ImageURL
+            };
+
+            await this.data.CarModels.AddAsync(car);
+            await this.data.SaveChangesAsync();
         }
 
         public async Task<AddVehicleViewModel> GenerateAddViewModel()
