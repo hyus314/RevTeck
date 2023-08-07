@@ -58,5 +58,11 @@ namespace RevTech.App.Controllers
             await this.service.AddVehicleAsync(model);
             return View("Actions");
         }
+        [HttpGet]
+        public async Task<IActionResult> RemoveVehicle()
+        {
+            var models = await this.service.GenerateRemoveViewModels();
+            return View(models);
+        }
     }
 }

@@ -9,6 +9,7 @@ using RevTech.Data.ViewModels.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,6 +58,33 @@ namespace RevTech.Core.Services
 
             return model;   
 
+        }
+
+        public async Task<ICollection<ManufacturerRemoveViewModel>> GenerateRemoveViewModels()
+        {
+            var manufacturers = await this.data.Manufacturers
+                .AsNoTracking()
+                .Select( x => new ManufacturerRemoveViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                ImageURL = x.ImageURL,
+                Models =  this.data.CarModels
+                .AsNoTracking()
+                .Where( y => y.ManufacturerId == x.Id)
+                .Select( z => new CarModelRemoveViewModel()
+                {
+                    Id = z.Id,
+                    ManufacturerId = z.ManufacturerId,
+                    ModelName = z.ModelName,
+                    YearCreated_End = z.YearCreated_End,
+                    YearCreated_Start = z.YearCreated_Start,
+                    ImageURL = z.ImageURL
+                }).ToArray()
+
+            }).ToArrayAsync();
+
+            return manufacturers;
         }
 
         public async Task<RevTeckUser> GetUserById(string userId)
