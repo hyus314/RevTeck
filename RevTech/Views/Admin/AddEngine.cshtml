@@ -1,7 +1,7 @@
 ﻿@model AddEngineViewModel;
 
 <link rel="stylesheet" href="~/css/admin/addEngine.css">
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <h1 class="title-page">Add Engine</h1>
 
 <form action = "/Admin/AddEngine" method="post" class="add-engine-form">
@@ -18,8 +18,13 @@
     <input type="number" id="torque" name="torque" required>
     <br>
 
+    <label for="carModels">Assign To A Model:</label>
+    <select id="carModels" name="carModelId"></select>
+    <br>
+
     <div class="submit-button-line">
         <input type="submit" value="Add Engine" class="submit-button">
     </div>
 </form>
 
+<script src="~/js/admin/addEngine.js"></script>

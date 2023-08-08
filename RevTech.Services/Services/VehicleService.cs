@@ -4,6 +4,7 @@
     using RevTech.Core.Contracts;
     using RevTech.Data;
     using Microsoft.EntityFrameworkCore;
+    using System.Security.Cryptography.X509Certificates;
 
     public class VehicleService : IVehicleService
     {
@@ -57,6 +58,16 @@
                 }).ToArrayAsync();
 
             return models;
+        }
+
+        public async Task<ICollection<CarModelViewModel>> GetAllCarModelsAsync()
+        {
+            return await this.data.CarModels.Select(m => new CarModelViewModel()
+            {
+                Id = m.Id,
+                ModelName = m.ModelName,
+                ManufacturerName = m.Manufacturer.Name
+            }).ToArrayAsync();
         }
     }
 }

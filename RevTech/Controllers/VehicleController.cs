@@ -36,12 +36,11 @@ namespace RevTech.App.Controllers
             return Json(engines);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AssignVehicleToUser(int engineId, int carModelId)
+        [HttpGet]
+        public async Task<IActionResult> GetAllCarModels()
         {
-            var userId = this.User.GetId();
-
-            return View();
+            var models = await this.service.GetAllCarModelsAsync();
+            return Json(models);
         }
     }
 }

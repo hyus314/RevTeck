@@ -157,7 +157,17 @@
                 Torque = model.Torque,
             };
 
+
             await this.data.Engines.AddAsync(entity);
+            await this.data.SaveChangesAsync();
+           
+            var carModelEngine = new CarModelEngine()
+            {
+                Engine = entity,
+                CarModelId = model.CarModelId,
+            };
+            
+            await this.data.CarModelsEngines.AddAsync(carModelEngine);
             await this.data.SaveChangesAsync();
         }
     }

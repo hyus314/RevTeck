@@ -5,5 +5,6 @@
         public string Name { get; set; } = null!;
         public int HorsePower { get; set; }
         public int Torque { get; set; }
+        public int CarModelId { get; set; }
     }
 }
