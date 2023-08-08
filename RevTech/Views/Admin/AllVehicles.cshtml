@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="~/css/admin/allVehicles.css">
 <script src="~/js/admin/allVehicles.js"></script>
+<h1 class="title-page">All Vehicles</h1>
 <div class="manufacturer-container">
     @foreach (var manufacturer in Model)
     {
@@ -17,7 +18,7 @@
                         <img src="@carModel.ImageURL" alt="@carModel.ModelName image">
                         <p>Years Produced: @carModel.YearCreated_Start - @carModel.YearCreated_End</p>
                         <button class="remove-btn" onclick="showConfirmation(@carModel.Id,'@manufacturer.Name', '@carModel.ModelName')">Remove</button>
-                        <button class="edit-btn" onclick="editVehicle(@carModel.Id,)">Edit</button>
+                        <a class="edit-btn" asp-action="EditVehicle" asp-controller="Admin" asp-route-carModelId="@carModel.Id">Edit</a>
                     </div>
                 }
             </div>

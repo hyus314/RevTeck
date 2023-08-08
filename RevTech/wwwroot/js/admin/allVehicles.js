@@ -35,3 +35,4 @@ function removeVehicle(carModelId) {
         }
     });
 }
+
