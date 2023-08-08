@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using RevTech.App.Extensions;
 using RevTech.Core.Contracts;
 using RevTech.Data.User;
-using RevTech.Data.ViewModels.Admin;
+using RevTech.Data.ViewModels.Admin.Engine;
+using RevTech.Data.ViewModels.Admin.Vehicle;
 using System.Data;
 
 namespace RevTech.App.Controllers
@@ -73,7 +74,7 @@ namespace RevTech.App.Controllers
             return Json(new { redirectUrl = Url.Action("Actions", "Admin") });
         }
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditVehicle(int carModelId)
         {
             var model = await this.service.GenerateEditViewModelAsync(carModelId);
@@ -86,6 +87,21 @@ namespace RevTech.App.Controllers
             await this.service.EditVehicleAsync(model);
 
             return RedirectToAction("AllVehicles");
+        }
+
+        [HttpGet]
+        [Authorize(Roles ="Admin")]
+        public IActionResult AddEngine()
+        {
+            var model = this.service.GenerateAddEngineViewModel();
+            return View(model);
+        }
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> AddEngine(AddEngineViewModel model)
+        {
+            await this.service.AddEngineAsync(model);
+            return View("Actions");
         }
     }
 }

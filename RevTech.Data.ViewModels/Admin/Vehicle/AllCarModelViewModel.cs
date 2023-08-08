@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevTech.Data.ViewModels.Admin
+namespace RevTech.Data.ViewModels.Admin.Vehicle
 {
     public class AllCarModelViewModel
     {

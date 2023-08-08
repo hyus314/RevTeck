@@ -1,0 +1,25 @@
+﻿@model AddEngineViewModel;
+
+<link rel="stylesheet" href="~/css/admin/addEngine.css">
+
+<h1 class="title-page">Add Engine</h1>
+
+<form action = "/Admin/AddEngine" method="post" class="add-engine-form">
+   
+    <label for="name">Engine Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+
+    <label for="horsePower">Engine Horse Power:</label>
+    <input type="number" id="horsePower" name="horsePower" required>
+    <br>
+
+    <label for="torque">Engine Torque:</label>
+    <input type="number" id="torque" name="torque" required>
+    <br>
+
+    <div class="submit-button-line">
+        <input type="submit" value="Add Engine" class="submit-button">
+    </div>
+</form>
+

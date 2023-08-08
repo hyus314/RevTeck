@@ -1,7 +1,6 @@
-﻿
-using RevTech.Data.ViewModels.Vehicles;
+﻿using RevTech.Data.ViewModels.Vehicles;
 
-namespace RevTech.Data.ViewModels.Admin
+namespace RevTech.Data.ViewModels.Admin.Vehicle
 {
     public class EditVehicleViewModel
     {

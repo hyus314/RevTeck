@@ -1,0 +1,70 @@
+﻿body {
+}
+
+.title-page {
+    color: #ff4c00;
+    font-size: 48px;
+    margin-bottom: 100px;
+}
+
+.add-engine-form {
+    background-color: #e8e7e7;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 150px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    height: 100%;
+}
+
+    .add-engine-form label {
+        color: black;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .add-engine-form input[type="text"],
+    .add-engine-form input[type="number"],
+    .add-engine-form select {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .add-engine-form select {
+        background-color: #fff;
+        color: black;
+    }
+
+        .add-engine-form select:hover {
+            background-color: #f0f0f0;
+        }
+
+.submit-button-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.submit-button {
+    background-color: #32cd32;
+    color: white;
+    border: none;
+    padding: 10px 200px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+    .submit-button:hover {
+        background-color: #228b22;
+    }
