@@ -1,13 +1,14 @@
 ﻿@model ICollection<AllManufacturerViewModel>;
 
-    <link rel="stylesheet" href="~/css/admin/allVehicles.css">
+<link rel="stylesheet" href="~/css/admin/allVehicles.css">
 <script src="~/js/allVehicles.js"></script>
 <div class="manufacturer-container">
     @foreach (var manufacturer in Model)
     {
         <div class="manufacturer-item">
-            <h2>@manufacturer.Name</h2>
-            <img src="@manufacturer.ImageURL" alt="@manufacturer.Name logo">
+            <div class="line">
+                <img src="@manufacturer.ImageURL" alt="@manufacturer.Name logo">
+            </div>
             <div class="model-container">
                 @foreach (var carModel in manufacturer.Models)
                 {
