@@ -103,9 +103,11 @@ namespace RevTech.Core.Services
             return false;
         }
 
-        public Task RemoveCarModel(int carModelId)
+        public async Task RemoveCarModel(int carModelId)
         {
-            throw new NotImplementedException();
+            var carModel = await this.data.CarModels.FindAsync(carModelId);
+            this.data.CarModels.Remove(carModel!);
+            await this.data.SaveChangesAsync();
         }
     }
 }

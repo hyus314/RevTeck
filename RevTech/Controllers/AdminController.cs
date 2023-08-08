@@ -69,6 +69,7 @@ namespace RevTech.App.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RemoveVehicle(int carModelId)
         {
+            await this.service.RemoveCarModel(carModelId);
             return Json(new { redirectUrl = Url.Action("Actions", "Admin") });
         }
     }
