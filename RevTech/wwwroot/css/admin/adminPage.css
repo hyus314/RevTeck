@@ -7,42 +7,60 @@
     margin-bottom: 100px;
 }
 
-.vehicle-options-title{
-    color: white;
+.engine-options-title,
+.vehicle-options-title {
+    color: black;
 }
 
+.add-engine-btn,
+.add-engine-btn:link,
+.add-engine-btn:visited,
 .add-vehicle-btn,
 .add-vehicle-btn:link,
 .add-vehicle-btn:visited {
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 30px;
     font-size: 16px;
     border: none;
     border-radius: 0;
     color: white;
     background-color: #32cd32;
-    text-decoration: none; 
+    text-decoration: none;
     cursor: pointer;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
-.add-vehicle-btn:hover {
-    background-color: white; 
-    color: #32cd32; 
-}
+    .add-engine-btn:hover,
+    .add-vehicle-btn:hover {
+        background-color: white;
+        color: #32cd32;
+    }
 
-
+.engine-options,
 .vehicle-options {
+    background-color: #e8e7e7;
+    padding: 50px;
     display: flex;
     flex-direction: column;
-    gap: 10px; 
+    gap: 10px;
+    margin-bottom: 100px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+    /* Smooth transitions */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+
+  
+
 
 /*#fa1c0c;*/
 
+.all-engines-btn,
+.all-engines-btn:link,
+.all-engines-btn:visited,
 .all-vehicle-btn,
 .all-vehicle-btn:link,
 .all-vehicle-btn:visited {
@@ -61,8 +79,8 @@
     transition: background-color 0.3s ease;
 }
 
+    .all-engines-btn:hover,
     .all-vehicle-btn:hover {
         background-color: white;
         color: #ff4c00;
     }
-
