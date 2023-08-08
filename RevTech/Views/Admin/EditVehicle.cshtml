@@ -1,0 +1,44 @@
+﻿@model RevTech.Data.ViewModels.Admin.EditVehicleViewModel;
+<link rel="stylesheet" href="~/css/admin/addVehicle.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.css" rel="stylesheet">
+
+<h1 class="title-page">Edit a Vehicle</h1>
+
+<form action="/Admin/EditVehicle" method="post" class="add-vehicle-form">
+    <input type="hidden" name="Id" value="@Model.Id">
+
+    <h2>Select a Manufacturer for the Vehicle:</h2>
+    <div class="manufacturer-container">
+        @foreach (var manufacturer in Model.Manufacturers)
+        {
+            <div class="manufacturer-item @(Model.ManufacturerId == manufacturer.Id ? "selected" : "")" data-id="@manufacturer.Id">
+                <img src="@manufacturer.ImageURL" alt="Manufacturer logo">
+                <input type="hidden" id="manufacturerId" name="ManufacturerId" value="@Model.ManufacturerId">
+            </div>
+        }
+    </div>
+    <label for="imageUrl">Image URL:</label>
+    <input type="url" id="imageUrl" name="ImageURL" required value="@Model.ImageURL">
+    <br>
+    <label for="modelName">Model Name:</label>
+    <input type="text" id="modelName" name="ModelName" required value="@Model.ModelName">
+    <br>
+
+    <label for="yearStartDropdown">Year Created (Start):</label>
+    <select id="yearStartDropdown" name="YearCreated_Start">
+        <input type="hidden" id="yearCreated_Start" name="YearCreated_Start" value="@Model.YearCreated_Start">
+    </select>
+    <br>
+
+    <label for="yearEndDropdown">Year Created (End):</label>
+    <select id="yearEndDropdown" name="YearCreated_End">
+        <input type="hidden" id="yearCreated_End" name="YearCreated_End" value="@Model.YearCreated_End">
+    </select>
+    <br>
+
+    <div class="submit-button-line">
+        <input type="submit" value="Update Vehicle" class="submit-button">
+    </div>
+</form>
+
+<script src="~/js/admin/editVehicle.js"></script>

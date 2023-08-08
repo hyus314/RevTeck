@@ -11,11 +11,13 @@ namespace RevTech.Core.Contracts
 
     public interface IAdminService
     {
-        public Task RemoveCarModel(int carModelId);
-        public Task<ICollection<AllManufacturerViewModel>> GenerateRemoveViewModels();
+        public Task EditVehicleAsync(EditVehicleViewModel model);
+        public Task<EditVehicleViewModel> GenerateEditViewModelAsync(int carModelId);
+        public Task RemoveCarModelAsync(int carModelId);
+        public Task<ICollection<AllManufacturerViewModel>> GenerateAllViewModelsAsync();
         public Task AddVehicleAsync(AddVehicleViewModel model);
         public bool PasswordValidation(string inputPassword);
-        public Task<RevTeckUser> GetUserById(string userId);
-        public Task<AddVehicleViewModel> GenerateAddViewModel();
+        public Task<RevTeckUser> GetUserByIdAsync(string userId);
+        public Task<AddVehicleViewModel> GenerateAddViewModelAsync();
     }
 }

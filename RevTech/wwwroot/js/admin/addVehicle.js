@@ -2,7 +2,7 @@
     const yearStartDropdown = document.getElementById('yearStartDropdown');
     const yearEndDropdown = document.getElementById('yearEndDropdown');
 
-    for (let year = 2000; year <= 2023; year++) {
+    for (let year = 1995; year <= 2023; year++) {
         yearStartDropdown.options.add(new Option(year, year));
         yearEndDropdown.options.add(new Option(year, year));
     }

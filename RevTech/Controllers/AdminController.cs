@@ -27,7 +27,7 @@ namespace RevTech.App.Controllers
             var userId = this.User.GetId();
 
             var resultSuccess = this.service.PasswordValidation(inputPassword);
-            var user = await this.service.GetUserById(userId);
+            var user = await this.service.GetUserByIdAsync(userId);
             if (resultSuccess)
             {
                 await userManager.AddToRoleAsync(user, "Admin");
@@ -48,7 +48,7 @@ namespace RevTech.App.Controllers
         [HttpGet]
         public async Task<IActionResult> AddVehicle()
         {
-            var model = await this.service.GenerateAddViewModel();
+            var model = await this.service.GenerateAddViewModelAsync();
             return View(model);
         }
         [Authorize(Roles = "Admin")]
@@ -62,21 +62,30 @@ namespace RevTech.App.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllVehicles()
         {
-            var models = await this.service.GenerateRemoveViewModels();
+            var models = await this.service.GenerateAllViewModelsAsync();
             return View(models);
         }
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RemoveVehicle(int carModelId)
         {
-            await this.service.RemoveCarModel(carModelId);
+            await this.service.RemoveCarModelAsync(carModelId);
             return Json(new { redirectUrl = Url.Action("Actions", "Admin") });
         }
 
         [Authorize(Roles ="Admin")]
         public async Task<IActionResult> EditVehicle(int carModelId)
         {
-            return View();
+            var model = await this.service.GenerateEditViewModelAsync(carModelId);
+            return View(model);
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> EditVehicle(EditVehicleViewModel model)
+        {
+            await this.service.EditVehicleAsync(model);
+
+            return RedirectToAction("AllVehicles");
         }
     }
 }
