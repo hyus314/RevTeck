@@ -103,5 +103,12 @@ namespace RevTech.App.Controllers
             await this.service.AddEngineAsync(model);
             return View("Actions");
         }
+        [HttpGet]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> AllEngines()
+        {
+            var models = await this.service.GetAllEnginesAsync();
+            return View(models);
+        }
     }
 }

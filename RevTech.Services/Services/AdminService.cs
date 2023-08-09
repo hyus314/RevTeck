@@ -170,5 +170,16 @@
             await this.data.CarModelsEngines.AddAsync(carModelEngine);
             await this.data.SaveChangesAsync();
         }
+
+        public async Task<ICollection<EngineViewModel>> GetAllEnginesAsync()
+        {
+            return await this.data.Engines.Select(x => new EngineViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                HorsePower = x.HorsePower,
+                Torque = x.Torque
+            }).ToArrayAsync();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using RevTech.Data.User;
 using RevTech.Data.ViewModels.Admin.Engine;
 using RevTech.Data.ViewModels.Admin.Vehicle;
+using RevTech.Data.ViewModels.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace RevTech.Core.Contracts
 
     public interface IAdminService
     {
+        public Task<ICollection<EngineViewModel>> GetAllEnginesAsync();
         public Task AddEngineAsync(AddEngineViewModel model);
         public AddEngineViewModel GenerateAddEngineViewModel(); 
         public Task EditVehicleAsync(EditVehicleViewModel model);

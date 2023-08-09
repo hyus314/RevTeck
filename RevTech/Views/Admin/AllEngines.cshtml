@@ -1,0 +1,14 @@
+﻿@model ICollection<EngineViewModel>;
+
+<link rel="stylesheet" href="~/css/admin/allEngines.css">
+<h1 class="title-page">All Engines</h1>
+<div class="engine-container">
+    @foreach (var engine in Model)
+    {
+        <div class="engine-item">
+            <h3 class="engine-name">Engine: @engine.Name</h3>
+            <h4 class="engine-horse-power">Horse Power: @engine.HorsePower</h4>
+            <h4 class="engine-torque">Torque: @engine.Torque</h4>
+        </div>
+    }
+</div>
