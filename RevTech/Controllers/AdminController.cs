@@ -111,11 +111,25 @@ namespace RevTech.App.Controllers
             return View(models);
         }
         [HttpGet]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddPart()
         {
             var model = this.service.GenerateAddPerformancePartView();
             return View(model);
+        }
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetEnginesForPart()
+        {
+            var models = await this.service.GetAllEnginesAsync();
+            return Json(models);
+        }
+        [HttpPost]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> AddTurbo([FromBody]Dictionary<string, string> formData)
+        {
+
+            return Json(new { success=true});
         }
     }
 }

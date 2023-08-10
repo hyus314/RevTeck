@@ -19,3 +19,54 @@
         correspondingForm.style.display = "block";
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('/Admin/GetEnginesForPart') 
+        .then(response => response.json())
+        .then(data => populateDropdown(data))
+        .catch(error => console.error('Error fetching data:', error));
+});
+
+function populateDropdown(data) {
+    const dropdown = document.getElementById("dropdownData");
+
+    // Iterate over each data item and add it to the dropdown
+    data.forEach(engine => {
+        const option = document.createElement('option');
+        option.value = engine.id;
+        option.textContent = engine.name;
+
+        dropdown.appendChild(option);
+    });
+}
+
+document.getElementById('turboForm').addEventListener('submit', function (event) {
+    event.preventDefault();  // Prevent the default form submission
+
+    const formData = {
+        'modelName': document.getElementById('modelName').value,
+        'manufacturer': document.getElementById('manufacturer').value,
+        'horsePowerBoost': document.getElementById('horsePowerBoost').value,
+        'torqueBoost': document.getElementById('torqueBoost').value,
+        'pressureBoost': document.getElementById('pressureBoost').value,
+        'imageURL': document.getElementById('imageURL').value,
+        'price': document.getElementById('price').value,
+        'engineId': document.getElementById('dropdownData').value
+    };
+
+    // Use fetch to send a POST request with JSON data
+    fetch('/Admin/AddTurbo', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+});
