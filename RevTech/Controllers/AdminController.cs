@@ -127,9 +127,9 @@ namespace RevTech.App.Controllers
         [HttpPost]
         [Authorize(Roles ="Admin")]
         public async Task<IActionResult> AddTurbo([FromBody]Dictionary<string, string> formData)
-        {
-
-            return Json(new { success=true});
+         {
+            await this.service.AddTurboAsync(formData);
+            return Json(new { redirectUrl = Url.Action("Actions", "Admin") });
         }
     }
 }

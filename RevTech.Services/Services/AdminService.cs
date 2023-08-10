@@ -4,12 +4,15 @@
     using Microsoft.Extensions.Configuration;
     using RevTech.Core.Contracts;
     using RevTech.Data;
+    using RevTech.Data.Models.PerformanceParts;
     using RevTech.Data.Models.Vehicles;
     using RevTech.Data.User;
     using RevTech.Data.ViewModels.Admin.Engine;
     using RevTech.Data.ViewModels.Admin.Part;
     using RevTech.Data.ViewModels.Admin.Vehicle;
     using RevTech.Data.ViewModels.Vehicles;
+    using System.Collections.Generic;
+
     public class AdminService : IAdminService
     {
         private readonly RevtechDbContext data;
@@ -199,5 +202,22 @@
             };
         }
 
+        public async Task AddTurboAsync(Dictionary<string, string> data)
+        {
+            var turbo = new TurboKit()
+            {
+                ModelName = data["modelName"],
+                Manufacturer = data["manufacturer"],
+                HorsePowerBoost = int.Parse(data["horsePowerBoost"]),
+                TorqueBoost = int.Parse(data["torqueBoost"]),
+                PressureBoost = decimal.Parse(data["pressureBoost"]),
+                ImageURL = data["imageURL"],
+                Price = decimal.Parse(data["price"]),
+                EngineId = int.Parse(data["engineId"])
+            };
+
+            await this.data.TurboKits.AddAsync(turbo);
+            await this.data.SaveChangesAsync();
+        }
     }
 }

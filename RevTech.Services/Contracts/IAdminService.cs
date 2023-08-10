@@ -14,6 +14,7 @@ namespace RevTech.Core.Contracts
 
     public interface IAdminService
     {
+        public Task AddTurboAsync(Dictionary<string, string> data);
         public AddPerformancePartViewModel GenerateAddPerformancePartView();
         public Task<ICollection<EngineViewModel>> GetAllEnginesAsync();
         public Task AddEngineAsync(AddEngineViewModel model);

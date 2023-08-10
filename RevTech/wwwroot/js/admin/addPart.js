@@ -62,11 +62,20 @@ document.getElementById('turboForm').addEventListener('submit', function (event)
         },
         body: JSON.stringify(formData)
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             console.log('Success:', data);
+            if (data.redirectUrl) {
+                window.location.href = data.redirectUrl;
+            }
         })
         .catch(error => {
             console.error('Error:', error);
         });
+
 });
