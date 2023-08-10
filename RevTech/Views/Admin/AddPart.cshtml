@@ -7,6 +7,10 @@
         <p>Turbo Kit</p>
         <img src="@Model.TurboKitImageURL" alt="Turbo Image">
     </div>
+    <div class="performance-part" data-form="exhaustKitForm" onclick="showForm('exhaustKitForm')">
+        <p>Exhaust Kit</p>
+        <img src="@Model.ExhaustKitImageURL" alt="Exhaust Image">
+    </div>
 </div>
 
 
@@ -50,4 +54,45 @@
     </div>
 </form>
 
+<form id="exhaustKitForm" class="part-form">
+    <h3>Exhaust Kit Details:</h3>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model" required>
+    <br><br>
+
+    <label for="exhaustManufacturer">Manufacturer:</label>
+    <input type="text" id="exhaustManufacturer" name="exhaustManufacturer" required>
+    <br><br>
+
+    <label for="horsePowerBoostExhaust">Horse Power Boost:</label>
+    <input type="number" id="horsePowerBoostExhaust" name="horsePowerBoostExhaust" required>
+    <br><br>
+
+    <label for="torqueBoostExhaust">Torque Boost:</label>
+    <input type="number" id="torqueBoostExhaust" name="torqueBoostExhaust" required>
+    <br><br>
+
+    <label for="imageURLExhaust">Image URL:</label>
+    <input type="url" id="imageURLExhaust" name="imageURLExhaust" required>
+    <br><br>
+
+    <label for="priceExhaust">Price:</label>
+    <input type="number" step="0.01" id="priceExhaust" name="priceExhaust" required>
+    <br><br>
+
+    <label for="carModelDropdown">Select Car Model:</label>
+    <select id="carModelDropdown" name="carModelDropdown"></select>
+    <br><br>
+
+    <label for="dropdownDataExhaust" style="display: none;">Assign the New Exhaust Kit To an Engine:</label>
+    <select id="dropdownDataExhaust" name="dropdownDataExhaust" style="display: none;"></select>
+    <br><br>
+
+    <div class="button-line">
+        <input type="submit" value="Add Exhaust Kit">
+    </div>
+</form>
+
 <script src="~/js/admin/addPart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
