@@ -1,0 +1,119 @@
+﻿body {
+}
+.title-page {
+    color: #ff4c00;
+    font-size: 48px;
+    margin-bottom: 100px;
+}
+
+.performance-part-container {
+    background-color: #e8e7e7;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+}
+
+.performance-part {
+    padding: 20px;
+    display: inline-block;
+    width: 300px;
+    height: auto;
+    margin: 10px;
+    border: 1px solid #000;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 5px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+    .performance-part img {
+    border-radius: 5px;
+        width: 70%;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .performance-part p{
+        font-size: 20px;
+    }
+    .performance-part:hover {
+        background-color: #ff4c00;
+    }
+.part-form {
+    display: none; 
+}
+
+.selected {
+    background-color: #ff4c00;
+}
+
+.part-form {
+    background-color: #e8e7e7;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 700px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+    .part-form h3 {
+        font-size: 48px;
+        margin-bottom: 40px;
+        color: #ff4c00;
+    }
+
+    .part-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .part-form input[type="text"],
+    .part-form input[type="number"],
+    .part-form input[type="url"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        background-color: #fff;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+
+        .part-form input[type="text"]:focus,
+        .part-form input[type="number"]:focus,
+        .part-form input[type="url"]:focus {
+            border-color: #007BFF; /* Changes border color on focus */
+        }
+
+    .part-form input[type="submit"] {
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .part-form input[type="submit"]:hover {
+            background-color: #ff4c00; /* Darkens the button a bit when hovered */
+        }
+
+    /* To space out the input elements a bit */
+    .part-form input[type="text"] + br,
+    .part-form input[type="number"] + br,
+    .part-form input[type="url"] + br {
+        margin-bottom: 12px;
+    }
+
+.button-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

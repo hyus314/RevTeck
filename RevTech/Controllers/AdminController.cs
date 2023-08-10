@@ -90,25 +90,32 @@ namespace RevTech.App.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddEngine()
         {
             var model = this.service.GenerateAddEngineViewModel();
             return View(model);
         }
         [HttpPost]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddEngine(AddEngineViewModel model)
         {
             await this.service.AddEngineAsync(model);
             return View("Actions");
         }
         [HttpGet]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllEngines()
         {
             var models = await this.service.GetAllEnginesAsync();
             return View(models);
+        }
+        [HttpGet]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> AddPart()
+        {
+            var model = this.service.GenerateAddPerformancePartView();
+            return View(model);
         }
     }
 }

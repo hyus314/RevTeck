@@ -7,6 +7,7 @@
     using RevTech.Data.Models.Vehicles;
     using RevTech.Data.User;
     using RevTech.Data.ViewModels.Admin.Engine;
+    using RevTech.Data.ViewModels.Admin.Part;
     using RevTech.Data.ViewModels.Admin.Vehicle;
     using RevTech.Data.ViewModels.Vehicles;
     public class AdminService : IAdminService
@@ -180,6 +181,22 @@
                 HorsePower = x.HorsePower,
                 Torque = x.Torque
             }).ToArrayAsync();
+        }
+
+        public AddPerformancePartViewModel GenerateAddPerformancePartView()
+        {
+            return new AddPerformancePartViewModel
+            {
+                ECUTuningImageURL = this.data.ECUTunings.First().ImageURL,
+                ExhaustKitImageURL = this.data.ExhaustKits.First().ImageURL,
+                FuelPumpImageURL = this.data.FuelPumps.First().ImageURL,
+                InjectorKitImageURl = this.data.InjectorKits.First().ImageURL,
+                OilCoolerImageURL = this.data.OilCoolers.First().ImageURL,
+                SparkPlugsImageURL = this.data.SparkPlugsKits.First().ImageURL,
+                TCUTuningImageURL = this.data.TCUTunings.First().ImageURL,
+                TurboKitImageURL = this.data.TurboKits.First().ImageURL,
+                SuperChargerKitImageURL = "../~/img/superchargerKitId1.jpg"
+            };
         }
     }
 }

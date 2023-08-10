@@ -1,0 +1,48 @@
+﻿@model AddPerformancePartViewModel;
+<link rel="stylesheet" href="~/css/admin/addPart.css">
+<h2 class="title-page">Choose A Performance Part to Add:</h2>
+
+<div class="performance-part-container">
+    <div class="performance-part" data-form="turboForm" onclick="showForm('turboForm')">
+        <p>Turbo Kit</p>
+        <img src="@Model.TurboKitImageURL" alt="Turbo Image">
+    </div>
+</div>
+
+
+<form id="turboForm" class="part-form">
+    <h3>Turbo Details:</h3>
+    <label for="modelName">Model Name:</label>
+    <input type="text" id="modelName" name="modelName" required>
+    <br><br>
+
+    <label for="manufacturer">Manufacturer:</label>
+    <input type="text" id="manufacturer" name="manufacturer" required>
+    <br><br>
+
+    <label for="horsePowerBoost">Horse Power Boost:</label>
+    <input type="number" id="horsePowerBoost" name="horsePowerBoost" required>
+    <br><br>
+
+    <label for="torqueBoost">Torque Boost:</label>
+    <input type="number" id="torqueBoost" name="torqueBoost" required>
+    <br><br>
+
+    <label for="pressureBoost">Pressure Boost (e.g. 2.5 for 2.5 bar):</label>
+    <input type="number" step="0.1" id="pressureBoost" name="pressureBoost" required>
+    <br><br>
+
+    <label for="imageURL">Image URL:</label>
+    <input type="url" id="imageURL" name="imageURL" required>
+    <br><br>
+
+    <label for="price">Price:</label>
+    <input type="number" step="0.01" id="price" name="price" required>
+    <br><br>
+
+    <div class="button-line">
+        <input type="submit" value="Add Turbo Kit">
+    </div>
+</form>
+
+<script src="~/js/admin/addPart.js"></script>
