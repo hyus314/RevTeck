@@ -7,11 +7,15 @@
     margin-bottom: 100px;
 }
 
+.part-options-title,
 .engine-options-title,
 .vehicle-options-title {
     color: black;
 }
 
+.add-part-btn,
+.add-part-btn:link,
+.add-part-btn:visited,
 .add-engine-btn,
 .add-engine-btn:link,
 .add-engine-btn:visited,
@@ -33,12 +37,14 @@
     transition: background-color 0.3s ease;
 }
 
+.add-part-btn:hover,
     .add-engine-btn:hover,
     .add-vehicle-btn:hover {
         background-color: white;
         color: #32cd32;
     }
 
+.part-options,
 .engine-options,
 .vehicle-options {
     background-color: #e8e7e7;
@@ -52,6 +58,9 @@
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+.all-parts-btn,
+.all-parts-btn:link,
+.all-parts-btn:visited,
 .all-engines-btn,
 .all-engines-btn:link,
 .all-engines-btn:visited,
@@ -72,31 +81,10 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
+.all-parts-btn:hover,
     .all-engines-btn:hover,
     .all-vehicle-btn:hover {
         background-color: white;
         color: #ff4c00;
     }
 
-.assign-engine-btn,
-.assign-engine-btn:link,
-.assign-engine-btn:visited {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 30px;
-    font-size: 16px;
-    border: none;
-    border-radius: 0;
-    color: white;
-    background-color: #1678f7;
-    text-decoration: none;
-    cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-    .assign-engine-btn:hover {
-        background-color: white;
-        color: #1678f7;
-    }
