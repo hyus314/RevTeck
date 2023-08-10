@@ -136,6 +136,7 @@ namespace RevTech.App.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddExhaustKit([FromBody] Dictionary<string, string> formData)
         {
+            await this.service.AddExhaustKitAsync(formData);
             return Json(new { redirectUrl = Url.Action("Actions", "Admin") });
         }
     }

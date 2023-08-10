@@ -92,6 +92,7 @@
 .selected {
     border: 2px solid black;
     transition: border-color 0.3s ease;
+    background-color: #e8e7e7;
 }
 
 .modal-title {

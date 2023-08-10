@@ -219,5 +219,23 @@
             await this.data.TurboKits.AddAsync(turbo);
             await this.data.SaveChangesAsync();
         }
+
+        public async Task AddExhaustKitAsync(Dictionary<string, string> data)
+        {
+            var exhaust = new ExhaustKit()
+            {
+                Model = data["model"],
+                Manufacturer = data["exhaustManufacturer"],
+                HorsePowerBoost = int.Parse(data["horsePowerBoostExhaust"]),
+                TorqueBoost = int.Parse(data["torqueBoostExhaust"]),
+                ImageURL = data["imageURLExhaust"],
+                Price = decimal.Parse(data["priceExhaust"]),
+                CarModelId = int.Parse(data["carModelId"]),
+                EngineId = int.Parse(data["engineId"])
+            };
+
+            await this.data.ExhaustKits.AddAsync(exhaust);
+            await this.data.SaveChangesAsync();
+        }
     }
 }
