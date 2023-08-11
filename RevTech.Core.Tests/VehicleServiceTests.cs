@@ -1,4 +1,3 @@
-
 namespace RevTech.Core.Tests
 {
     using Microsoft.EntityFrameworkCore;
