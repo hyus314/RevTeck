@@ -1,5 +1,6 @@
 ﻿using RevTech.Data;
 using RevTech.Data.Models.PerformanceParts;
+using RevTech.Data.Models.UserConfiguration;
 using RevTech.Data.Models.Vehicles;
 using RevTech.Data.User;
 using System;
@@ -32,8 +33,12 @@ namespace RevTech.Core.Tests
         public static FuelPump FuelPump;
         public static Engine_SparkPlugKit Engine_SparkPlugKit;
         public static ExhaustKit ExhaustKit;
+        public static Configuration Configuration;
+        public static UserConfiguration UserConfiguration;
         public static void SeedDatabase(RevtechDbContext data)
         {
+            data.Database.EnsureDeleted();
+
             User = new RevTeckUser()
             {
                 UserName = "senna11",
@@ -195,7 +200,30 @@ namespace RevTech.Core.Tests
             };
             data.Engine_InjectorKits.Add(Engine_InjectorKit);
 
+            Configuration = new Configuration()
+            {
+                CarModel = CarModel,
+                Engine = Engine,
+                TurboKit = TurboKit,
+                ECUTuning = ECUTuning,
+                ExhaustKit = ExhaustKit,
+                FuelPump = FuelPump,
+                InjectorKit = InjectorKit,
+                OilCooler = OilCooler,
+                SparkPlugs = SparkPlugs,
+                SuperchargerKit = SuperchargerKit,
+                TCUTuning = TCUTuning,
+            };
+            data.Configurations.Add(Configuration);
+
+            UserConfiguration = new UserConfiguration()
+            {
+                User = User,
+                Configuration = Configuration
+            };
+            data.UsersConfiguration.Add(UserConfiguration);
             data.SaveChanges();
+
         }
     }
 

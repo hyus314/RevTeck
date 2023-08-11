@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RevTech.Data.ViewModels\RevTech.Data.ViewModels.csproj" />
     <ProjectReference Include="..\RevTech.Data\RevTech.Data.csproj" />
     <ProjectReference Include="..\RevTech.Services\RevTech.Core.csproj" />
   </ItemGroup>
