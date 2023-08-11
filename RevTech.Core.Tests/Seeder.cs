@@ -200,6 +200,10 @@ namespace RevTech.Core.Tests
             };
             data.Engine_InjectorKits.Add(Engine_InjectorKit);
 
+            int horsePowerSum = TurboKit.HorsePowerBoost + ECUTuning.HorsePowerBoost + ExhaustKit.HorsePowerBoost + FuelPump.HorsePowerBoost + InjectorKit.HorsePowerBoost + SuperchargerKit.HorsePowerBoost;
+            int torqueSum = TurboKit.TorqueBoost + ECUTuning.TorqueBoost + ExhaustKit.TorqueBoost + FuelPump.TorqueBoost + InjectorKit.TorqueBoost + SuperchargerKit.TorqueBoost;
+            decimal priceSum = TurboKit.Price + ECUTuning.Price + ExhaustKit.Price + FuelPump.Price + InjectorKit.Price + OilCooler.Price + SparkPlugs.Price + SuperchargerKit.Price;
+
             Configuration = new Configuration()
             {
                 CarModel = CarModel,
@@ -213,6 +217,9 @@ namespace RevTech.Core.Tests
                 SparkPlugs = SparkPlugs,
                 SuperchargerKit = SuperchargerKit,
                 TCUTuning = TCUTuning,
+                HorsePowerBoostTotal = horsePowerSum,
+                TorqueBoostTotal = torqueSum,
+                TotalPrice = priceSum
             };
             data.Configurations.Add(Configuration);
 
@@ -223,7 +230,6 @@ namespace RevTech.Core.Tests
             };
             data.UsersConfiguration.Add(UserConfiguration);
             data.SaveChanges();
-
         }
     }
 

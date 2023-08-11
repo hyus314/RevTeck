@@ -11,7 +11,6 @@ namespace RevTech.Core.Services
     using RevTech.Data.ViewModels.Vehicles;
     using System;
     using System.Collections.Generic;
-    using System.Security.Cryptography.X509Certificates;
     using System.Threading.Tasks;
 
     public class ConfigurationService : IConfigurationService
