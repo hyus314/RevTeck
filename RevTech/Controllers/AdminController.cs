@@ -36,7 +36,7 @@ namespace RevTech.App.Controllers
             }
             else
             {
-                return Json(new { success = false, error = "Error message here" });
+                return Json(new { success = false, error = "Wrong Password" });
             }
         }
         [Authorize(Roles = "Admin")]
@@ -49,73 +49,143 @@ namespace RevTech.App.Controllers
         [HttpGet]
         public async Task<IActionResult> AddVehicle()
         {
-            var model = await this.service.GenerateAddViewModelAsync();
-            return View(model);
+            try
+            {
+                var model = await this.service.GenerateAddViewModelAsync();
+                return View(model);
+
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddVehicle(AddVehicleViewModel model)
         {
-            await this.service.AddVehicleAsync(model);
-            return View("Actions");
+            try
+            {
+                await this.service.AddVehicleAsync(model);
+                return View("Actions");
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllVehicles()
         {
-            var models = await this.service.GenerateAllViewModelsAsync();
-            return View(models);
+            try
+            {
+                var models = await this.service.GenerateAllViewModelsAsync();
+                return View(models);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RemoveVehicle(int carModelId)
         {
-            await this.service.RemoveCarModelAsync(carModelId);
-            return Json(new { redirectUrl = Url.Action("Actions", "Admin") });
+            try
+            {
+                await this.service.RemoveCarModelAsync(carModelId);
+                return Json(new { redirectUrl = Url.Action("Actions", "Admin") });
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditVehicle(int carModelId)
         {
-            var model = await this.service.GenerateEditViewModelAsync(carModelId);
-            return View(model);
+            try
+            {
+                var model = await this.service.GenerateEditViewModelAsync(carModelId);
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> EditVehicle(EditVehicleViewModel model)
         {
-            await this.service.EditVehicleAsync(model);
-
-            return RedirectToAction("AllVehicles");
+            try
+            {
+                await this.service.EditVehicleAsync(model);
+                return RedirectToAction("AllVehicles");
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public IActionResult AddEngine()
         {
-            var model = this.service.GenerateAddEngineViewModel();
-            return View(model);
+            try
+            {
+                var model = this.service.GenerateAddEngineViewModel();
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddEngine(AddEngineViewModel model)
         {
-            await this.service.AddEngineAsync(model);
-            return View("Actions");
+            try
+            {
+                await this.service.AddEngineAsync(model);
+                return View("Actions");
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllEngines()
         {
-            var models = await this.service.GetAllEnginesAsync();
-            return View(models);
+            try
+            {
+                var models = await this.service.GetAllEnginesAsync();
+                return View(models);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddPart()
         {
-            var model = this.service.GenerateAddPerformancePartView();
-            return View(model);
+            try
+            {
+                var model = this.service.GenerateAddPerformancePartView();
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
         [HttpGet]
         [Authorize(Roles = "Admin")]
@@ -125,9 +195,9 @@ namespace RevTech.App.Controllers
             return Json(models);
         }
         [HttpPost]
-        [Authorize(Roles ="Admin")]
-        public async Task<IActionResult> AddTurbo([FromBody]Dictionary<string, string> formData)
-         {
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AddTurbo([FromBody] Dictionary<string, string> formData)
+        {
             await this.service.AddTurboAsync(formData);
             return Json(new { redirectUrl = Url.Action("Actions", "Admin") });
         }
