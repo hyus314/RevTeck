@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevTech.Core", "RevTech.Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevTech.Core.Tests", "RevTech.Core.Tests\RevTech.Core.Tests.csproj", "{C5631394-0E6E-4365-BD9B-3A51BBFD5688}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevTech.Web.Tests", "RevTech.Web.Tests\RevTech.Web.Tests.csproj", "{559509CC-F8CB-4C03-A9D1-C5B1FBC8E061}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{C5631394-0E6E-4365-BD9B-3A51BBFD5688}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5631394-0E6E-4365-BD9B-3A51BBFD5688}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5631394-0E6E-4365-BD9B-3A51BBFD5688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{559509CC-F8CB-4C03-A9D1-C5B1FBC8E061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{559509CC-F8CB-4C03-A9D1-C5B1FBC8E061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{559509CC-F8CB-4C03-A9D1-C5B1FBC8E061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{559509CC-F8CB-4C03-A9D1-C5B1FBC8E061}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

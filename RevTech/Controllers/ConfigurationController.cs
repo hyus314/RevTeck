@@ -20,6 +20,15 @@ namespace RevTech.App.Controllers
             return View();
         }
         [HttpGet]
+        public async Task<IActionResult> MyConfigurations()
+        {
+            string userId = this.User.GetId();
+
+            var models = await this.service.GetConfigurationsForUserAsync(userId);
+
+            return View(models);
+        }
+        [HttpGet]
         public IActionResult Create()
         {
             string userId = this.User.GetId();
@@ -62,15 +71,6 @@ namespace RevTech.App.Controllers
             return Json(new { redirectUrl = Url.Action("MyConfigurations", "Configuration") });
         }
 
-        [HttpGet]
-        public async Task<IActionResult> MyConfigurations()
-        {
-            string userId = this.User.GetId();
-
-            var models = await this.service.GetConfigurationsForUserAsync(userId);
-
-            return View(models);
-        }
 
         [HttpPost]
         public async Task<IActionResult> Remove(int configurationId)
