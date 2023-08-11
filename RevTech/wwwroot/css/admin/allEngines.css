@@ -2,6 +2,7 @@
 }
 
 .title-page {
+    border-radius: 8px;
     text-align: center;
     color: #333;
     padding: 20px 0;
@@ -17,6 +18,7 @@
     justify-content: center;
     gap: 20px;
     padding: 0 5%; /* Horizontal padding */
+    margin-bottom: 50px;
 }
 
 .engine-item {

@@ -11,13 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<RevtechDbContext>(options =>
     options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IConfigurationService, ConfigurationService>();
 builder.Services.AddScoped<IPerformancePartService, PerformancePartService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
-
 builder.Services.AddTransient<AdminService>();
 
 builder.Services.AddDefaultIdentity<RevTeckUser>(options =>
@@ -37,21 +35,35 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(20);
 });
 
+builder.Services.ConfigureApplicationCookie(config =>
+{
+    config.LoginPath = "/User/Login";
+    config.AccessDeniedPath = "/Home/Error/401";
+});
+
 var app = builder.Build();
 
-app.UseSession();
+app.UseRouting();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();
+    app.UseDeveloperExceptionPage();
 }
-else
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+
+app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}"); // Handles status code
+app.UseExceptionHandler("/Home/Error"); // Handles exception
+
+app.UseHsts();
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseSession();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 using (var scope = app.Services.CreateScope())
 {
@@ -82,18 +94,10 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();
-        

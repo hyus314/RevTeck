@@ -1,0 +1,55 @@
+﻿body {
+}
+
+.error-container {
+    text-align: center;
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.error-icon {
+    font-size: 80px;
+    color: #e74c3c;
+}
+
+.error-message {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.error-description {
+    font-size: 18px;
+    color: #7f8c8d;
+}
+.home-button {
+    margin: 30px;
+    width: auto;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: white;
+    background-image: linear-gradient(45deg, #6ab1d7, #33d9b2);
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; /* in case the button is an 'a' element */
+}
+
+    .home-button:hover {
+        background-image: linear-gradient(45deg, #33d9b2, #6ab1d7);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        transform: translateY(-3px);
+    }
+
+    .home-button:active {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transform: translateY(2px);
+    }
+
