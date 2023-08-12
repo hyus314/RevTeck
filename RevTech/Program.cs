@@ -35,11 +35,6 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(20);
 });
 
-builder.Services.ConfigureApplicationCookie(config =>
-{
-    config.LoginPath = "/User/Login";
-    config.AccessDeniedPath = "/Home/Error/401";
-});
 
 var app = builder.Build();
 
