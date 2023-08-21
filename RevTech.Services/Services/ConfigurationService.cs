@@ -211,8 +211,9 @@ namespace RevTech.Core.Services
             return configurations;
         }
 
-        public async Task RemoveConfigurationAsync(string userId, int configurationId)
+        public async Task RemoveConfigurationAsync(string userId, string encryptedConfigurationId)
         {
+            var configurationId = DecryptConfigurationId(encryptedConfigurationId);
             this.data.UsersConfiguration.Remove(await this.data.UsersConfiguration.FirstAsync(x => x.UserId == userId && x.ConfigurationId == configurationId));
             this.data.Configurations.Remove(await this.data.Configurations.FirstAsync(x => x.Id == configurationId));
             await this.data.SaveChangesAsync();

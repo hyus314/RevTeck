@@ -73,7 +73,7 @@ namespace RevTech.App.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Remove(int configurationId)
+        public async Task<IActionResult> Remove(string configurationId)
         {
             string userId = this.User.GetId();
 

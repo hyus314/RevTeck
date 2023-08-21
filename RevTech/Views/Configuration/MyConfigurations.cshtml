@@ -17,7 +17,7 @@
             <div class="buttons-container">
                 <a class="edit-btn" asp-controller="Configuration" asp-action="Edit" asp-route-configurationId="@configuration.ConfigurationId" onclick="storeInformation('@configuration.ConfigurationId', @configuration.EngineId, @configuration.CarModelId)">Edit</a>
                 <button class="checkout-btn" onclick="checkoutConfiguration(@configuration.ConfigurationId)">Checkout</button>
-                <button class="remove-btn" onclick="showConfirmation(@configuration.ConfigurationId,'@configuration.Manufacturer', '@configuration.CarModel')">Remove</button>
+                <button class="remove-btn" onclick="showConfirmation('@configuration.ConfigurationId','@configuration.Manufacturer', '@configuration.CarModel')">Remove</button>
             </div>
         </div>
     }

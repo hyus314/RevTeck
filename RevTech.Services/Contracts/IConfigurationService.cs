@@ -14,7 +14,7 @@ namespace RevTech.Core.Contracts
         public UserViewModel GenerateUserConfiguration(string userId);
         public Task<UserViewModel> GenerateUserViewModelAsync(int engineId, int carModelId, string userId);
         public Task<ICollection<UserConfigurationViewModel>> GetConfigurationsForUserAsync(string userId);
-        public Task RemoveConfigurationAsync(string userId, int configurationId);
+        public Task RemoveConfigurationAsync(string userId, string configurationId);
         public Task EditConfigurationAsync(Dictionary<string, int> selectedParts, string configurationId, string userId);
     }
 }
