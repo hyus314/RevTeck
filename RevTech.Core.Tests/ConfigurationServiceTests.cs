@@ -146,7 +146,7 @@
                 { "sparkPlug", 1},
             };
 
-            await this.service.EditConfigurationAsync(partsSelected, configuration.Id, user.Id);
+            await this.service.EditConfigurationAsync(partsSelected, configuration.Id.ToString(), user.Id);
 
             Assert.That(this.data.Configurations.First().TurboKit, Is.Null);
         }

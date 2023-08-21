@@ -85,8 +85,7 @@ namespace RevTech.App.Controllers
         [HttpGet]
         public async Task<IActionResult> GetJsonEditModel(string configurationId)
         {
-            var model = await this.service.GenerateEditViewModelAsync(configurationId);
-            var modelJson = JsonConvert.SerializeObject(model);
+            var modelJson = HttpContext.Session.GetString("UserEditConfigurationViewModel");
             return Json(modelJson);
         }
         [HttpGet]
@@ -94,11 +93,15 @@ namespace RevTech.App.Controllers
         {
             var model = await this.service.GenerateEditViewModelAsync(configurationId);
 
+            var modelAsJson = JsonConvert.SerializeObject(model);
+            HttpContext.Session.SetString("UserEditConfigurationViewModel", modelAsJson);
+
+
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Dictionary<string, int> selectedParts, int configurationId)
+        public async Task<IActionResult> Edit(Dictionary<string, int> selectedParts, string configurationId)
         {
             string userId = this.User.GetId();
             await this.service.EditConfigurationAsync(selectedParts, configurationId, userId);

@@ -267,8 +267,9 @@ namespace RevTech.Core.Services
             return model;
         }
 
-        public async Task EditConfigurationAsync(Dictionary<string, int> selectedParts, int configurationId, string userId)
+        public async Task EditConfigurationAsync(Dictionary<string, int> selectedParts, string encryptedConfigurationId, string userId)
         {
+            var configurationId = DecryptConfigurationId(encryptedConfigurationId);
             var configurationEntity = await this.data.Configurations.FirstAsync(x => x.Id == configurationId);
 
             var turbo = await this.data.TurboKits.FindAsync(selectedParts["turbo"]);
