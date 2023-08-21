@@ -9,7 +9,7 @@ namespace RevTech.Data.ViewModels.User
     public class UserConfigurationViewModel
     {
         public string UserId { get; set; } = null!;
-        public int ConfigurationId { get; set; }
+        public string ConfigurationId { get; set; } = null!;
         public string CarModelImageURL { get; set; } = null!;
         public int CarModelId { get; set; }
         public int EngineId { get; set; }

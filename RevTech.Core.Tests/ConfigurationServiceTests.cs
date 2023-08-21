@@ -1,6 +1,6 @@
 ﻿namespace RevTech.Core.Tests
 {
-
+    using Microsoft.AspNetCore.DataProtection;
     using Microsoft.EntityFrameworkCore;
     using RevTech.Core.Contracts;
     using RevTech.Core.Services;
@@ -11,7 +11,7 @@
         private DbContextOptions<RevtechDbContext> dataOptions;
         private RevtechDbContext data;
         private IConfigurationService service;
-
+        private IDataProtectionProvider protectionProvider;
         [SetUp]
         public void OneTimeSetUp()
         {
@@ -20,10 +20,9 @@
                 .Options;
 
             this.data = new RevtechDbContext(dataOptions);
-
             this.data.Database.EnsureCreated();
 
-            this.service = new ConfigurationService(this.data);
+            this.service = new ConfigurationService(this.data, protectionProvider);
 
             this.data.Database.EnsureDeleted();
             SeedDatabase(this.data);

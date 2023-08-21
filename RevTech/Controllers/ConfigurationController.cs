@@ -83,20 +83,20 @@ namespace RevTech.App.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int configurationId)
+        public async Task<IActionResult> GetJsonEditModel(string configurationId)
+        {
+            var model = await this.service.GenerateEditViewModelAsync(configurationId);
+            var modelJson = JsonConvert.SerializeObject(model);
+            return Json(modelJson);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(string configurationId)
         {
             var model = await this.service.GenerateEditViewModelAsync(configurationId);
 
             return View(model);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetJsonEditModel(int configurationId)
-        {
-            var model = await this.service.GenerateEditViewModelAsync(configurationId);
-            var modelJson = JsonConvert.SerializeObject(model);
-            return Json(modelJson);
-        }
         [HttpPost]
         public async Task<IActionResult> Edit(Dictionary<string, int> selectedParts, int configurationId)
         {

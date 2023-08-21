@@ -1,6 +1,7 @@
 ﻿
 namespace RevTech.Core.Services
 {
+    using Microsoft.AspNetCore.DataProtection;
     using Microsoft.EntityFrameworkCore;
     using RevTech.Core.Contracts;
     using RevTech.Data;
@@ -15,12 +16,13 @@ namespace RevTech.Core.Services
 
     public class ConfigurationService : IConfigurationService
     {
-
+        private readonly IDataProtector dataProtector;
         private readonly RevtechDbContext data;
 
-        public ConfigurationService(RevtechDbContext data)
+        public ConfigurationService(RevtechDbContext data, IDataProtectionProvider protectionProvider)
         {
             this.data = data;
+            this.dataProtector = protectionProvider.CreateProtector("ProtectMyConfigurationId");
         }
 
         public async Task<UserViewModel> GenerateUserViewModelAsync(int engineId, int carModelId, string userId)
@@ -196,7 +198,7 @@ namespace RevTech.Core.Services
                 .Select(x => new UserConfigurationViewModel()
                 {
                     UserId = x.User.Id,
-                    ConfigurationId = x.ConfigurationId,
+                    ConfigurationId = dataProtector.Protect(x.ConfigurationId.ToString()),
                     CarModel = x.Configuration.CarModel.ModelName,
                     CarModelId = x.Configuration.CarModelId,
                     EngineId = x.Configuration.EngineId,
@@ -216,8 +218,9 @@ namespace RevTech.Core.Services
             await this.data.SaveChangesAsync();
         }
 
-        public async Task<UserEditConfigurationViewModel> GenerateEditViewModelAsync(int configurationId)
+        public async Task<UserEditConfigurationViewModel> GenerateEditViewModelAsync(string encryptedConfigurationId)
         {
+           var configurationId = DecryptConfigurationId(encryptedConfigurationId);
             var entity = await this.data.Configurations.FirstAsync(x => x.Id == configurationId);
 
             var model = new UserEditConfigurationViewModel();
@@ -294,6 +297,20 @@ namespace RevTech.Core.Services
             configurationEntity.TorqueBoostTotal = totalPowerBoost[1];
 
             await this.data.SaveChangesAsync();
+        }
+
+        public int? DecryptConfigurationId(string encryptedConfigurationId)
+        {
+            try
+            {
+                var decryptedString = dataProtector.Unprotect(encryptedConfigurationId);
+                return int.TryParse(decryptedString, out int configurationId) ? configurationId : (int?)null;
+            }
+            catch
+            {
+                // Log error or handle as needed.
+                return null;
+            }
         }
     }
 }

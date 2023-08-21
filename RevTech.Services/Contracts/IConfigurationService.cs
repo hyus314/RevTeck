@@ -9,7 +9,7 @@ namespace RevTech.Core.Contracts
 {
     public interface IConfigurationService
     {
-        public Task<UserEditConfigurationViewModel> GenerateEditViewModelAsync(int configurationId);
+        public Task<UserEditConfigurationViewModel> GenerateEditViewModelAsync(string configurationId);
         public Task CreateConfigurationForUserAsync(Dictionary<string, int> selectedParts, string userId, int engineId, int carModelId);
         public UserViewModel GenerateUserConfiguration(string userId);
         public Task<UserViewModel> GenerateUserViewModelAsync(int engineId, int carModelId, string userId);

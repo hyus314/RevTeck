@@ -2,7 +2,7 @@
 var configurationId;
 
 window.onload = async function () {
-     configurationId = localStorage.getItem('editConfigurationId');
+      configurationId = localStorage.getItem('editConfigurationId');
     var engineId = localStorage.getItem('engineId');
     var carModelId = localStorage.getItem('carModelId');
     await generateConfiguration(configurationId);
