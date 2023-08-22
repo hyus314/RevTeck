@@ -24,6 +24,8 @@ namespace RevTech.Data.Models.PerformanceParts
         [Required]
         [MaxLength(MaxImageUrlLength)]
         public string ImageURL { get; set; } = null!;
-        public virtual ICollection<Engine_FuelPump> EngineFuelPumps { get; set; } = new HashSet<Engine_FuelPump>();
+        [ForeignKey(nameof(Engine))]
+        public int EngineId { get; set; }
+        public Engine Engine { get; set; } = null!;
     }
 }

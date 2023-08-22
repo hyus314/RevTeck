@@ -192,13 +192,13 @@ namespace RevTech.Core.Tests
                 Engine = Engine,
                 FuelPump = FuelPump
             };
-            data.Engine_FuelPumps.Add(Engine_FuelPump);
-            Engine_InjectorKit = new Engine_InjectorKit()
-            {
-                Engine = Engine,
-                InjectorKit = InjectorKit
-            };
-            data.Engine_InjectorKits.Add(Engine_InjectorKit);
+            //data.Engine_FuelPumps.Add(Engine_FuelPump);
+            //Engine_InjectorKit = new Engine_InjectorKit()
+            //{
+            //    Engine = Engine,
+            //    InjectorKit = InjectorKit
+            //};
+            //data.Engine_InjectorKits.Add(Engine_InjectorKit);
 
             int horsePowerSum = TurboKit.HorsePowerBoost + ECUTuning.HorsePowerBoost + ExhaustKit.HorsePowerBoost + FuelPump.HorsePowerBoost + InjectorKit.HorsePowerBoost + SuperchargerKit.HorsePowerBoost;
             int torqueSum = TurboKit.TorqueBoost + ECUTuning.TorqueBoost + ExhaustKit.TorqueBoost + FuelPump.TorqueBoost + InjectorKit.TorqueBoost + SuperchargerKit.TorqueBoost;

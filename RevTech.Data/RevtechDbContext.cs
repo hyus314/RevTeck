@@ -30,7 +30,6 @@
         public DbSet<TurboKit> TurboKits { get; set; } = null!;
         public DbSet<Models.UserConfiguration.Configuration> Configurations { get; set; } = null!;
         public DbSet<ECU_TCU_ConnectionTable> ECU_TCU_Connection { get; set; } = null!;
-        public DbSet<Engine_FuelPump> Engine_FuelPumps { get; set; } = null!;
         public DbSet<Engine_InjectorKit> Engine_InjectorKits { get; set; } = null!;
         public DbSet<Engine_OilCooler> Engine_OilCoolers { get; set; } = null!;
         public DbSet<Engine_SparkPlugKit> Engine_SparkPlugKits { get; set; } = null!;
@@ -91,9 +90,6 @@
             builder.Entity<ECU_TCU_ConnectionTable>()
                .HasKey(etc => new { etc.ECUTuningId, etc.TCUTuningId });
 
-            builder.Entity<Engine_FuelPump>()
-                .HasKey(efp => new { efp.EngineId, efp.FuelPumpId });
-
             builder.Entity<Engine_InjectorKit>()
                 .HasKey(eik => new { eik.EngineId, eik.InjectorKitId });
 
@@ -124,7 +120,6 @@
             builder.ApplyConfiguration(new ECU_TCU_EntityTypeConfiguration());
             builder.ApplyConfiguration(new ExhaustKitEntityTypeConfiguration());
             builder.ApplyConfiguration(new FuelPumpTypeEntityConfiguration());
-            builder.ApplyConfiguration(new Engine_FuelPump_MappingTypeConfiguration());
             builder.ApplyConfiguration(new InjectorKitTypeEntityConfiguration());
             builder.ApplyConfiguration(new Engine_InjectorKit_EntityTypeConfiguration());
             builder.ApplyConfiguration(new OilCoolerEntityTypeConfiguration());

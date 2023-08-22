@@ -59,17 +59,17 @@ namespace RevTech.Core.Services
 
         public async Task<ICollection<FuelPumpViewModel>> GetFuelPumpForEngineAsync(int engineId)
         {
-            var fuelPumps = await this.data.Engine_FuelPumps.Where(x => x.EngineId == engineId)
+            var fuelPumps = await this.data.FuelPumps.Where(x => x.EngineId == engineId)
                 .AsNoTracking()
                 .Select(fp => new FuelPumpViewModel()
                 {
-                    Id = fp.FuelPumpId,
-                    Manufacturer = fp.FuelPump.Manufacturer,
-                    Model = fp.FuelPump.Model,
-                    HorsePowerBoost = fp.FuelPump.HorsePowerBoost,
-                    TorqueBoost = fp.FuelPump.TorqueBoost,
-                    Price = fp.FuelPump.Price,
-                    ImageURl = fp.FuelPump.ImageURL
+                    Id = fp.Id,
+                    Manufacturer = fp.Manufacturer,
+                    Model = fp.Model,
+                    HorsePowerBoost = fp.HorsePowerBoost,
+                    TorqueBoost = fp.TorqueBoost,
+                    Price = fp.Price,
+                    ImageURl = fp.ImageURL
                 }).ToArrayAsync();
 
             return fuelPumps;
