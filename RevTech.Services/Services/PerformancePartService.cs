@@ -77,17 +77,17 @@ namespace RevTech.Core.Services
 
         public async Task<ICollection<InjectorKitViewModel>> GetInjectorKitsForEngine(int engineId)
         {
-            var injectorKits = await this.data.Engine_InjectorKits.Where(x => x.EngineId == engineId)
+            var injectorKits = await this.data.InjectorKits.Where(x => x.EngineId == engineId)
                 .AsNoTracking()
                 .Select(ik => new InjectorKitViewModel()
                 {
-                    Id = ik.InjectorKitId,
-                    Manufacturer = ik.InjectorKit.Manufacturer,
-                    Model = ik.InjectorKit.Model,
-                    HorsePowerBoost = ik.InjectorKit.HorsePowerBoost,
-                    TorqueBoost = ik.InjectorKit.TorqueBoost,
-                    Price = ik.InjectorKit.Price,
-                    ImageURL = ik.InjectorKit.ImageURL
+                    Id = ik.Id,
+                    Manufacturer = ik.Manufacturer,
+                    Model = ik.Model,
+                    HorsePowerBoost = ik.HorsePowerBoost,
+                    TorqueBoost = ik.TorqueBoost,
+                    Price = ik.Price,
+                    ImageURL = ik.ImageURL
                 }).ToArrayAsync();
 
             return injectorKits;

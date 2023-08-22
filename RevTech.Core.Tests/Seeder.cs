@@ -25,7 +25,6 @@ namespace RevTech.Core.Tests
         public static SparkPlugs SparkPlugs;
         public static OilCooler OilCooler;
         public static ECUTuning ECUTuning;
-        public static Engine_InjectorKit Engine_InjectorKit;
         public static InjectorKit InjectorKit;
         public static Engine_OilCooler Engine_OilCooler;
         public static FuelPump FuelPump;

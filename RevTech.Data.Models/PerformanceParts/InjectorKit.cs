@@ -23,6 +23,8 @@ namespace RevTech.Data.Models.PerformanceParts
         [MaxLength(MaxImageUrlLength)]
         public string ImageURL { get; set; } = null!;
         public decimal Price { get; set; }
-        public virtual ICollection<Engine_InjectorKit> Engine_InjectorKits { get; set; } = new HashSet<Engine_InjectorKit>();
+        [ForeignKey(nameof(Engine))]
+        public int EngineId { get; set; }
+        public Engine Engine { get; set; } = null!;
     }
 }
