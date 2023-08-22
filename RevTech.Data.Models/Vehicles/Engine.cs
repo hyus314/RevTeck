@@ -20,7 +20,7 @@
         public virtual ICollection<ExhaustKit> ExhaustKits { get; set; } = new HashSet<ExhaustKit>();
         public virtual ICollection<FuelPump> FuelPumps { get; set; } = new HashSet<FuelPump>();
         public virtual ICollection<InjectorKit> InjectorKits { get; set; } = new HashSet<InjectorKit>();
-        public virtual ICollection<Engine_OilCooler> EngineOilCoolers { get; set; } = new HashSet<Engine_OilCooler>();
+        public virtual ICollection<OilCooler> OilCoolers{ get; set; } = new HashSet<OilCooler>();
         public virtual ICollection<Engine_SparkPlugKit> EngineSparkPlugs { get; set; } = new HashSet<Engine_SparkPlugKit>();
         public virtual ICollection<SuperchargerKit> SuperchargerKits { get; set; } = new HashSet<SuperchargerKit>();
 

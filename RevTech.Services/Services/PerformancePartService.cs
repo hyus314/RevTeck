@@ -95,15 +95,15 @@ namespace RevTech.Core.Services
 
         public async Task<ICollection<OilCoolerViewModel>> GetOilCoolersForEngineAsync(int engineId)
         {
-            var oilCoolers = await this.data.Engine_OilCoolers.Where(x => x.EngineId == engineId)
+            var oilCoolers = await this.data.OilCoolers.Where(x => x.EngineId == engineId)
                 .AsNoTracking()
                 .Select(oc => new OilCoolerViewModel()
                 {
-                    Id = oc.OilCoolerId,
-                    Manufacturer = oc.OilCooler.Manufacturer,
-                    Model = oc.OilCooler.Model,
-                    Price = oc.OilCooler.Price,
-                    ImageURL = oc.OilCooler.ImageURL
+                    Id = oc.Id,
+                    Manufacturer = oc.Manufacturer,
+                    Model = oc.Model,
+                    Price = oc.Price,
+                    ImageURL = oc.ImageURL
                 }).ToArrayAsync();
             
             return oilCoolers;

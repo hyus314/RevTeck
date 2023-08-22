@@ -26,7 +26,6 @@ namespace RevTech.Core.Tests
         public static OilCooler OilCooler;
         public static ECUTuning ECUTuning;
         public static InjectorKit InjectorKit;
-        public static Engine_OilCooler Engine_OilCooler;
         public static FuelPump FuelPump;
         public static Engine_SparkPlugKit Engine_SparkPlugKit;
         public static ExhaustKit ExhaustKit;
@@ -137,12 +136,7 @@ namespace RevTech.Core.Tests
                 Price = 1000.00m
             };
             data.InjectorKits.Add(InjectorKit);
-            Engine_OilCooler = new Engine_OilCooler()
-            {
-                Engine = Engine,
-                OilCooler = OilCooler
-            };
-            data.Engine_OilCoolers.Add(Engine_OilCooler);
+          
             FuelPump = new FuelPump()
             {
                 Manufacturer = "SennaInjectionSystems",
@@ -178,14 +172,7 @@ namespace RevTech.Core.Tests
                 CarModel = CarModel,
             };
            
-            //data.Engine_FuelPumps.Add(Engine_FuelPump);
-            //Engine_InjectorKit = new Engine_InjectorKit()
-            //{
-            //    Engine = Engine,
-            //    InjectorKit = InjectorKit
-            //};
-            //data.Engine_InjectorKits.Add(Engine_InjectorKit);
-
+       
             int horsePowerSum = TurboKit.HorsePowerBoost + ECUTuning.HorsePowerBoost + ExhaustKit.HorsePowerBoost + FuelPump.HorsePowerBoost + InjectorKit.HorsePowerBoost + SuperchargerKit.HorsePowerBoost;
             int torqueSum = TurboKit.TorqueBoost + ECUTuning.TorqueBoost + ExhaustKit.TorqueBoost + FuelPump.TorqueBoost + InjectorKit.TorqueBoost + SuperchargerKit.TorqueBoost;
             decimal priceSum = TurboKit.Price + ECUTuning.Price + ExhaustKit.Price + FuelPump.Price + InjectorKit.Price + OilCooler.Price + SparkPlugs.Price + SuperchargerKit.Price;

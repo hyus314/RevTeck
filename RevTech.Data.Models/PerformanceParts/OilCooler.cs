@@ -19,6 +19,8 @@
         [Required]
         [MaxLength(MaxImageUrlLength)]
         public string ImageURL { get; set; } = null!;
-        public virtual ICollection<Engine_OilCooler> EngineOilCoolers { get; set; } = new HashSet<Engine_OilCooler>();
+        [ForeignKey(nameof(Engine))]
+        public int EngineId { get; set; }
+        public Engine Engine { get; set; } = null!;
     }
 }
