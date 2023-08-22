@@ -24,8 +24,6 @@ namespace RevTech.Core.Tests
         public static SuperchargerKit SuperchargerKit;
         public static SparkPlugs SparkPlugs;
         public static OilCooler OilCooler;
-        public static ECU_TCU_ConnectionTable ECU_TCU_ConnectionTable;
-        public static Engine_FuelPump Engine_FuelPump;
         public static ECUTuning ECUTuning;
         public static Engine_InjectorKit Engine_InjectorKit;
         public static InjectorKit InjectorKit;
@@ -180,18 +178,7 @@ namespace RevTech.Core.Tests
                 Engine = Engine,
                 CarModel = CarModel,
             };
-            data.ExhaustKits.Add(ExhaustKit);
-            ECU_TCU_ConnectionTable = new ECU_TCU_ConnectionTable()
-            {
-                ECUTuning = ECUTuning,
-                TCUTuning = TCUTuning,
-            };
-            data.ECU_TCU_Connection.Add(ECU_TCU_ConnectionTable);
-            Engine_FuelPump = new Engine_FuelPump()
-            {
-                Engine = Engine,
-                FuelPump = FuelPump
-            };
+           
             //data.Engine_FuelPumps.Add(Engine_FuelPump);
             //Engine_InjectorKit = new Engine_InjectorKit()
             //{

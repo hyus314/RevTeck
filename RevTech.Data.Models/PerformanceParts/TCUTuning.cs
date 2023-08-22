@@ -15,8 +15,6 @@ namespace RevTech.Data.Models.PerformanceParts
         [MaxLength(DescriptionMaxLength)]
         public string Description { get; set; } = null!;
         [Required]
-        public virtual ICollection<ECU_TCU_ConnectionTable> TCUConnections { get; set; } = new HashSet<ECU_TCU_ConnectionTable>();
-        [Required]
         [MaxLength(MaxImageUrlLength)]
         public string ImageURL { get; set; } = null!;
     }
