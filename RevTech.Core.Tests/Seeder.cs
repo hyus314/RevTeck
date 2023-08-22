@@ -27,7 +27,6 @@ namespace RevTech.Core.Tests
         public static ECUTuning ECUTuning;
         public static InjectorKit InjectorKit;
         public static FuelPump FuelPump;
-        public static Engine_SparkPlugKit Engine_SparkPlugKit;
         public static ExhaustKit ExhaustKit;
         public static Configuration Configuration;
         public static UserConfiguration UserConfiguration;
@@ -154,12 +153,7 @@ namespace RevTech.Core.Tests
                 ImageURL = "https://i.ebayimg.com/images/g/ceQAAOSwiDFYQVzW/s-l1600.jpg"
             };
             data.SparkPlugsKits.Add(SparkPlugs);
-            Engine_SparkPlugKit = new Engine_SparkPlugKit()
-            {
-                Engine = Engine,
-                SparkPlugKit = SparkPlugs
-            };
-            data.Engine_SparkPlugKits.Add(Engine_SparkPlugKit);
+           
             ExhaustKit = new ExhaustKit()
             {
                 Manufacturer = "SennaExhausts",

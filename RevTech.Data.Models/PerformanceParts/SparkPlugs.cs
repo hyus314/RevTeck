@@ -12,10 +12,11 @@
         [MaxLength(ManufacturerMaxLength)]
         public string Manufacturer { get; set; } = null!;
         public decimal Price { get; set; }
-        public virtual ICollection<Engine_SparkPlugKit> EngineSparkPlugKits { get; set; } = new HashSet<Engine_SparkPlugKit>();
         [Required]
         [MaxLength(MaxImageUrlLength)]
         public string ImageURL { get; set; } = null!;
-
+        [ForeignKey(nameof(Engine))]
+        public int EngineId { get; set; }
+        public Engine Engine { get; set; } = null!;
     }
 }

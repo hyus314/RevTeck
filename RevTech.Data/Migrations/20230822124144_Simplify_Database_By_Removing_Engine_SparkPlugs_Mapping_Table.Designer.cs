@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RevTech.Data;
 
@@ -11,9 +12,10 @@ using RevTech.Data;
 namespace RevTech.Data.Migrations
 {
     [DbContext(typeof(RevtechDbContext))]
-    partial class RevtechDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230822124144_Simplify_Database_By_Removing_Engine_SparkPlugs_Mapping_Table")]
+    partial class Simplify_Database_By_Removing_Engine_SparkPlugs_Mapping_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -13,6 +13,7 @@ window.onload = async function () {
     loadOilCoolers(engineId);
     loadSuperchargers(engineId);
     loadEcus(engineId);
+    loadSparkPlugs(engineId);
     loadTcus();
 }
 
@@ -551,7 +552,8 @@ function generateSparkPlugsViews(sparkPlugs) {
         var sparkPlugView = document.createElement('div');
         sparkPlugView.classList.add('part-view');
         sparkPlugView.classList.add('selectable');
-        if (selectedParts['sparkPlug'] === sparkPlugs.id) {
+        sparkPlugView.setAttribute('id', `sparkPlug-${sparkplug.id}`);
+        if (selectedParts['sparkPlug'] === sparkplug.id) {
             sparkPlugView.classList.add('selected');
         }
         sparkPlugView.setAttribute('id', `sparkPlug-${sparkplug.id}`); // Set a unique ID for each spark plug

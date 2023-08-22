@@ -111,14 +111,14 @@ namespace RevTech.Core.Services
 
         public async Task<ICollection<SparkPlugsViewModel>> GetSparkPlugsForEngineAsync(int engineId)
         {
-            var sparkPlugs = await this.data.Engine_SparkPlugKits.Where(x => x.EngineId == engineId)
+            var sparkPlugs = await this.data.SparkPlugsKits.Where(x => x.EngineId == engineId)
                 .AsNoTracking()
                 .Select(sp => new SparkPlugsViewModel()
                 {
-                    Id = sp.SparkPlugKitId,
-                    Manufacturer = sp.SparkPlugKit.Manufacturer,
-                    Price = sp.SparkPlugKit.Price,
-                    ImageURl = sp.SparkPlugKit.ImageURL
+                    Id = sp.Id,
+                    Manufacturer = sp.Manufacturer,
+                    Price = sp.Price,
+                    ImageURl = sp.ImageURL
                 }).ToArrayAsync();
 
             return sparkPlugs;
