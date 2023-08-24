@@ -10,6 +10,7 @@ using System;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var defaultConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 var connectionString = Environment.GetEnvironmentVariable("DeployedConnection");
 builder.Services.AddDbContext<RevtechDbContext>(options =>
     options.UseSqlServer(connectionString));
