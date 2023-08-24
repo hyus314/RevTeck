@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'revteck-service'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D29DD350C6F54CC49B12659D2149CBC5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D49CFE634AFD4B0588BA039A40D79377 }}
           package: .
