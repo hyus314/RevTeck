@@ -4,11 +4,13 @@ using RevTech.Core.Contracts;
 using RevTech.Core.Services;
 using RevTech.Data;
 using RevTech.Data.User;
+using Microsoft.Extensions.Logging;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = Environment.GetEnvironmentVariable("DeployedConnection");
 builder.Services.AddDbContext<RevtechDbContext>(options =>
     options.UseSqlServer(connectionString));
 
@@ -40,11 +42,10 @@ var app = builder.Build();
 
 app.UseRouting();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Forcing development-specific middleware regardless of environment
+// WARNING: This is for demonstration purposes only and is not suitable for production!
 {
     app.UseMigrationsEndPoint();
-    app.UseDeveloperExceptionPage();
 }
 
 app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}"); // Handles status code

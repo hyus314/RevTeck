@@ -16,11 +16,11 @@
     public class AdminService : IAdminService
     {
         private readonly RevtechDbContext data;
-        private readonly string adminPassword;
+        private readonly string? adminPassword;
         public AdminService(RevtechDbContext data, IConfiguration configuration)
         {
             this.data = data;
-            adminPassword = configuration.GetSection("Passwords")["AdminPassword"];
+            adminPassword = Environment.GetEnvironmentVariable("AdminPassword");
         }
 
         public async Task AddVehicleAsync(AddVehicleViewModel model)

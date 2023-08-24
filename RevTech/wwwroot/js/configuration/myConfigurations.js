@@ -26,7 +26,6 @@ function removeConfiguration(configurationId) {
                 window.location.href = data.redirectUrl;
             } else {
                 // Handle the case where the redirectUrl is missing or invalid
-                console.error("Invalid redirect URL:", data.redirectUrl);
             }
         },
         error: function (xhr, status, error) {

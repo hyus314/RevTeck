@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using RevTech.Core.Contracts;
-using RevTech.App.Extensions;
 using RevTech.Data.ViewModels.User;
 using Newtonsoft.Json;
+using RevTech.App.Extensions;
 
 namespace RevTech.App.Controllers
 {

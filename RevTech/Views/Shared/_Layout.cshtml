@@ -37,12 +37,15 @@
                             @inject Microsoft.AspNetCore.Identity.UserManager<RevTeckUser> UserManager
                             {
                                 var user = await UserManager.GetUserAsync(User);
-                                var isAdmin = await UserManager.IsInRoleAsync(user, "Admin");
-                                if (isAdmin)
+                                if (user != null)
                                 {
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Actions">Admin Actions</a>
-                                    </li>
+                                    var isAdmin = await UserManager.IsInRoleAsync(user, "Admin");
+                                    if (isAdmin)
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Actions">Admin Actions</a>
+                                        </li>
+                                    }
                                 }
                             }
                         }

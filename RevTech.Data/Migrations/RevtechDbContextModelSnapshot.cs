@@ -199,7 +199,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("ECUTunings");
+                    b.ToTable("ECUTunings", (string)null);
 
                     b.HasData(
                         new
@@ -380,6 +380,103 @@ namespace RevTech.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.Engine_SparkPlugKit", b =>
+                {
+                    b.Property<int>("EngineId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SparkPlugKitId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EngineId", "SparkPlugKitId");
+
+                    b.HasIndex("SparkPlugKitId");
+
+                    b.ToTable("Engine_SparkPlugKits", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            EngineId = 1,
+                            SparkPlugKitId = 1
+                        },
+                        new
+                        {
+                            EngineId = 2,
+                            SparkPlugKitId = 1
+                        },
+                        new
+                        {
+                            EngineId = 3,
+                            SparkPlugKitId = 1
+                        },
+                        new
+                        {
+                            EngineId = 4,
+                            SparkPlugKitId = 2
+                        },
+                        new
+                        {
+                            EngineId = 5,
+                            SparkPlugKitId = 2
+                        },
+                        new
+                        {
+                            EngineId = 6,
+                            SparkPlugKitId = 3
+                        },
+                        new
+                        {
+                            EngineId = 7,
+                            SparkPlugKitId = 3
+                        },
+                        new
+                        {
+                            EngineId = 8,
+                            SparkPlugKitId = 3
+                        },
+                        new
+                        {
+                            EngineId = 9,
+                            SparkPlugKitId = 4
+                        },
+                        new
+                        {
+                            EngineId = 10,
+                            SparkPlugKitId = 4
+                        },
+                        new
+                        {
+                            EngineId = 11,
+                            SparkPlugKitId = 5
+                        },
+                        new
+                        {
+                            EngineId = 12,
+                            SparkPlugKitId = 5
+                        },
+                        new
+                        {
+                            EngineId = 13,
+                            SparkPlugKitId = 5
+                        },
+                        new
+                        {
+                            EngineId = 14,
+                            SparkPlugKitId = 6
+                        },
+                        new
+                        {
+                            EngineId = 15,
+                            SparkPlugKitId = 6
+                        },
+                        new
+                        {
+                            EngineId = 16,
+                            SparkPlugKitId = 6
+                        });
+                });
+
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.ExhaustKit", b =>
                 {
                     b.Property<int>("Id")
@@ -425,7 +522,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("ExhaustKits");
+                    b.ToTable("ExhaustKits", (string)null);
 
                     b.HasData(
                         new
@@ -962,7 +1059,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("FuelPumps");
+                    b.ToTable("FuelPumps", (string)null);
 
                     b.HasData(
                         new
@@ -1183,7 +1280,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("InjectorKits");
+                    b.ToTable("InjectorKits", (string)null);
 
                     b.HasData(
                         new
@@ -1486,7 +1583,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("OilCoolers");
+                    b.ToTable("OilCoolers", (string)null);
 
                     b.HasData(
                         new
@@ -1733,9 +1830,6 @@ namespace RevTech.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("EngineId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasMaxLength(2048)
@@ -1752,15 +1846,12 @@ namespace RevTech.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EngineId");
-
-                    b.ToTable("SparkPlugsKits");
+                    b.ToTable("SparkPlugsKits", (string)null);
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            EngineId = 1,
                             ImageURL = "https://i.ebayimg.com/images/g/ceQAAOSwiDFYQVzW/s-l1600.jpg",
                             Manufacturer = "NGK",
                             Price = 44.42m
@@ -1768,119 +1859,34 @@ namespace RevTech.Data.Migrations
                         new
                         {
                             Id = 2,
-                            EngineId = 2,
-                            ImageURL = "https://i.ebayimg.com/images/g/ceQAAOSwiDFYQVzW/s-l1600.jpg",
+                            ImageURL = "https://strperformance.com/25328-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-audi-s4-b5-and-rs4-v6-27-biturbo.jpg",
                             Manufacturer = "NGK",
-                            Price = 44.42m
+                            Price = 130.55m
                         },
                         new
                         {
                             Id = 3,
-                            EngineId = 3,
-                            ImageURL = "https://i.ebayimg.com/images/g/ceQAAOSwiDFYQVzW/s-l1600.jpg",
+                            ImageURL = "https://strperformance.com/24726-large_default/ngk-platinum-pfr7w-tg-high-performance-spark-plugs-for-audi-r8-v8-42-fsi-quattro-420hp.jpg",
                             Manufacturer = "NGK",
-                            Price = 44.42m
+                            Price = 195.82m
                         },
                         new
                         {
                             Id = 4,
-                            EngineId = 4,
-                            ImageURL = "https://strperformance.com/25328-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-audi-s4-b5-and-rs4-v6-27-biturbo.jpg",
+                            ImageURL = "https://strperformance.com/24718-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-20-tfsi-ea113-20-tsi-ea8881-engine.jpg",
                             Manufacturer = "NGK",
-                            Price = 130.55m
+                            Price = 87.03m
                         },
                         new
                         {
                             Id = 5,
-                            EngineId = 5,
-                            ImageURL = "https://strperformance.com/25328-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-audi-s4-b5-and-rs4-v6-27-biturbo.jpg",
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/90/17/7e/1652886624/kerzenspa1okj0ueef9c6svpg2c0pr6pb6970_1280x1280.webp",
                             Manufacturer = "NGK",
-                            Price = 130.55m
+                            Price = 489.55m
                         },
                         new
                         {
                             Id = 6,
-                            EngineId = 6,
-                            ImageURL = "https://strperformance.com/24726-large_default/ngk-platinum-pfr7w-tg-high-performance-spark-plugs-for-audi-r8-v8-42-fsi-quattro-420hp.jpg",
-                            Manufacturer = "NGK",
-                            Price = 195.82m
-                        },
-                        new
-                        {
-                            Id = 7,
-                            EngineId = 7,
-                            ImageURL = "https://strperformance.com/24726-large_default/ngk-platinum-pfr7w-tg-high-performance-spark-plugs-for-audi-r8-v8-42-fsi-quattro-420hp.jpg",
-                            Manufacturer = "NGK",
-                            Price = 195.82m
-                        },
-                        new
-                        {
-                            Id = 8,
-                            EngineId = 8,
-                            ImageURL = "https://strperformance.com/24726-large_default/ngk-platinum-pfr7w-tg-high-performance-spark-plugs-for-audi-r8-v8-42-fsi-quattro-420hp.jpg",
-                            Manufacturer = "NGK",
-                            Price = 195.82m
-                        },
-                        new
-                        {
-                            Id = 9,
-                            EngineId = 9,
-                            ImageURL = "https://strperformance.com/24718-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-20-tfsi-ea113-20-tsi-ea8881-engine.jpg",
-                            Manufacturer = "NGK",
-                            Price = 87.03m
-                        },
-                        new
-                        {
-                            Id = 10,
-                            EngineId = 10,
-                            ImageURL = "https://strperformance.com/24718-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-20-tfsi-ea113-20-tsi-ea8881-engine.jpg",
-                            Manufacturer = "NGK",
-                            Price = 87.03m
-                        },
-                        new
-                        {
-                            Id = 11,
-                            EngineId = 11,
-                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/90/17/7e/1652886624/kerzenspa1okj0ueef9c6svpg2c0pr6pb6970_1280x1280.webp",
-                            Manufacturer = "NGK",
-                            Price = 489.55m
-                        },
-                        new
-                        {
-                            Id = 12,
-                            EngineId = 12,
-                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/90/17/7e/1652886624/kerzenspa1okj0ueef9c6svpg2c0pr6pb6970_1280x1280.webp",
-                            Manufacturer = "NGK",
-                            Price = 489.55m
-                        },
-                        new
-                        {
-                            Id = 13,
-                            EngineId = 13,
-                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/90/17/7e/1652886624/kerzenspa1okj0ueef9c6svpg2c0pr6pb6970_1280x1280.webp",
-                            Manufacturer = "NGK",
-                            Price = 489.55m
-                        },
-                        new
-                        {
-                            Id = 14,
-                            EngineId = 14,
-                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/b8/30/1f/1652867091/3-0l-tfsi-audi-s4-s5-ngk-z-ndkerzen-race476dd_1280x1280.webp",
-                            Manufacturer = "NGK",
-                            Price = 108.79m
-                        },
-                        new
-                        {
-                            Id = 15,
-                            EngineId = 15,
-                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/b8/30/1f/1652867091/3-0l-tfsi-audi-s4-s5-ngk-z-ndkerzen-race476dd_1280x1280.webp",
-                            Manufacturer = "NGK",
-                            Price = 108.79m
-                        },
-                        new
-                        {
-                            Id = 16,
-                            EngineId = 16,
                             ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/b8/30/1f/1652867091/3-0l-tfsi-audi-s4-s5-ngk-z-ndkerzen-race476dd_1280x1280.webp",
                             Manufacturer = "NGK",
                             Price = 108.79m
@@ -1927,7 +1933,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("SuperchargerKits");
+                    b.ToTable("SuperchargerKits", (string)null);
 
                     b.HasData(
                         new
@@ -2023,7 +2029,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TCUTunings");
+                    b.ToTable("TCUTunings", (string)null);
 
                     b.HasData(
                         new
@@ -2093,7 +2099,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("TurboKits");
+                    b.ToTable("TurboKits", (string)null);
 
                     b.HasData(
                         new
@@ -2461,7 +2467,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("TurboKitId");
 
-                    b.ToTable("Configurations");
+                    b.ToTable("Configurations", (string)null);
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.Vehicles.CarModel", b =>
@@ -2495,7 +2501,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("ManufacturerId");
 
-                    b.ToTable("CarModels");
+                    b.ToTable("CarModels", (string)null);
 
                     b.HasData(
                         new
@@ -2683,7 +2689,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("CarModelsEngines");
+                    b.ToTable("CarModelsEngines", (string)null);
 
                     b.HasData(
                         new
@@ -2854,7 +2860,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Engines");
+                    b.ToTable("Engines", (string)null);
 
                     b.HasData(
                         new
@@ -2991,7 +2997,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Manufacturers");
+                    b.ToTable("Manufacturers", (string)null);
 
                     b.HasData(
                         new
@@ -3099,7 +3105,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("ConfigurationId");
 
-                    b.ToTable("UsersConfiguration");
+                    b.ToTable("UsersConfiguration", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -3164,6 +3170,25 @@ namespace RevTech.Data.Migrations
                     b.Navigation("Engine");
                 });
 
+            modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.Engine_SparkPlugKit", b =>
+                {
+                    b.HasOne("RevTech.Data.Models.Vehicles.Engine", "Engine")
+                        .WithMany("EngineSparkPlugs")
+                        .HasForeignKey("EngineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RevTech.Data.Models.PerformanceParts.SparkPlugs", "SparkPlugKit")
+                        .WithMany("EngineSparkPlugKits")
+                        .HasForeignKey("SparkPlugKitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Engine");
+
+                    b.Navigation("SparkPlugKit");
+                });
+
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.ExhaustKit", b =>
                 {
                     b.HasOne("RevTech.Data.Models.Vehicles.CarModel", "CarModel")
@@ -3209,17 +3234,6 @@ namespace RevTech.Data.Migrations
                 {
                     b.HasOne("RevTech.Data.Models.Vehicles.Engine", "Engine")
                         .WithMany("OilCoolers")
-                        .HasForeignKey("EngineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Engine");
-                });
-
-            modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.SparkPlugs", b =>
-                {
-                    b.HasOne("RevTech.Data.Models.Vehicles.Engine", "Engine")
-                        .WithMany("EngineSparkPlugs")
                         .HasForeignKey("EngineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -3369,6 +3383,11 @@ namespace RevTech.Data.Migrations
                     b.Navigation("Configuration");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.SparkPlugs", b =>
+                {
+                    b.Navigation("EngineSparkPlugKits");
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.Vehicles.CarModel", b =>

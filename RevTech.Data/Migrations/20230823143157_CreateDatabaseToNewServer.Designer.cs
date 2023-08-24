@@ -12,8 +12,8 @@ using RevTech.Data;
 namespace RevTech.Data.Migrations
 {
     [DbContext(typeof(RevtechDbContext))]
-    [Migration("20230822124144_Simplify_Database_By_Removing_Engine_SparkPlugs_Mapping_Table")]
-    partial class Simplify_Database_By_Removing_Engine_SparkPlugs_Mapping_Table
+    [Migration("20230823143157_CreateDatabaseToNewServer")]
+    partial class CreateDatabaseToNewServer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

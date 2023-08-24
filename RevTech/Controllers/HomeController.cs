@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RevTech.Data;
 using RevTech.Data.ViewModels.Errors;
 using System.Diagnostics;
 
@@ -6,7 +7,9 @@ namespace RevTech.App.Controllers
 {
     public class HomeController : Controller
     {
-
+        public HomeController()
+        {
+        }
         public IActionResult Index()
         {
             return View();
