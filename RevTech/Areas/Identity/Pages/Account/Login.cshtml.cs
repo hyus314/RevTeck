@@ -87,7 +87,7 @@ namespace RevTech.App.Areas.Identity.Pages.Account
             public bool RememberMe { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string returnUrl = null, bool fromAuthController = false)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
@@ -102,6 +102,8 @@ namespace RevTech.App.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
             ReturnUrl = returnUrl;
+
+            ViewData["FromAuthController"] = fromAuthController;
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)

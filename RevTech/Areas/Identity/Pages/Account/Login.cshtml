@@ -13,7 +13,14 @@
     <div class="col-md-4">
         <section>
             <form id="account" method="post" class="bg-white p-3 rounded shadow">
-                <h2>Use a local account to log in.</h2>
+                @if ((bool)ViewData["FromAuthController"])
+                {
+                    <h2>You need an account to create a configuration.</h2>
+                }
+                else
+                {
+                    <h2>Use a local account to log in.</h2>
+                }
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">

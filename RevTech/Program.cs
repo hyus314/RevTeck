@@ -6,6 +6,7 @@ using RevTech.Data;
 using RevTech.Data.User;
 using Microsoft.Extensions.Logging;
 using System;
+using Microsoft.AspNetCore.WebUtilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,17 @@ builder.Services.AddDefaultIdentity<RevTeckUser>(options =>
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<RevtechDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Events.OnRedirectToLogin = context =>
+    {
+        var currentUrl = context.RedirectUri;
+        var newRedirectUrl = QueryHelpers.AddQueryString(currentUrl, "fromAuthController", "true");
+        context.Response.Redirect(newRedirectUrl);
+        return Task.CompletedTask;
+    };
+});
 
 builder.Services.AddSession(options =>
 {
