@@ -10,7 +10,6 @@ using System;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var defaultConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 var connectionString = Environment.GetEnvironmentVariable("DeployedConnection");
 builder.Services.AddDbContext<RevtechDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -68,7 +67,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<RevtechDbContext>();
-        //context.Database.Migrate(); // apply all migrations
+        context.Database.Migrate(); // apply all migrations
 
         var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
