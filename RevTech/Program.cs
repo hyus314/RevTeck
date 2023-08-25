@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 var defaultConnection = builder.Configuration.GetConnectionString("DefaultConnection");
 var connectionString = Environment.GetEnvironmentVariable("DeployedConnection");
 builder.Services.AddDbContext<RevtechDbContext>(options =>
-    options.UseSqlServer(defaultConnection));
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IConfigurationService, ConfigurationService>();
