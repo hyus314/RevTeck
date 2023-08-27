@@ -1,4 +1,32 @@
-﻿function loadAllParts(engineId, carModelId) {
+﻿// Initially hide the button
+
+// When the user scrolls down from the top of the document, show the button
+var hasGoToTopAppearedOnce = false;
+
+window.addEventListener('scroll', function () {
+    if (document.documentElement.scrollTop < 500) {  // You can adjust the value "50" as needed
+        scrollToTopButton.style.display = 'none';
+    }
+    if (this.document.documentElement.scrollTop > 500 && hasGoToTopAppearedOnce == true) {
+
+        scrollToTopButton.style.display = 'block';
+    }
+});
+
+document.getElementById('scrollToTopButton').addEventListener('click', function () {
+    var targetElement = document.getElementById('user-vehicle');
+    var rect = targetElement.getBoundingClientRect();
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var finalPosition = rect.top + scrollTop + 100; 
+
+    window.scrollTo({
+        top: finalPosition,
+        behavior: "smooth"
+    });
+});
+
+
+function loadAllParts(engineId, carModelId) {
     loadTurbos(engineId);
     loadExhaustKits(engineId, carModelId);
     loadSuperchargers(engineId);
@@ -13,6 +41,8 @@
     var findPartsButton = document.getElementById('find-parts-button');
 
     findPartsButton.style.display = 'none';
+
+
 }
 
 function loadTurbos(engineId) {
@@ -32,6 +62,7 @@ function loadTurbos(engineId) {
 }
 
 function generateTurboViews(turbos) {
+
     document.getElementById('turbo-container').scrollIntoView();
     var turboContainer = document.getElementById('turbo-container');
     turboContainer.innerHTML = '';
@@ -584,7 +615,7 @@ function generateSparkPlugsViews(sparkPlugs) {
 
 
 var selectedParts = {
-    tcu:null,
+    tcu: null,
     turbo: null,
     exhaustKit: null,
     supercharger: null,
@@ -598,6 +629,10 @@ var selectedParts = {
 var selectedPartsJson = JSON.stringify(selectedParts);
 
 function selectPart(partType, partId) {
+    hasGoToTopAppearedOnce = true;
+    if (isAnyPartSelected) {
+        hasGoToTopAppearedOnce = false;
+    }
     var selectedPartView = document.getElementById(`${partType}-${partId}`);
     var isSelected = selectedPartView.classList.contains('selected');
 
@@ -623,7 +658,11 @@ function selectPart(partType, partId) {
     var isAnyPartSelected = Object.values(selectedParts).some(partId => partId !== null);
     var createConfigurationButton = document.getElementById('create-configuration-button');
     createConfigurationButton.style.display = isAnyPartSelected ? 'block' : 'none';
-   
+    var scrollToTopButton = document.getElementById('scrollToTopButton');
+    scrollToTopButton.style.display = 'none';
+    scrollToTopButton.style.display = isAnyPartSelected ? 'block' : 'none';
+
+
 }
 
 var isButtonClicked = false;

@@ -1,9 +1,8 @@
 ﻿@model UserViewModel;
 <link rel="stylesheet" href="~/css/configuration/chooseParts.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="~/js/configuration/chooseParts.js"></script>
 <h1 class="title">Configuration Creation</h1>
-<div class="user-vehicle">
+<div class="user-vehicle" id="user-vehicle">
     <h1 class="user-vehicle-title">Your Vehicle:</h1>
     <div class="vehicle-info">
         <div class="vehicle-details">
@@ -34,3 +33,9 @@
     <div class="part-container" id="sparkPlug-container"></div>
     <div class="part-container" id="oilCooler-container"></div>
 </div>
+
+<button id="scrollToTopButton" class="scrollToTop-button">
+    <img src="https://clipart-library.com/images/qTBoqqMBc.png" alt="Up Arrow" class="scrollToTop-arrow">
+</button>
+
+<script src="~/js/configuration/chooseParts.js"></script>
