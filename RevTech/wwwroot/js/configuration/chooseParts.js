@@ -9,6 +9,7 @@
     loadOilCoolers(engineId);
     loadSparkPlugs(engineId);
 
+
     var findPartsButton = document.getElementById('find-parts-button');
 
     findPartsButton.style.display = 'none';
@@ -31,6 +32,7 @@ function loadTurbos(engineId) {
 }
 
 function generateTurboViews(turbos) {
+    document.getElementById('turbo-container').scrollIntoView();
     var turboContainer = document.getElementById('turbo-container');
     turboContainer.innerHTML = '';
 
@@ -43,11 +45,11 @@ function generateTurboViews(turbos) {
     titleView.classList.add('part-title');
 
     if (turbosCount === 0) {
-        titleView.innerHTML = 'No Turbos available for this model!';
+        titleView.innerHTML = 'No Turbos are available for this model!';
     } else if (turbosCount === 1) {
-        titleView.innerHTML = '1 Turbo available for this model:';
+        titleView.innerHTML = '1 Turbo is available for this model:';
     } else {
-        titleView.innerHTML = `${turbosCount} Turbos available for this model:`;
+        titleView.innerHTML = `${turbosCount} Turbos are available for this model:`;
     }
 
     turboContainer.appendChild(titleView);
@@ -110,11 +112,11 @@ function generateExhaustKitViews(exhaustKits) {
     titleView.classList.add('part-title');
 
     if (exhaustKitsCount === 0) {
-        titleView.innerHTML = 'No Exhaust Kits available for this model!';
+        titleView.innerHTML = 'No Exhaust Kits are available for this model!';
     } else if (exhaustKitsCount === 1) {
-        titleView.innerHTML = '1 Exhaust Kit available for this model:';
+        titleView.innerHTML = '1 Exhaust Kit is available for this model:';
     } else {
-        titleView.innerHTML = `${exhaustKitsCount} Exhaust Kits available for this model:`;
+        titleView.innerHTML = `${exhaustKitsCount} Exhaust Kits are available for this model:`;
     }
 
     exhaustKitContainer.appendChild(titleView);
@@ -176,11 +178,11 @@ function generateSuperchargerViews(superchargers) {
     titleView.classList.add('part-title');
 
     if (superchargersCount === 0) {
-        titleView.innerHTML = 'No Superchargers available for this model!';
+        titleView.innerHTML = 'No Superchargers are available for this model!';
     } else if (superchargersCount === 1) {
-        titleView.innerHTML = '1 Supercharger available for this model:';
+        titleView.innerHTML = '1 Supercharger available is for this model:';
     } else {
-        titleView.innerHTML = `${superchargersCount} Superchargers available for this model:`;
+        titleView.innerHTML = `${superchargersCount} Superchargers are available for this model:`;
     }
 
     // Append the title to the container
@@ -246,11 +248,11 @@ function generateEcuViews(ecus) {
     titleView.classList.add('part-title');
 
     if (ecusCount === 0) {
-        titleView.innerHTML = 'No ECUs available for this model!';
+        titleView.innerHTML = 'No ECUs are available for this model!';
     } else if (ecusCount === 1) {
-        titleView.innerHTML = '1 ECU available for this model:';
+        titleView.innerHTML = '1 ECU is available for this model:';
     } else {
-        titleView.innerHTML = `${ecusCount} ECUs available for this model:`;
+        titleView.innerHTML = `${ecusCount} ECUs are available for this model:`;
     }
 
     // Append the title to the container
@@ -365,11 +367,11 @@ function generateFuelPumpViews(fuelPumps) {
     fuelPumpTitle.classList.add('part-title');
 
     if (fuelPumps.length === 0) {
-        fuelPumpTitle.innerHTML = 'No Fuel Pumps available for this model!';
+        fuelPumpTitle.innerHTML = 'No Fuel Pumps are available for this model!';
     } else if (fuelPumps.length === 1) {
-        fuelPumpTitle.innerHTML = '1 Fuel Pump available for this model:';
+        fuelPumpTitle.innerHTML = '1 Fuel Pump is available for this model:';
     } else {
-        fuelPumpTitle.innerHTML = `${fuelPumps.length} Fuel Pumps available for this model:`;
+        fuelPumpTitle.innerHTML = `${fuelPumps.length} Fuel Pumps are available for this model:`;
     }
     fuelPumpContainer.appendChild(fuelPumpTitle);
 
@@ -428,11 +430,11 @@ function generateInjectorKitsViews(injectorKits) {
     injectorKitTitle.classList.add('part-title');
 
     if (injectorKits.length === 0) {
-        injectorKitTitle.innerHTML = 'No Injector Kits available for this model!';
+        injectorKitTitle.innerHTML = 'No Injector Kits are available for this model!';
     } else if (injectorKits.length === 1) {
-        injectorKitTitle.innerHTML = '1 Injector Kit available for this model:';
+        injectorKitTitle.innerHTML = '1 Injector Kit available is for this model:';
     } else {
-        injectorKitTitle.innerHTML = `${injectorKits.length} Injector Kits available for this model:`;
+        injectorKitTitle.innerHTML = `${injectorKits.length} Injector Kits are available for this model:`;
     }
     injectorKitContainer.appendChild(injectorKitTitle);
 
@@ -490,11 +492,11 @@ function generateOilCoolersViews(oilCoolers) {
     oilCoolerTitle.classList.add('part-title');
 
     if (oilCoolers.length === 0) {
-        oilCoolerTitle.innerHTML = 'No Oil Coolers available for this model!';
+        oilCoolerTitle.innerHTML = 'No Oil Coolers are available for this model!';
     } else if (oilCoolers.length === 1) {
-        oilCoolerTitle.innerHTML = '1 Oil Cooler available for this model:';
+        oilCoolerTitle.innerHTML = '1 Oil Cooler is available for this model:';
     } else {
-        oilCoolerTitle.innerHTML = `${oilCoolers.length} Oil Coolers available for this model:`;
+        oilCoolerTitle.innerHTML = `${oilCoolers.length} Oil Coolers are available for this model:`;
     }
     oilCoolerContainer.appendChild(oilCoolerTitle);
 
@@ -550,11 +552,11 @@ function generateSparkPlugsViews(sparkPlugs) {
     sparkPlugTitle.classList.add('part-title');
 
     if (sparkPlugs.length === 0) {
-        sparkPlugTitle.innerHTML = 'No Spark Plugs available for this model!';
+        sparkPlugTitle.innerHTML = 'No Spark Plugs are available for this model!';
     } else if (sparkPlugs.length === 1) {
-        sparkPlugTitle.innerHTML = '1 Spark Plugs Kit available for this model:';
+        sparkPlugTitle.innerHTML = '1 Spark Plugs Kit is available for this model:';
     } else {
-        sparkPlugTitle.innerHTML = `${sparkPlugs.length} Spark Plugs Kits available for this model:`;
+        sparkPlugTitle.innerHTML = `${sparkPlugs.length} Spark Plugs Kits are available for this model:`;
     }
     sparkPlugContainer.appendChild(sparkPlugTitle);
 

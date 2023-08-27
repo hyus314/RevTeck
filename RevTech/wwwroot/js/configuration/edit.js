@@ -133,8 +133,20 @@ var selectedParts = {
 
 
 function generateTurboViews(turbos) {
+    document.getElementById('turbo-container').scrollIntoView();
     var turboContainer = document.getElementById('turbo-container');
     turboContainer.innerHTML = ''; // Clear the existing content
+
+    var titleElement = document.createElement('div');
+    titleElement.classList.add('part-title');
+    if (turbos.length === 0) {
+        titleElement.innerHTML = 'No Turbos are available for this model!';
+    } else if (turbos.length === 1) {
+        titleElement.innerHTML = '1 Turbo available is for this model:';
+    } else {
+        titleElement.innerHTML = `${turbos.length} Turbos are available for this model:`;
+    }
+    turboContainer.appendChild(titleElement);
 
     var turboWrapper = document.createElement('div');
     turboWrapper.classList.add('part-wrapper');
@@ -191,6 +203,17 @@ function generateExhaustKitViews(exhaustKits) {
     var exhaustKitContainer = document.getElementById('exhaustKit-container');
     exhaustKitContainer.innerHTML = ''; // Clear the existing content
 
+    var titleElement = document.createElement('div');
+    titleElement.classList.add('part-title');
+    if (exhaustKits.length === 0) {
+        titleElement.innerHTML = 'No Exhaust Kits are available for this model!';
+    } else if (exhaustKits.length === 1) {
+        titleElement.innerHTML = '1 Exhaust Kit is available for this model:';
+    } else {
+        titleElement.innerHTML = `${exhaustKits.length} Exhaust Kits are available for this model:`;
+    }
+    exhaustKitContainer.appendChild(titleElement);
+
     var exhaustKitWrapper = document.createElement('div');
     exhaustKitWrapper.classList.add('part-wrapper');
 
@@ -242,6 +265,18 @@ function loadSuperchargers(engineId) {
 function generateSuperchargerViews(superchargers) {
     var superchargerContainer = document.getElementById('supercharger-container');
     superchargerContainer.innerHTML = ''; // Clear the existing content
+
+    var titleElement = document.createElement('div');
+    titleElement.classList.add('part-title');
+    if (superchargers.length === 0) {
+        titleElement.innerHTML = 'No Superchargers are available for this model!';
+    } else if (superchargers.length === 1) {
+        titleElement.innerHTML = '1 Supercharger is available for this model:';
+    } else {
+        titleElement.innerHTML = `${superchargers.length} Superchargers are available for this model:`;
+    }
+    superchargerContainer.appendChild(titleElement);
+
 
     var superchargerWrapper = document.createElement('div');
     superchargerWrapper.classList.add('part-wrapper');
@@ -295,6 +330,19 @@ function generateEcuViews(ecus) {
     var ecuContainer = document.getElementById('ecu-container');
     ecuContainer.innerHTML = ''; // Clear the existing content
 
+
+    var titleElement = document.createElement('div');
+    titleElement.classList.add('part-title');
+    if (ecus.length === 0) {
+        titleElement.innerHTML = 'No ECUs are available for this model!';
+    } else if (ecus.length === 1) {
+        titleElement.innerHTML = '1 ECU is available for this model:';
+    } else {
+        titleElement.innerHTML = `${ecus.length} ECUs are available for this model:`;
+    }
+    ecuContainer.appendChild(titleElement);
+
+
     var ecuWrapper = document.createElement('div');
     ecuWrapper.classList.add('part-wrapper');
 
@@ -344,6 +392,12 @@ function generateTcuViews(tcus) {
     var tcuContainer = document.getElementById('tcu-container');
     tcuContainer.innerHTML = ''; // Clear the existing content
 
+    var titleView = document.createElement('div');
+    titleView.classList.add('part-title');
+    titleView.innerHTML = 'Select a TCU Adaptation Software:';
+
+    tcuContainer.appendChild(titleView);
+
     var tcuWrapper = document.createElement('div');
     tcuWrapper.classList.add('part-wrapper');
 
@@ -392,6 +446,19 @@ function loadFuelPumps(engineId) {
 function generateFuelPumpViews(fuelPumps) {
     var fuelPumpContainer = document.getElementById('fuelPump-container');
     fuelPumpContainer.innerHTML = ''; // Clear the existing content
+
+    var titleElement = document.createElement('div');
+    titleElement.classList.add('part-title');
+    if (fuelPumps.length === 0) {
+        titleElement.innerHTML = 'No Fuel Pumps are available for this model!';
+    } else if (fuelPumps.length === 1) {
+        titleElement.innerHTML = '1 Fuel Pump is available for this model:';
+    } else {
+        titleElement.innerHTML = `${fuelPumps.length} Fuel Pumps are available for this model:`;
+    }
+    fuelPumpContainer.appendChild(titleElement);
+
+
 
     var fuelPumpWrapper = document.createElement('div');
     fuelPumpWrapper.classList.add('part-wrapper');
@@ -445,6 +512,18 @@ function generateInjectorKitsViews(injectorKits) {
     var injectorKitContainer = document.getElementById('injectorKit-container');
     injectorKitContainer.innerHTML = ''; // Clear the existing content
 
+    var titleElement = document.createElement('div');
+    titleElement.classList.add('part-title');
+    if (injectorKits.length === 0) {
+        titleElement.innerHTML = 'No Injector Kits are available for this model!';
+    } else if (injectorKits.length === 1) {
+        titleElement.innerHTML = '1 Injector Kit is available for this model:';
+    } else {
+        titleElement.innerHTML = `${injectorKits.length} Injector Kits are available for this model:`;
+    }
+    injectorKitContainer.appendChild(titleElement);
+
+
     var injectorKitWrapper = document.createElement('div');
     injectorKitWrapper.classList.add('part-wrapper');
 
@@ -496,6 +575,18 @@ function generateOilCoolersViews(oilCoolers) {
     var oilCoolerContainer = document.getElementById('oilCooler-container');
     oilCoolerContainer.innerHTML = ''; // Clear the existing content
 
+    var titleElement = document.createElement('div');
+    titleElement.classList.add('part-title');
+    if (oilCoolers.length === 0) {
+        titleElement.innerHTML = 'No Oil Coolers are available for this model!';
+    } else if (oilCoolers.length === 1) {
+        titleElement.innerHTML = '1 Oil Cooler is available for this model:';
+    } else {
+        titleElement.innerHTML = `${oilCoolers.length} Oil Coolers are available for this model:`;
+    }
+    oilCoolerContainer.appendChild(titleElement);
+
+
     var oilCoolerWrapper = document.createElement('div');
     oilCoolerWrapper.classList.add('part-wrapper');
 
@@ -544,6 +635,18 @@ function loadSparkPlugs(engineId) {
 function generateSparkPlugsViews(sparkPlugs) {
     var sparkPlugContainer = document.getElementById('sparkPlug-container');
     sparkPlugContainer.innerHTML = ''; // Clear the existing content
+
+    var titleElement = document.createElement('div');
+    titleElement.classList.add('part-title');
+    if (sparkPlugs.length === 0) {
+        titleElement.innerHTML = 'No Spark Plugs Kits are available for this model!';
+    } else if (sparkPlugs.length === 1) {
+        titleElement.innerHTML = '1 Spark Plug Kit is available for this model:';
+    } else {
+        titleElement.innerHTML = `${sparkPlugs.length} Spark Plug Kits are available for this model:`;
+    }
+    sparkPlugContainer.appendChild(titleElement);
+
 
     var sparkPlugWrapper = document.createElement('div');
     sparkPlugWrapper.classList.add('part-wrapper');
