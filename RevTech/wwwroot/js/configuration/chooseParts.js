@@ -37,31 +37,48 @@ function generateTurboViews(turbos) {
     var turboWrapper = document.createElement('div');
     turboWrapper.classList.add('part-wrapper');
 
-    turbos.forEach(function (turbo) {
-        var turboView = document.createElement('div');
-        turboView.classList.add('part-view');
-        turboView.classList.add('selectable');
-        turboView.setAttribute('id', `turbo-${turbo.id}`);
-        turboView.innerHTML = `
-            <h4 class="part-model">${turbo.modelName}</h4>
-            <h4 class="part-manufacturer">${turbo.manufacturer}</h4>
-            <p class="part-horsepower">Horsepower Boost: ${turbo.horsePowerBoost}</p>
-            <p class="part-torque">Torque Boost: ${turbo.torqueBoost}</p>
-            <p class="part-pressure">Pressure Boost: ${turbo.pressureBoost}</p>
-            <img class="part-image" src="${turbo.imageURL}" alt="${turbo.modelName}" />
-            <p class="part-price">Price: ${turbo.price}</p>
-        `;
+    var turbosCount = turbos.length;
 
-        turboView.addEventListener('click', function () {
-            selectPart('turbo', turbo.id);
+    var titleView = document.createElement('div');
+    titleView.classList.add('part-title');
+
+    if (turbosCount === 0) {
+        titleView.innerHTML = 'No Turbos available for this model!';
+    } else if (turbosCount === 1) {
+        titleView.innerHTML = '1 Turbo available for this model:';
+    } else {
+        titleView.innerHTML = `${turbosCount} Turbos available for this model:`;
+    }
+
+    turboContainer.appendChild(titleView);
+
+    if (turbosCount > 0) {
+        turbos.forEach(function (turbo) {
+            var turboView = document.createElement('div');
+            turboView.classList.add('part-view');
+            turboView.classList.add('selectable');
+            turboView.setAttribute('id', `turbo-${turbo.id}`);
+            turboView.innerHTML = `
+                <h4 class="part-model">${turbo.modelName}</h4>
+                <h4 class="part-manufacturer">${turbo.manufacturer}</h4>
+                <p class="part-horsepower">Horsepower Boost: ${turbo.horsePowerBoost}</p>
+                <p class="part-torque">Torque Boost: ${turbo.torqueBoost}</p>
+                <p class="part-pressure">Pressure Boost: ${turbo.pressureBoost}</p>
+                <img class="part-image" src="${turbo.imageURL}" alt="${turbo.modelName}" />
+                <p class="part-price">Price: ${turbo.price}</p>
+            `;
+
+            turboView.addEventListener('click', function () {
+                selectPart('turbo', turbo.id);
+            });
+
+            turboWrapper.appendChild(turboView);
         });
-
-
-        turboWrapper.appendChild(turboView);
-    });
+    }
 
     turboContainer.appendChild(turboWrapper);
 }
+
 
 function loadExhaustKits(engineId, carModelId) {
     $.ajax({
@@ -87,29 +104,47 @@ function generateExhaustKitViews(exhaustKits) {
     var exhaustKitWrapper = document.createElement('div');
     exhaustKitWrapper.classList.add('part-wrapper');
 
-    exhaustKits.forEach(function (exhaustKit) {
-        var exhaustKitView = document.createElement('div');
-        exhaustKitView.classList.add('part-view');
-        exhaustKitView.classList.add('selectable');
-        exhaustKitView.setAttribute('id', `exhaustKit-${exhaustKit.id}`);
-        exhaustKitView.innerHTML = `
-            <h4 class="part-model">${exhaustKit.model}</h4>
-            <h4 class="part-manufacturer">${exhaustKit.manufacturer}</h4>
-            <p class="part-horsepower">Horsepower Boost: ${exhaustKit.horsePowerBoost}</p>
-            <p class="part-torque">Torque Boost: ${exhaustKit.torqueBoost}</p>
-            <img class="part-image" src="${exhaustKit.imageURl}" alt="${exhaustKit.model}" />
-            <p class="part-price">Price: ${exhaustKit.price}</p>
-        `;
+    var exhaustKitsCount = exhaustKits.length;
 
-        exhaustKitView.addEventListener('click', function () {
-            selectPart('exhaustKit', exhaustKit.id);
+    var titleView = document.createElement('div');
+    titleView.classList.add('part-title');
+
+    if (exhaustKitsCount === 0) {
+        titleView.innerHTML = 'No Exhaust Kits available for this model!';
+    } else if (exhaustKitsCount === 1) {
+        titleView.innerHTML = '1 Exhaust Kit available for this model:';
+    } else {
+        titleView.innerHTML = `${exhaustKitsCount} Exhaust Kits available for this model:`;
+    }
+
+    exhaustKitContainer.appendChild(titleView);
+
+    if (exhaustKitsCount > 0) {
+        exhaustKits.forEach(function (exhaustKit) {
+            var exhaustKitView = document.createElement('div');
+            exhaustKitView.classList.add('part-view');
+            exhaustKitView.classList.add('selectable');
+            exhaustKitView.setAttribute('id', `exhaustKit-${exhaustKit.id}`);
+            exhaustKitView.innerHTML = `
+                <h4 class="part-model">${exhaustKit.model}</h4>
+                <h4 class="part-manufacturer">${exhaustKit.manufacturer}</h4>
+                <p class="part-horsepower">Horsepower Boost: ${exhaustKit.horsePowerBoost}</p>
+                <p class="part-torque">Torque Boost: ${exhaustKit.torqueBoost}</p>
+                <img class="part-image" src="${exhaustKit.imageURl}" alt="${exhaustKit.model}" />
+                <p class="part-price">Price: ${exhaustKit.price}</p>
+            `;
+
+            exhaustKitView.addEventListener('click', function () {
+                selectPart('exhaustKit', exhaustKit.id);
+            });
+
+            exhaustKitWrapper.appendChild(exhaustKitView);
         });
-
-        exhaustKitWrapper.appendChild(exhaustKitView);
-    });
+    }
 
     exhaustKitContainer.appendChild(exhaustKitWrapper);
 }
+
 
 function loadSuperchargers(engineId) {
     $.ajax({
@@ -129,34 +164,55 @@ function loadSuperchargers(engineId) {
 
 function generateSuperchargerViews(superchargers) {
     var superchargerContainer = document.getElementById('supercharger-container');
-    superchargerContainer.innerHTML = ''; // Clear the existing content
+    superchargerContainer.innerHTML = '';
 
     var superchargerWrapper = document.createElement('div');
     superchargerWrapper.classList.add('part-wrapper');
 
-    superchargers.forEach(function (supercharger) {
-        var superchargerView = document.createElement('div');
-        superchargerView.classList.add('part-view');
-        superchargerView.classList.add('selectable');
-        superchargerView.setAttribute('id', `supercharger-${supercharger.id}`);
-        superchargerView.innerHTML = `
-            <h4 class="part-model">${supercharger.modelName}</h4>
-            <h4 class="part-manufacturer">${supercharger.manufacturer}</h4>
-            <p class="part-horsepower">Horsepower Boost: ${supercharger.horsePowerBoost}</p>
-            <p class="part-torque">Torque Boost: ${supercharger.torqueBoost}</p>
-            <img class="part-image" src="${supercharger.imageURL}" alt="${supercharger.modelName}" />
-            <p class="part-price">Price: ${supercharger.price}</p>
-        `;
+    var superchargersCount = superchargers.length;
 
-        superchargerView.addEventListener('click', function () {
-            selectPart('supercharger', supercharger.id);
+    // Create title div to display the count or message
+    var titleView = document.createElement('div');
+    titleView.classList.add('part-title');
+
+    if (superchargersCount === 0) {
+        titleView.innerHTML = 'No Superchargers available for this model!';
+    } else if (superchargersCount === 1) {
+        titleView.innerHTML = '1 Supercharger available for this model:';
+    } else {
+        titleView.innerHTML = `${superchargersCount} Superchargers available for this model:`;
+    }
+
+    // Append the title to the container
+    superchargerContainer.appendChild(titleView);
+
+    // Only run this loop if there are superchargers available
+    if (superchargersCount > 0) {
+        superchargers.forEach(function (supercharger) {
+            var superchargerView = document.createElement('div');
+            superchargerView.classList.add('part-view');
+            superchargerView.classList.add('selectable');
+            superchargerView.setAttribute('id', `supercharger-${supercharger.id}`);
+            superchargerView.innerHTML = `
+                <h4 class="part-model">${supercharger.modelName}</h4>
+                <h4 class="part-manufacturer">${supercharger.manufacturer}</h4>
+                <p class="part-horsepower">Horsepower Boost: ${supercharger.horsePowerBoost}</p>
+                <p class="part-torque">Torque Boost: ${supercharger.torqueBoost}</p>
+                <img class="part-image" src="${supercharger.imageURL}" alt="${supercharger.modelName}" />
+                <p class="part-price">Price: ${supercharger.price}</p>
+            `;
+
+            superchargerView.addEventListener('click', function () {
+                selectPart('supercharger', supercharger.id);
+            });
+
+            superchargerWrapper.appendChild(superchargerView);
         });
-
-        superchargerWrapper.appendChild(superchargerView);
-    });
+    }
 
     superchargerContainer.appendChild(superchargerWrapper);
 }
+
 
 function loadEcus(engineId) {
     $.ajax({
@@ -178,31 +234,51 @@ function loadEcus(engineId) {
 
 function generateEcuViews(ecus) {
     var ecuContainer = document.getElementById('ecu-container');
-    ecuContainer.innerHTML = ''; // Clear the existing content
+    ecuContainer.innerHTML = '';
 
     var ecuWrapper = document.createElement('div');
     ecuWrapper.classList.add('part-wrapper');
 
-    ecus.forEach(function (ecu) {
-        var ecuView = document.createElement('div');
-        ecuView.classList.add('part-view');
-        ecuView.classList.add('selectable');
-        ecuView.setAttribute('id', `ecu-${ecu.id}`);
-        ecuView.innerHTML = `
-            <h4 class="part-model">${ecu.name}</h4>
-            <h4 class="part-manufacturer">${ecu.manufacturer}</h4>
-            <p class="part-horsepower">Horsepower Boost: ${ecu.horsePowerBoost}</p>
-            <p class="part-torque">Torque Boost: ${ecu.torqueBoost}</p>
-            <img class="part-image" src="${ecu.imageURL}" alt="${ecu.name}" />
-            <p class="part-price">Price: ${ecu.price}</p>
-        `;
+    var ecusCount = ecus.length;
 
-        ecuView.addEventListener('click', function () {
-            selectPart('ecu', ecu.id);
+    // Create title div to display the count or message
+    var titleView = document.createElement('div');
+    titleView.classList.add('part-title');
+
+    if (ecusCount === 0) {
+        titleView.innerHTML = 'No ECUs available for this model!';
+    } else if (ecusCount === 1) {
+        titleView.innerHTML = '1 ECU available for this model:';
+    } else {
+        titleView.innerHTML = `${ecusCount} ECUs available for this model:`;
+    }
+
+    // Append the title to the container
+    ecuContainer.appendChild(titleView);
+
+    // Only run this loop if there are ECUs available
+    if (ecusCount > 0) {
+        ecus.forEach(function (ecu) {
+            var ecuView = document.createElement('div');
+            ecuView.classList.add('part-view');
+            ecuView.classList.add('selectable');
+            ecuView.setAttribute('id', `ecu-${ecu.id}`);
+            ecuView.innerHTML = `
+                <h4 class="part-model">${ecu.name}</h4>
+                <h4 class="part-manufacturer">${ecu.manufacturer}</h4>
+                <p class="part-horsepower">Horsepower Boost: ${ecu.horsePowerBoost}</p>
+                <p class="part-torque">Torque Boost: ${ecu.torqueBoost}</p>
+                <img class="part-image" src="${ecu.imageURL}" alt="${ecu.name}" />
+                <p class="part-price">Price: ${ecu.price}</p>
+            `;
+
+            ecuView.addEventListener('click', function () {
+                selectPart('ecu', ecu.id);
+            });
+
+            ecuWrapper.appendChild(ecuView);
         });
-
-        ecuWrapper.appendChild(ecuView);
-    });
+    }
 
     ecuContainer.appendChild(ecuWrapper);
 }
@@ -229,6 +305,14 @@ function generateTcuViews(tcus) {
     var tcuWrapper = document.createElement('div');
     tcuWrapper.classList.add('part-wrapper');
 
+    // Create title div to display the static message
+    var titleView = document.createElement('div');
+    titleView.classList.add('part-title');
+    titleView.innerHTML = 'Select a TCU Adaptation Software:';
+
+    // Append the title to the container
+    tcuContainer.appendChild(titleView);
+
     tcus.forEach(function (tcu) {
         var tcuView = document.createElement('div');
         tcuView.classList.add('part-view');
@@ -249,6 +333,7 @@ function generateTcuViews(tcus) {
 
     tcuContainer.appendChild(tcuWrapper);
 }
+
 
 function loadFuelPumps(engineId) {
     $.ajax({
@@ -275,6 +360,19 @@ function generateFuelPumpViews(fuelPumps) {
     var fuelPumpWrapper = document.createElement('div');
     fuelPumpWrapper.classList.add('part-wrapper');
 
+    // Adding title element
+    var fuelPumpTitle = document.createElement('div');
+    fuelPumpTitle.classList.add('part-title');
+
+    if (fuelPumps.length === 0) {
+        fuelPumpTitle.innerHTML = 'No Fuel Pumps available for this model!';
+    } else if (fuelPumps.length === 1) {
+        fuelPumpTitle.innerHTML = '1 Fuel Pump available for this model:';
+    } else {
+        fuelPumpTitle.innerHTML = `${fuelPumps.length} Fuel Pumps available for this model:`;
+    }
+    fuelPumpContainer.appendChild(fuelPumpTitle);
+
     fuelPumps.forEach(function (fuelPump) {
         var fuelPumpView = document.createElement('div');
         fuelPumpView.classList.add('part-view');
@@ -298,6 +396,7 @@ function generateFuelPumpViews(fuelPumps) {
 
     fuelPumpContainer.appendChild(fuelPumpWrapper);
 }
+
 
 function loadInjectorKits(engineId) {
     $.ajax({
@@ -324,6 +423,19 @@ function generateInjectorKitsViews(injectorKits) {
     var injectorKitWrapper = document.createElement('div');
     injectorKitWrapper.classList.add('part-wrapper');
 
+    // Adding title element
+    var injectorKitTitle = document.createElement('div');
+    injectorKitTitle.classList.add('part-title');
+
+    if (injectorKits.length === 0) {
+        injectorKitTitle.innerHTML = 'No Injector Kits available for this model!';
+    } else if (injectorKits.length === 1) {
+        injectorKitTitle.innerHTML = '1 Injector Kit available for this model:';
+    } else {
+        injectorKitTitle.innerHTML = `${injectorKits.length} Injector Kits available for this model:`;
+    }
+    injectorKitContainer.appendChild(injectorKitTitle);
+
     injectorKits.forEach(function (injectorKit) {
         var injectorKitView = document.createElement('div');
         injectorKitView.classList.add('part-view');
@@ -347,6 +459,7 @@ function generateInjectorKitsViews(injectorKits) {
 
     injectorKitContainer.appendChild(injectorKitWrapper);
 }
+
 
 function loadOilCoolers(engineId) {
     $.ajax({
@@ -372,6 +485,19 @@ function generateOilCoolersViews(oilCoolers) {
     var oilCoolerWrapper = document.createElement('div');
     oilCoolerWrapper.classList.add('part-wrapper');
 
+    // Adding title element
+    var oilCoolerTitle = document.createElement('div');
+    oilCoolerTitle.classList.add('part-title');
+
+    if (oilCoolers.length === 0) {
+        oilCoolerTitle.innerHTML = 'No Oil Coolers available for this model!';
+    } else if (oilCoolers.length === 1) {
+        oilCoolerTitle.innerHTML = '1 Oil Cooler available for this model:';
+    } else {
+        oilCoolerTitle.innerHTML = `${oilCoolers.length} Oil Coolers available for this model:`;
+    }
+    oilCoolerContainer.appendChild(oilCoolerTitle);
+
     oilCoolers.forEach(function (oilCooler) {
         var oilCoolerView = document.createElement('div');
         oilCoolerView.classList.add('part-view');
@@ -393,6 +519,7 @@ function generateOilCoolersViews(oilCoolers) {
 
     oilCoolerContainer.appendChild(oilCoolerWrapper);
 }
+
 
 function loadSparkPlugs(engineId) {
     $.ajax({
@@ -418,6 +545,19 @@ function generateSparkPlugsViews(sparkPlugs) {
     var sparkPlugWrapper = document.createElement('div');
     sparkPlugWrapper.classList.add('part-wrapper');
 
+    // Adding title element
+    var sparkPlugTitle = document.createElement('div');
+    sparkPlugTitle.classList.add('part-title');
+
+    if (sparkPlugs.length === 0) {
+        sparkPlugTitle.innerHTML = 'No Spark Plugs available for this model!';
+    } else if (sparkPlugs.length === 1) {
+        sparkPlugTitle.innerHTML = '1 Spark Plugs Kit available for this model:';
+    } else {
+        sparkPlugTitle.innerHTML = `${sparkPlugs.length} Spark Plugs Kits available for this model:`;
+    }
+    sparkPlugContainer.appendChild(sparkPlugTitle);
+
     sparkPlugs.forEach(function (sparkplug) {
         var sparkPlugView = document.createElement('div');
         sparkPlugView.classList.add('part-view');
@@ -439,6 +579,7 @@ function generateSparkPlugsViews(sparkPlugs) {
 
     sparkPlugContainer.appendChild(sparkPlugWrapper);
 }
+
 
 var selectedParts = {
     tcu:null,
@@ -480,7 +621,6 @@ function selectPart(partType, partId) {
     var isAnyPartSelected = Object.values(selectedParts).some(partId => partId !== null);
     var createConfigurationButton = document.getElementById('create-configuration-button');
     createConfigurationButton.style.display = isAnyPartSelected ? 'block' : 'none';
-
    
 }
 

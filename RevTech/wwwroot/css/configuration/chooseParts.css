@@ -69,14 +69,17 @@
 .find-parts-button,
 .create-configuration-button,
 .edit-configuration-button{
-    width: 390px;
+    position: absolute;
+    border-radius: 8px;
+    width: 1300px;
+    height: 100px;
     background-color: white;
     color: black;
     border: 1px solid black;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 34px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .find-parts-button:hover{
@@ -90,6 +93,23 @@
     background-color: #c21807;
 }
 
+.all-parts-container {
+    border-radius: 8px; /* Adds rounded corners */
+    overflow: hidden; /* Makes sure nothing overflows the rounded corners */
+    margin-bottom: 50px;
+}
+
+.part-title {
+    font-size: 24px; /* Smaller text size */
+    font-weight: normal; /* Making it normal weight to be less eye-catching */
+    color: #555; /* A softer grey color */
+    padding-left: 20px; /* Slightly less padding */
+    padding-top: 20px;
+    text-align: left; /* Keep the text left-aligned */
+    background-color: #f2f2f2;
+}
+
+
 .part-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -99,6 +119,8 @@
 }
 
 .part-view {
+    transition: all 0.3s ease; /* Animate the changes */
+
     flex: 0 0 auto; /* Maintain the original width of each part view */
     margin: 10px;
     padding: 20px;
@@ -144,10 +166,15 @@
     cursor: pointer;
 }
 
-.part-view:hover,
-.part-view.selected {
+.part-view:hover {
     background-color: #ff4c00;
     color: white;
+}
+
+.part-view.selected{
+    background-color: #ff4c00;
+    transform: scale(1.05); /* Slightly enlarge the element */
+
 }
 .part-tcu-description {
     width: 300px;
