@@ -25,7 +25,7 @@ namespace RevTech.Data.Configuration
             current = new Manufacturer()
             {
                 Id = 1,
-                ImageURL = "https://w7.pngwing.com/pngs/115/486/png-transparent-audi-tt-car-volkswagen-group-audi-rs-6-audi-text-trademark-logo.png",
+                ImageURL = "https://www.freepnglogos.com/uploads/audi-logo-29.png",
                 Name = "Audi"
             };
 
@@ -34,7 +34,7 @@ namespace RevTech.Data.Configuration
             current = new Manufacturer()
             {
                 Id = 2,
-                ImageURL = "https://w7.pngwing.com/pngs/986/859/png-transparent-mercedes-benz-u-s-international-car-daimler-ag-mercedes-benz-angle-trademark-logo.png",
+                ImageURL = "https://www.freepnglogos.com/uploads/mercedes-logo-png/mercedes-logo-world-car-mercedes-benz-class-cdi-1.png",
                 Name = "Mercedes-Benz"
             };
             collection.Add(current);
@@ -42,7 +42,7 @@ namespace RevTech.Data.Configuration
             current = new Manufacturer()
             {
                 Id = 3,
-                ImageURL = "https://image.similarpng.com/very-thumbnail/2020/06/Logo-bmw-vector-transparent-PNG.png",
+                ImageURL = "https://cdn.freebiesupply.com/logos/large/2x/bmw-logo-png-transparent.png",
                 Name = "BMW"
             };
 

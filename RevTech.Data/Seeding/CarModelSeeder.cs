@@ -147,7 +147,7 @@
                 YearCreated_Start = 2011,
                 YearCreated_End = 2018,
                 ManufacturerId = 1,
-                ImageURL = "https://img.md-exclusive-cardesign.com/wp-content/uploads/2019/10/audi-a6-c7-limousine-breitbau-tuning-pd600r-widebody-kit-artform-af-401-felgen-in-105x21-md-exclusive-cardesign-16-455x179.jpg"
+                ImageURL = "https://www.tuningblog.eu/wp-content/uploads/2022/08/Verrueckter-Stage-4-Audi-RS6-C7-Avant-1200-PS-1-e1661412369854.jpg"
             };
             models.Add(current);
 

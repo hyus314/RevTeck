@@ -21,7 +21,7 @@ namespace RevTech.Data.Seeding
                 HorsePowerBoost = 200,
                 TorqueBoost = 210,
                 EngineId = 6,
-                ImageURL = "../~/img/superchargerKitId1.jpg",
+                ImageURL = "/img/superchargerKitId1.jpg",
                 Price = 18000.99m
             };
 
@@ -35,7 +35,7 @@ namespace RevTech.Data.Seeding
                 HorsePowerBoost = 180,
                 TorqueBoost = 140,
                 EngineId = 7,
-                ImageURL = "../~/img/superchargerKitId2.jpg",
+                ImageURL = "/img/superchargerKitId2.jpg",
                 Price = 17000.99m
             };
 

@@ -200,7 +200,7 @@ namespace RevTech.Data.Seeding
                 TorqueBoost = 70,
                 Name = "ECU Upgrade for 3.0 TFSI",
                 EngineId = 14,
-                ImageURL = "http://www.goapr.co.uk/includes/img/icons/apr-ecu.png",
+                ImageURL = "/img/apr-ecu-for-3.0-tfsi.png",
                 Price = 900.00m
             };
 
@@ -214,7 +214,7 @@ namespace RevTech.Data.Seeding
                 TorqueBoost = 70,
                 Name = "ECU Upgrade for 3.0 TFSI",
                 EngineId = 15,
-                ImageURL = "http://www.goapr.co.uk/includes/img/icons/apr-ecu.png",
+                ImageURL = "/img/apr-ecu-for-3.0-tfsi.png",
                 Price = 900.00m
             };
 
@@ -228,7 +228,7 @@ namespace RevTech.Data.Seeding
                 TorqueBoost = 70,
                 Name = "ECU Upgrade for 3.0 TFSI",
                 EngineId = 16,
-                ImageURL = "http://www.goapr.co.uk/includes/img/icons/apr-ecu.png",
+                ImageURL = "/img/apr-ecu-for-3.0-tfsi.png",
                 Price = 900.00m
             };
 
