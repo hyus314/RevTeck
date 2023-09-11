@@ -7,6 +7,8 @@ using RevTech.Data.User;
 using Microsoft.Extensions.Logging;
 using System;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.AspNetCore.DataProtection;
+using RevTech.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,14 @@ var defaultConnection = builder.Configuration.GetConnectionString("DefaultConnec
 var connectionString = Environment.GetEnvironmentVariable("DeployedConnection");
 builder.Services.AddDbContext<RevtechDbContext>(options =>
     options.UseSqlServer(defaultConnection));
+
+builder.Services.AddSingleton(provider =>
+{
+    var dataProtectionProvider = provider.GetService<IDataProtectionProvider>();
+    return dataProtectionProvider.CreateProtector("ProtectConfigurationData");
+});
+
+builder.Services.AddSingleton<ConfigurationDataProtector>();
 
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IConfigurationService, ConfigurationService>();

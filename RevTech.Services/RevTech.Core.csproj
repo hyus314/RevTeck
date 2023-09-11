@@ -7,12 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="6.0.21" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="7.0.10" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\RevTech.Data.ViewModels\RevTech.Data.ViewModels.csproj" />
     <ProjectReference Include="..\RevTech.Data\RevTech.Data.csproj" />
+    <ProjectReference Include="..\RevTech.Security\RevTech.Security.csproj" />
   </ItemGroup>
 
 </Project>

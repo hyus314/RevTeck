@@ -10,19 +10,19 @@ namespace RevTech.Core.Services
     using RevTech.Data.User;
     using RevTech.Data.ViewModels.User;
     using RevTech.Data.ViewModels.Vehicles;
+    using RevTech.Security;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class ConfigurationService : IConfigurationService
     {
-        private readonly IDataProtector dataProtector;
         private readonly RevtechDbContext data;
-
-        public ConfigurationService(RevtechDbContext data, IDataProtectionProvider protectionProvider)
+        private readonly ConfigurationDataProtector configDataProtector;
+        public ConfigurationService(RevtechDbContext data, ConfigurationDataProtector configDataProtector)
         {
             this.data = data;
-            this.dataProtector = protectionProvider.CreateProtector("ProtectMyConfigurationId");
+            this.configDataProtector = configDataProtector;
         }
 
         public async Task<UserViewModel> GenerateUserViewModelAsync(int engineId, int carModelId, string userId)
@@ -198,7 +198,7 @@ namespace RevTech.Core.Services
                 .Select(x => new UserConfigurationViewModel()
                 {
                     UserId = x.User.Id,
-                    ConfigurationId = dataProtector.Protect(x.ConfigurationId.ToString()),
+                    ConfigurationId = this.configDataProtector.Encrypt(x.ConfigurationId.ToString()),
                     CarModel = x.Configuration.CarModel.ModelName,
                     CarModelId = x.Configuration.CarModelId,
                     EngineId = x.Configuration.EngineId,
@@ -213,7 +213,7 @@ namespace RevTech.Core.Services
 
         public async Task RemoveConfigurationAsync(string userId, string encryptedConfigurationId)
         {
-            var configurationId = DecryptConfigurationId(encryptedConfigurationId);
+            var configurationId = this.configDataProtector.Decrypt(encryptedConfigurationId);
             this.data.UsersConfiguration.Remove(await this.data.UsersConfiguration.FirstAsync(x => x.UserId == userId && x.ConfigurationId == configurationId));
             this.data.Configurations.Remove(await this.data.Configurations.FirstAsync(x => x.Id == configurationId));
             await this.data.SaveChangesAsync();
@@ -221,7 +221,7 @@ namespace RevTech.Core.Services
 
         public async Task<UserEditConfigurationViewModel> GenerateEditViewModelAsync(string encryptedConfigurationId)
         {
-           var configurationId = DecryptConfigurationId(encryptedConfigurationId);
+           var configurationId = this.configDataProtector.Decrypt(encryptedConfigurationId);
             var entity = await this.data.Configurations.FirstAsync(x => x.Id == configurationId);
 
             var model = new UserEditConfigurationViewModel();
@@ -270,7 +270,7 @@ namespace RevTech.Core.Services
 
         public async Task EditConfigurationAsync(Dictionary<string, int> selectedParts, string encryptedConfigurationId, string userId)
         {
-            var configurationId = DecryptConfigurationId(encryptedConfigurationId);
+            var configurationId = this.configDataProtector.Decrypt(encryptedConfigurationId);
             var configurationEntity = await this.data.Configurations.FirstAsync(x => x.Id == configurationId);
 
             var turbo = await this.data.TurboKits.FindAsync(selectedParts["turbo"]);
@@ -301,19 +301,6 @@ namespace RevTech.Core.Services
             await this.data.SaveChangesAsync();
         }
 
-        public int? DecryptConfigurationId(string encryptedConfigurationId)
-        {
-            try
-            {
-                var decryptedString = dataProtector.Unprotect(encryptedConfigurationId);
-                return int.TryParse(decryptedString, out int configurationId) ? configurationId : (int?)null;
-            }
-            catch
-            {
-                // Log error or handle as needed.
-                return null;
-            }
-        }
     }
 }
 
