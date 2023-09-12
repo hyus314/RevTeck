@@ -1,5 +1,7 @@
 ﻿@model PaymentDetailsViewModel
 
+<link rel="stylesheet" href="~/css/payment/payment.css">
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -41,10 +43,6 @@
                             <label>CVC</label>
                             <input type="text" asp-for="CVC" class="form-control" required />
                         </div>
-                        <div class="form-group">
-                            <label>Amount</label>
-                            <input type="number" asp-for="Amount" class="form-control" required />
-                        </div>
                         <div class="form-group mt-4">
                             <button type="submit" class="btn btn-primary btn-block">
                                 Pay Now
@@ -54,5 +52,23 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Ordered Parts</h3>
+                </div>
+                <div class="card-body">
+                    <div id="orderedPartsList">
+                    </div>
+                    <div class="parts-amount">
+                        <div class="total-label">Checkout Total:</div>
+                        <div class="total-amount">$@Model.Amount</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
+
+<script src="~/js/payment/payment.js"></script>
