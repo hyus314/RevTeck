@@ -98,7 +98,7 @@ function generateTurboViews(turbos) {
                 <p class="part-torque">Torque Boost: ${turbo.torqueBoost}</p>
                 <p class="part-pressure">Pressure Boost: ${turbo.pressureBoost}</p>
                 <img class="part-image" src="${turbo.imageURL}" alt="${turbo.modelName}" />
-                <p class="part-price">Price: ${turbo.price}</p>
+                <p class="part-price">Price: $${turbo.price}</p>
             `;
 
             turboView.addEventListener('click', function () {
@@ -164,7 +164,7 @@ function generateExhaustKitViews(exhaustKits) {
                 <p class="part-horsepower">Horsepower Boost: ${exhaustKit.horsePowerBoost}</p>
                 <p class="part-torque">Torque Boost: ${exhaustKit.torqueBoost}</p>
                 <img class="part-image" src="${exhaustKit.imageURl}" alt="${exhaustKit.model}" />
-                <p class="part-price">Price: ${exhaustKit.price}</p>
+                <p class="part-price">Price: $${exhaustKit.price}</p>
             `;
 
             exhaustKitView.addEventListener('click', function () {
@@ -232,7 +232,7 @@ function generateSuperchargerViews(superchargers) {
                 <p class="part-horsepower">Horsepower Boost: ${supercharger.horsePowerBoost}</p>
                 <p class="part-torque">Torque Boost: ${supercharger.torqueBoost}</p>
                 <img class="part-image" src="${supercharger.imageURL}" alt="${supercharger.modelName}" />
-                <p class="part-price">Price: ${supercharger.price}</p>
+                <p class="part-price">Price: $${supercharger.price}</p>
             `;
 
             superchargerView.addEventListener('click', function () {
@@ -302,7 +302,7 @@ function generateEcuViews(ecus) {
                 <p class="part-horsepower">Horsepower Boost: ${ecu.horsePowerBoost}</p>
                 <p class="part-torque">Torque Boost: ${ecu.torqueBoost}</p>
                 <img class="part-image" src="${ecu.imageURL}" alt="${ecu.name}" />
-                <p class="part-price">Price: ${ecu.price}</p>
+                <p class="part-price">Price: $${ecu.price}</p>
             `;
 
             ecuView.addEventListener('click', function () {
@@ -417,7 +417,7 @@ function generateFuelPumpViews(fuelPumps) {
             <p class="part-horsepower">Horsepower Boost: ${fuelPump.horsePowerBoost}</p>
             <p class="part-torque">Torque Boost: ${fuelPump.torqueBoost}</p>
             <img class="part-image" src="${fuelPump.imageURl}" alt="${fuelPump.model}" />
-            <p class="part-price">Price: ${fuelPump.price}</p>
+            <p class="part-price">Price: $${fuelPump.price}</p>
         `;
 
         fuelPumpView.addEventListener('click', function () {
@@ -480,7 +480,7 @@ function generateInjectorKitsViews(injectorKits) {
             <p class="part-horsepower">Horsepower Boost: ${injectorKit.horsePowerBoost}</p>
             <p class="part-torque">Torque Boost: ${injectorKit.torqueBoost}</p>
             <img class="part-image" src="${injectorKit.imageURL}" alt="${injectorKit.model}" />
-            <p class="part-price">Price: ${injectorKit.price}</p>
+            <p class="part-price">Price: $${injectorKit.price}</p>
         `;
 
         injectorKitView.addEventListener('click', function () {
@@ -540,7 +540,7 @@ function generateOilCoolersViews(oilCoolers) {
             <h4 class="part-model">${oilCooler.model}</h4>
             <h4 class="part-manufacturer">${oilCooler.manufacturer}</h4>
             <img class="part-image" src="${oilCooler.imageURL}" alt="${oilCooler.model}" />
-            <p class="part-price">Price: ${oilCooler.price}</p>
+            <p class="part-price">Price: $${oilCooler.price}</p>
         `;
 
         oilCoolerView.addEventListener('click', function () {
@@ -587,7 +587,7 @@ function generateSparkPlugsViews(sparkPlugs) {
     } else if (sparkPlugs.length === 1) {
         sparkPlugTitle.innerHTML = '1 Spark Plugs Kit is available for this model:';
     } else {
-        sparkPlugTitle.innerHTML = `${sparkPlugs.length} Spark Plugs Kits are available for this model:`;
+        sparkPlugTitle.innerHTML = `$${sparkPlugs.length} Spark Plugs Kits are available for this model:`;
     }
     sparkPlugContainer.appendChild(sparkPlugTitle);
 
@@ -600,7 +600,7 @@ function generateSparkPlugsViews(sparkPlugs) {
         sparkPlugView.innerHTML = `
             <h4 class="part-manufacturer">${sparkplug.manufacturer}</h4>
             <img class="part-image" src="${sparkplug.imageURl}" alt="${sparkplug.manufacturer} Spark Plug" />
-            <p class="part-price">Price: ${sparkplug.price}</p>
+            <p class="part-price">Price: $${sparkplug.price}</p>
         `;
 
         sparkPlugView.addEventListener('click', function () {
