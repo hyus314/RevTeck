@@ -8,6 +8,10 @@
     padding: 0;
 }
 
+.card{
+    margin-bottom: 100px;
+}
+
 .part-item {
     display: flex;
     justify-content: space-between;
@@ -37,4 +41,66 @@
 }
 .total-amount {
     color: #e44200;
+}
+
+.card-body {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.form-control {
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.text-danger {
+    font-size: 0.8em;
+}
+.custom-btn {
+    background-color: #4CAF50; /* Green background */
+    border: 1px solid #4CAF50; /* Green border */
+    color: white; /* White text */
+    padding: 12px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    border-radius: 4px; /* Rounded corners */
+    text-align: center; /* Centered text */
+}
+
+    .custom-btn:hover {
+        background-color: #45a049; /* Darker green on hover */
+    }
+
+/* Make form fields wider */
+
+
+/* Additional Styling for Stripe Elements */
+.StripeElement {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+}
+.form-group-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.form-group {
+    flex: 1;
+    margin-right: 10px;
 }

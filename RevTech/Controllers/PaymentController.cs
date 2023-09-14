@@ -5,6 +5,8 @@
     using Microsoft.AspNetCore.Mvc;
     using RevTech.Core.Contracts;
     using RevTech.Data.User;
+    using RevTech.Data.ViewModels.Payment;
+
     [Authorize]
     public class PaymentController : Controller
     {
@@ -25,6 +27,7 @@
             {
                 HttpContext.Session.SetString("ConfigurationId", configurationId);
                 var model = await this.service.GeneratePaymentViewModelAsync(configurationId, user);
+                HttpContext.Session.SetString("PaymentAmount", model.Amount.ToString());
                 return View("PayConfiguration", model);
             }
 
@@ -34,8 +37,15 @@
         {
             string? configurationId = HttpContext.Session.GetString("ConfigurationId");
             var model = await this.service.GetAllOrderedPartsForPayment(configurationId!);
-            HttpContext.Session.Clear();
             return Json(model);
+        }
+
+        public async Task<IActionResult> ProcessPayment([FromBody] ClientPaymentInfo paymentInfo)
+        {
+            var amountString = HttpContext.Session.GetString("PaymentAmount");
+            await this.service.ProcessPaymentAsync(paymentInfo, amountString!);
+            HttpContext.Session.Clear();
+            return View();
         }
     }
 }

@@ -55,6 +55,11 @@ namespace RevTech.Core.Services
             return await PopulateCollectionOfOrderedParts(configuration);
         }
 
+        public Task ProcessPaymentAsync(ClientPaymentInfo paymentInfo, string amountString)
+        {
+            throw new NotImplementedException();
+        }
+
         private async Task<ICollection<OrderedPartViewModel>> PopulateCollectionOfOrderedParts(Configuration configuration)
         {
             ICollection<OrderedPartViewModel> orderedParts = new HashSet<OrderedPartViewModel>();

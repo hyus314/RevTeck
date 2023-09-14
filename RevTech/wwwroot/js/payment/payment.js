@@ -45,22 +45,112 @@
     });
 });
 
-// Add this script at the end of the body tag.
+document.querySelector("[name='FirstName']").addEventListener('input', function (e) {
+    const value = e.target.value;
+    e.target.value = value.replace(/[^A-Za-z]/g, '');
+});
+
+document.querySelector("[name='LastName']").addEventListener('input', function (e) {
+    const value = e.target.value;
+    e.target.value = value.replace(/[^A-Za-z]/g, '');
+});
+
+document.querySelector("[name='PhoneNumber']").addEventListener('input', function (e) {
+    const value = e.target.value;
+    e.target.value = value.replace(/[^0-9]/g, '');
+});
+
+const validCities = ['Sofia', 'Plovdiv', 'Varna', 'Burgas', 'Ruse']; // Add more cities if needed
+
+// Function to enforce valid city names and alphabets only
+function enforceValidCities(event) {
+    // Enforce alphabets only
+    event.target.value = event.target.value.replace(/[^a-zA-Z]/g, '');
+
+    const value = event.target.value;
+    const cityError = document.getElementById('cityError');
+
+    // Check if the city is valid
+    if (!validCities.includes(value)) {
+        cityError.textContent = "Please enter a valid city in Bulgaria.";
+    } else {
+        cityError.textContent = "";
+    }
+}
+
+const cityInput = document.querySelector("[name='City']");
+cityInput.addEventListener('input', enforceValidCities);
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
-    const stripe = Stripe('pk_test_...'); // Replace with your publishable key
+    const stripe = Stripe('pk_test_51NpqC7LRIi0RJQWsYfoGk4ZoWSqaGnoxwcEOS6xc7BKeDQwysiL8T7e4Vg7YBuJvFsjHHhDbS7VWLtCl7NrMQrvm001F7uvEc4'); // Replace with your publishable key
     const elements = stripe.elements();
-    const card = elements.create('card');
-    card.mount('#card-element');
 
-    card.addEventListener('change', function (event) {
+    const style = {
+        base: {
+            fontSize: '16px',
+            color: '#32325d',
+            padding: '10px 12px', // Add padding
+            border: '1px solid #000000', // Add border
+            backgroundColor: '#ffffff',
+            '::placeholder': {
+                color: '#aab7c4',
+            },
+            ':focus': {
+                backgroundColor: '#f7f9fc',
+                borderColor: '#000000', // Black border when focused
+            },
+            '.StripeElement--complete': {
+                backgroundColor: '#e6f7ff',
+                borderColor: '#000000', // Black border when complete
+            },
+        },
+        invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a',
+            backgroundColor: '#ffe6e6',
+            borderColor: '#fa755a', // Border color when invalid
+        },
+    };
+
+   
+
+    const cardNumber = elements.create('cardNumber', { style: style });
+    const cardExpiry = elements.create('cardExpiry', { style: style });
+    const cardCvc = elements.create('cardCvc', { style: style });
+    const cardZip = elements.create('postalCode', { style: style });
+
+    cardNumber.mount('#card-number-element');
+    cardExpiry.mount('#card-expiry-element');
+    cardCvc.mount('#card-cvc-element');
+    cardZip.mount('#card-zip-element');
+
+    // Add real-time validation errors display
+    cardNumber.addEventListener('change', function (event) {
+        displayError(event);
+    });
+
+    cardExpiry.addEventListener('change', function (event) {
+        displayError(event);
+    });
+
+    cardCvc.addEventListener('change', function (event) {
+        displayError(event);
+    });
+
+    cardZip.addEventListener('change', function (event) {
+        displayError(event);
+    });
+
+    function displayError(event) {
         const displayError = document.getElementById('card-errors');
         if (event.error) {
             displayError.textContent = event.error.message;
         } else {
             displayError.textContent = '';
         }
-    });
+    }
 
     const form = document.getElementById('paymentForm');
     const submitButton = document.getElementById('submit-button');
@@ -71,28 +161,31 @@ document.addEventListener('DOMContentLoaded', function () {
         // Manually collect and validate other form fields
         const firstName = form.querySelector("[name='FirstName']").value;
         const lastName = form.querySelector("[name='LastName']").value;
-        // ... collect other fields ...
+        const phoneNumber = form.querySelector("[name = 'PhoneNumber']").value;
+        const city = form.querySelector("[name = 'City']").value;
+        const country = form.querySelector("[name = 'Country']").value;
+        const deliveryAddress = form.querySelector("[name = 'Address']").value;
 
-        // Create an object to hold all form data
         let formData = {
             'FirstName': firstName,
             'LastName': lastName,
-            // ... other fields ...
+            'PhoneNumber': phoneNumber,
+            'City': city,
+            'Country': country,
+            'DeliveryAddress': deliveryAddress
         };
 
         stripe.createPaymentMethod({
             type: 'card',
-            card: card,
+            card: cardNumber,
         }).then(function (result) {
             if (result.error) {
                 const displayError = document.getElementById('card-errors');
                 displayError.textContent = result.error.message;
             } else {
-                // Add the Stripe PaymentMethod ID to the form data
                 formData['PaymentMethodId'] = result.paymentMethod.id;
 
-                // Send data to server
-                fetch('/ProcessPayment', {
+                fetch('Payment/ProcessPayment', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

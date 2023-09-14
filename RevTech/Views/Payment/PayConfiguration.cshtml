@@ -1,6 +1,8 @@
 ﻿@model PaymentDetailsViewModel
 
 <link rel="stylesheet" href="~/css/payment/payment.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -10,44 +12,64 @@
                     <h3>Payment Details</h3>
                 </div>
                 <div class="card-body">
-                    <form id="paymentForm">
+                    <form id="paymentForm" class="needs-validation" novalidate>
                         <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" name="FirstName" class="form-control" />
+                            <label for="FirstName">First Name</label>
+                            <input type="text" name="FirstName" id="FirstName" class="form-control" pattern="[A-Za-z]{1,20}" maxlength="20" value="@Model.FirstName" required />
                         </div>
                         <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" name="LastName" class="form-control" />
+                            <label for="LastName">Last Name</label>
+                            <input type="text" name="LastName" id="LastName" class="form-control" pattern="[A-Za-z]{1,20}" maxlength="20" value="@Model.LastName" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="PhoneNumber">Phone Number</label>
+                            <input type="text" name="PhoneNumber" id="PhoneNumber" class="form-control" pattern="\d*" autocomplete="off" required />
                         </div>
                         <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="text" name="PhoneNumber" class="form-control" autocomplete="off" />
+                            <label for="Country">Country</label>
+                            <input type="text" name="Country" id="Country" class="form-control" value="Bulgaria" readonly />
                         </div>
                         <div class="form-group">
-                            <label>City</label>
-                            <input type="text" name="City" class="form-control" required />
+                            <label for="City">City</label>
+                            <input type="text" name="City" id="cityInput" class="form-control" maxlength="20" required />
+                            <div id="cityError" class="text-danger"></div>
                         </div>
                         <div class="form-group">
-                            <label>Country</label>
-                            <input type="text" name="Country" class="form-control" required />
+                            <label for="Address">Delivery Address</label>
+                            <input type="text" name="Address" id="Address" class="form-control" required />
                         </div>
                         <div class="form-group">
-                            <label>Delivery Address</label>
-                            <input type="text" name="Address" class="form-control" required />
+                            <label>Card Number</label>
+                            <div id="card-number-element"></div>
                         </div>
-                        <div class="form-group">
-                            <label>Card Details</label>
-                            <div id="card-element">
+
+                        <div class="form-group-inline">
+                            <div class="form-group">
+                                <label>Expiration Date</label>
+                                <div id="card-expiry-element"></div>
                             </div>
-                            <div id="card-errors" role="alert"></div>
+
+                            <div class="form-group">
+                                <label>CVC</label>
+                                <div id="card-cvc-element"></div>
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <label>ZIP</label>
+                            <div id="card-zip-element"></div>
+                        </div>
+
+                        <div id="card-errors" role="alert"></div>
                         <div class="form-group mt-4">
-                            <button type="button" id="submit-button" class="btn btn-primary btn-block">
+                            <button type="button" id="submit-button" class="custom-btn btn-block">
                                 Pay Now
                             </button>
                         </div>
+
                     </form>
                 </div>
+
 
             </div>
         </div>
