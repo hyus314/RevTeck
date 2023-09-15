@@ -9,8 +9,11 @@ using System;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.AspNetCore.DataProtection;
 using RevTech.Security;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
+
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("StripeKeys")["SecretKey"];
 
 // Add services to the container.
 var defaultConnection = builder.Configuration.GetConnectionString("DefaultConnection");

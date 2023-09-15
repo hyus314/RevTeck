@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                             <label for="PhoneNumber">Phone Number</label>
-                            <input type="text" name="PhoneNumber" id="PhoneNumber" class="form-control" pattern="\d*" autocomplete="off" required />
+                            <input type="text" name="PhoneNumber" id="PhoneNumber" class="form-control" maxlength="10" pattern="\d*" autocomplete="off" required />
                         </div>
                         <div class="form-group">
                             <label for="Country">Country</label>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label for="City">City</label>
-                            <input type="text" name="City" id="cityInput" class="form-control" maxlength="20" required />
+                            <input type="text" name="City" id="cityInput" class="form-control" maxlength="20" required autocomplete="off" />
                             <div id="cityError" class="text-danger"></div>
                         </div>
                         <div class="form-group">

@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 formData['PaymentMethodId'] = result.paymentMethod.id;
 
-                fetch('Payment/ProcessPayment', {
+                fetch('Payment/ProceedToPaymentIntent', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -195,10 +195,44 @@ document.addEventListener('DOMContentLoaded', function () {
                     .then(response => response.json())
                     .then(data => {
                         console.log("Server response:", data);
+
+                        // Assuming your server responds with a JSON object containing the clientSecret
+                        const clientSecret = data.clientSecret;
+
+                        // Proceed to confirm the payment with the clientSecret
+                        stripe.confirmCardPayment(clientSecret, {
+                            payment_method: {
+                                card: cardElement,
+                                billing_details: {
+                                    name: `${formData.FirstName} ${formData.LastName}`,
+                                    address: {
+                                        city: formData.City,
+                                        country: formData.Country
+                                    }
+                                }
+                            }
+                        }).then((result) => {
+                            if (result.error) {
+                                // Show error to your customer (e.g., error.message)
+                                console.log(result.error.message);
+                            } else {
+                                // The payment has been processed!
+                                if (result.paymentIntent.status === 'succeeded') {
+                                    // Show a success message to your customer
+                                    // There's a risk of the customer closing the window before the callback
+                                    // execution. Set up a webhook or plugin to listen for the
+                                    // payment_intent.succeeded event that handles any business critical
+                                    // post-payment actions.
+                                    console.log('Payment succeeded:', result.paymentIntent.id);
+                                }
+                            }
+                        });
+
                     })
                     .catch((error) => {
                         console.error('Error:', error);
                     });
+
             }
         });
     });

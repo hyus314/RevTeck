@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using RevTech.App.Extensions;
     using RevTech.Core.Contracts;
     using RevTech.Data.User;
     using RevTech.Data.ViewModels.Payment;
@@ -40,11 +41,13 @@
             return Json(model);
         }
 
-        public async Task<IActionResult> ProcessPayment([FromBody] ClientPaymentInfo paymentInfo)
+        public async Task<IActionResult> ProceedToPaymentIntent([FromBody] ClientPaymentInfo paymentInfo)
         {
             var amountString = HttpContext.Session.GetString("PaymentAmount");
-            await this.service.ProcessPaymentAsync(paymentInfo, amountString!);
-            HttpContext.Session.Clear();
+
+            var paymentIntent = await this.service.CreatePaymentIntent(paymentInfo, amountString);
+            return Json(new { clientSecret = paymentIntent.ClientSecret });
+
             return View();
         }
     }

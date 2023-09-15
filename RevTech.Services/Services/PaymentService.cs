@@ -4,6 +4,7 @@ using RevTech.Data.Models.UserConfiguration;
 using RevTech.Data.User;
 using RevTech.Data.ViewModels.Payment;
 using RevTech.Security;
+using Stripe;
 
 namespace RevTech.Core.Services
 {
@@ -55,9 +56,26 @@ namespace RevTech.Core.Services
             return await PopulateCollectionOfOrderedParts(configuration);
         }
 
-        public Task ProcessPaymentAsync(ClientPaymentInfo paymentInfo, string amountString)
+        public async Task<PaymentIntent> CreatePaymentIntent(ClientPaymentInfo paymentInfo, string amountString)
         {
-            throw new NotImplementedException();
+            var options = new PaymentIntentCreateOptions()
+            {
+                Amount = CalculateAmount(amountString),
+                Currency = "usd",
+                PaymentMethod = paymentInfo.PaymentMethodId,
+                Confirm = true,
+                
+            };
+
+
+            var service = new PaymentIntentService();
+            return await service.CreateAsync(options);
+        }
+
+        private long? CalculateAmount(string amountString)
+        {
+            var amount = Decimal.Parse(amountString) * 100;
+            return long.Parse(amount.ToString().Substring(0, amount.ToString().Length - 3));
         }
 
         private async Task<ICollection<OrderedPartViewModel>> PopulateCollectionOfOrderedParts(Configuration configuration)

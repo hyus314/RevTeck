@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="7.0.10" />
+    <PackageReference Include="Stripe.net" Version="42.5.0" />
   </ItemGroup>
 
   <ItemGroup>
