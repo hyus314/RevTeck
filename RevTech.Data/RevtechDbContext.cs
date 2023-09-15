@@ -28,6 +28,7 @@
         public DbSet<SuperchargerKit> SuperchargerKits { get; set; } = null!;
         public DbSet<TCUTuning> TCUTunings { get; set; } = null!;
         public DbSet<TurboKit> TurboKits { get; set; } = null!;
+        public DbSet<UserPayment> Payments { get; set; } = null!;
         public DbSet<Models.UserConfiguration.Configuration> Configurations { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,7 +37,7 @@
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-           
+
             builder.Entity<ECUTuning>()
            .Property(p => p.Price)
            .HasPrecision(18, 2);
@@ -91,8 +92,25 @@
 
             builder.Entity<UserConfiguration>()
                 .HasOne(a => a.Configuration)
-                .WithMany() // Empty WithMany, as Class B doesn't have a collection of Class A
+                .WithMany() 
                 .HasForeignKey(a => a.ConfigurationId);
+
+            builder.Entity<UserPayment>()
+     .HasOne(e => e.Client)
+     .WithOne() 
+     .HasForeignKey<UserPayment>(e => e.ClientId)
+     .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<UserPayment>()
+        .Property(p => p.Amount)
+        .HasPrecision(18, 2);
+
+            builder.Entity<UserPayment>()
+                .HasOne(e => e.Configuration)
+                .WithOne() 
+                .HasForeignKey<UserPayment>(e => e.ConfigurationId)
+                .OnDelete(DeleteBehavior.Cascade); 
+
 
             builder.ApplyConfiguration(new ManufacturerTypeEntityConfiguration());
             builder.ApplyConfiguration(new CarModelEntityConfiguration());
