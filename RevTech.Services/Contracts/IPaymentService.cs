@@ -8,6 +8,6 @@ namespace RevTech.Core.Contracts
     {
         public Task<PaymentDetailsViewModel> GeneratePaymentViewModelAsync(string configurationId, RevTeckUser user);
         public Task<ICollection<OrderedPartViewModel>> GetAllOrderedPartsForPayment(string configurationId);
-        public Task<PaymentIntent> CreatePaymentIntent(ClientPaymentInfo paymentInfo, string amountString);
+        public Task<string> CreatePaymentIntent_ClientSecret(ClientPaymentInfo paymentInfo, string amountString);
     }
 }

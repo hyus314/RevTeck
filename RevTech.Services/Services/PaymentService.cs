@@ -56,23 +56,33 @@ namespace RevTech.Core.Services
             return await PopulateCollectionOfOrderedParts(configuration);
         }
 
-        public async Task<PaymentIntent> CreatePaymentIntent(ClientPaymentInfo paymentInfo, string amountString)
+        public async Task<string> CreatePaymentIntent_ClientSecret(ClientPaymentInfo paymentInfo, string amountString)
         {
-            var options = new PaymentIntentCreateOptions()
+            try
             {
-                Amount = CalculateAmount(amountString),
-                Currency = "usd",
-                PaymentMethod = paymentInfo.PaymentMethodId,
-                Confirm = true,
-                
-            };
+                var options = new PaymentIntentCreateOptions()
+                {
+                    Amount = CalculateAmount(amountString),
+                    Currency = "usd",
+                    PaymentMethod = paymentInfo.PaymentMethodId,
+                    Confirm = true,
+                    ReturnUrl = "https://localhost:7130/Home/Index",
+                };
 
+                var service = new PaymentIntentService();
+                var paymentIntent = await service.CreateAsync(options);
 
-            var service = new PaymentIntentService();
-            return await service.CreateAsync(options);
+                return paymentIntent.ClientSecret;
+            }
+            catch (StripeException e)
+            {
+                // Log the exception or take other appropriate actions
+                return null;
+            }
         }
 
-        private long? CalculateAmount(string amountString)
+
+        private static long? CalculateAmount(string amountString)
         {
             var amount = Decimal.Parse(amountString) * 100;
             return long.Parse(amount.ToString().Substring(0, amount.ToString().Length - 3));

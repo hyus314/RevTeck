@@ -41,14 +41,18 @@
             return Json(model);
         }
 
+        [HttpPost]
         public async Task<IActionResult> ProceedToPaymentIntent([FromBody] ClientPaymentInfo paymentInfo)
         {
             var amountString = HttpContext.Session.GetString("PaymentAmount");
 
-            var paymentIntent = await this.service.CreatePaymentIntent(paymentInfo, amountString);
-            return Json(new { clientSecret = paymentIntent.ClientSecret });
+            var clientSecret = await this.service.CreatePaymentIntent_ClientSecret(paymentInfo, amountString);
+            return Json(new { clientSecret });
 
-            return View();
         }
+        public async Task<IActionResult> SavePayment([FromBody] string paymentId) 
+        {
+            throw new NotImplementedException();
+        } 
     }
 }
