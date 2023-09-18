@@ -65,8 +65,8 @@ namespace RevTech.Core.Services
                     Amount = CalculateAmount(amountString),
                     Currency = "usd",
                     PaymentMethod = paymentInfo.PaymentMethodId,
-                    Confirm = true,
-                    ReturnUrl = "https://localhost:7130/Home/Index",
+                    Confirm = false,
+                    ConfirmationMethod = "automatic"
                 };
 
                 var service = new PaymentIntentService();

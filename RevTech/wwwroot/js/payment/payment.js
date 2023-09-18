@@ -160,7 +160,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'PhoneNumber': phoneNumber,
             'City': city,
             'Country': country,
-            'DeliveryAddress': deliveryAddress
+            'DeliveryAddress': deliveryAddress,
+            'PaymentMethodId': null
         };
 
         const result = await stripe.createPaymentMethod({
