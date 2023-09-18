@@ -50,9 +50,20 @@
             return Json(new { clientSecret });
 
         }
-        public async Task<IActionResult> SavePayment([FromBody] string paymentId) 
+        public async Task<IActionResult> SavePayment([FromBody] PaymentIdModel paymentIdModel)
         {
-            throw new NotImplementedException();
-        } 
+            paymentIdModel.Amount = HttpContext.Session.GetString("PaymentAmount");
+            paymentIdModel.ConfigurationId = HttpContext.Session.GetString("ConfigurationId");
+            paymentIdModel.UserId = this.User.GetId();
+            var result = await this.service.ProcessPaymentAsync(paymentIdModel);
+
+            if (result)
+            {
+                return RedirectToAction("Success");
+            }
+
+            return RedirectToAction("Fail");
+
+        }
     }
 }

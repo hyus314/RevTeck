@@ -179,8 +179,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({
+                    paymentId: formData.PaymentMethodId
+                })
             });
+
 
             const data = await response.json();
             const clientSecret = data.clientSecret;
@@ -210,7 +213,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ paymentId: confirmResult.paymentIntent.id })
+                        body: JSON.stringify({
+                            paymentId: confirmResult.paymentIntent.id,
+                            city: formData.City,
+                            country: formData.Country,
+                            firstName: formData.FirstName,
+                            lastName: formData.LastName,
+                            deliveryAddress: formData.DeliveryAddress
+                        })
                     });
 
                     const paymentData = await paymentResponse.json();

@@ -199,7 +199,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("ECUTunings");
+                    b.ToTable("ECUTunings", (string)null);
 
                     b.HasData(
                         new
@@ -425,7 +425,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("ExhaustKits");
+                    b.ToTable("ExhaustKits", (string)null);
 
                     b.HasData(
                         new
@@ -962,7 +962,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("FuelPumps");
+                    b.ToTable("FuelPumps", (string)null);
 
                     b.HasData(
                         new
@@ -1183,7 +1183,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("InjectorKits");
+                    b.ToTable("InjectorKits", (string)null);
 
                     b.HasData(
                         new
@@ -1486,7 +1486,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("OilCoolers");
+                    b.ToTable("OilCoolers", (string)null);
 
                     b.HasData(
                         new
@@ -1754,7 +1754,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("SparkPlugsKits");
+                    b.ToTable("SparkPlugsKits", (string)null);
 
                     b.HasData(
                         new
@@ -1927,7 +1927,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("SuperchargerKits");
+                    b.ToTable("SuperchargerKits", (string)null);
 
                     b.HasData(
                         new
@@ -2023,7 +2023,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TCUTunings");
+                    b.ToTable("TCUTunings", (string)null);
 
                     b.HasData(
                         new
@@ -2093,7 +2093,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("TurboKits");
+                    b.ToTable("TurboKits", (string)null);
 
                     b.HasData(
                         new
@@ -2461,7 +2461,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("TurboKitId");
 
-                    b.ToTable("Configurations");
+                    b.ToTable("Configurations", (string)null);
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.Vehicles.CarModel", b =>
@@ -2495,7 +2495,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("ManufacturerId");
 
-                    b.ToTable("CarModels");
+                    b.ToTable("CarModels", (string)null);
 
                     b.HasData(
                         new
@@ -2683,7 +2683,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("EngineId");
 
-                    b.ToTable("CarModelsEngines");
+                    b.ToTable("CarModelsEngines", (string)null);
 
                     b.HasData(
                         new
@@ -2854,7 +2854,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Engines");
+                    b.ToTable("Engines", (string)null);
 
                     b.HasData(
                         new
@@ -2991,7 +2991,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Manufacturers");
+                    b.ToTable("Manufacturers", (string)null);
 
                     b.HasData(
                         new
@@ -3099,7 +3099,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("ConfigurationId");
 
-                    b.ToTable("UsersConfiguration");
+                    b.ToTable("UsersConfiguration", (string)null);
                 });
 
             modelBuilder.Entity("RevTech.Data.User.UserPayment", b =>
@@ -3142,7 +3142,7 @@ namespace RevTech.Data.Migrations
                     b.HasIndex("ConfigurationId")
                         .IsUnique();
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

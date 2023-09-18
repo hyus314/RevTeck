@@ -9,7 +9,7 @@
         [Key]
         public int Id { get; set; }
         [ForeignKey(nameof(Client))]
-        public string ClientId { get; set; }
+        public string ClientId { get; set; } = null!;
         public RevTeckUser Client { get; set; } = null!;
         [ForeignKey(nameof(Configuration))]
         public int ConfigurationId { get; set; }

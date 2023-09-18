@@ -210,5 +210,10 @@ namespace RevTech.Core.Services
                 .ToArray();
 
         }
+
+        public Task<bool> ProcessPaymentAsync(PaymentIdModel paymentModel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
