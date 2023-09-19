@@ -180,7 +180,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    paymentId: formData.PaymentMethodId
+                    paymentMethodId: formData.PaymentMethodId,
+                    firstName: formData.FirstName,
+                    lastName: formData.LastName,
+                    city: formData.City,
+                    deliveryAddress: formData.DeliveryAddress,
+                    country: formData.Country
                 })
             });
 

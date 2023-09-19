@@ -56,17 +56,17 @@ namespace RevTech.Core.Services
             return await PopulateCollectionOfOrderedParts(configuration);
         }
 
-        public async Task<string> CreatePaymentIntent_ClientSecret(ClientPaymentInfo paymentInfo, string amountString)
+        public async Task<string> CreatePaymentIntent_ClientSecret(PaymentIdModel paymentInfo)
         {
             try
             {
                 var options = new PaymentIntentCreateOptions()
                 {
-                    Amount = CalculateAmount(amountString),
+                    Amount = CalculateAmount(paymentInfo.Amount!),
                     Currency = "usd",
                     PaymentMethod = paymentInfo.PaymentMethodId,
                     Confirm = false,
-                    ConfirmationMethod = "automatic"
+                    ConfirmationMethod = "manual"
                 };
 
                 var service = new PaymentIntentService();
@@ -88,6 +88,15 @@ namespace RevTech.Core.Services
             return long.Parse(amount.ToString().Substring(0, amount.ToString().Length - 3));
         }
 
+
+        public async Task<bool> ProcessPaymentAsync(PaymentIdModel paymentModel)
+        {
+            var service = new PaymentIntentService();
+
+            var confirmOptions = new PaymentIntentConfirmOptions();
+
+            return default;
+        }
         private async Task<ICollection<OrderedPartViewModel>> PopulateCollectionOfOrderedParts(Configuration configuration)
         {
             ICollection<OrderedPartViewModel> orderedParts = new HashSet<OrderedPartViewModel>();
@@ -209,11 +218,6 @@ namespace RevTech.Core.Services
                 .ThenBy(x => x.PartType)
                 .ToArray();
 
-        }
-
-        public Task<bool> ProcessPaymentAsync(PaymentIdModel paymentModel)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -42,27 +42,14 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> ProceedToPaymentIntent([FromBody] ClientPaymentInfo paymentInfo)
+        public async Task<IActionResult> ProceedToPaymentIntent([FromBody] PaymentIdModel paymentInfo)
         {
-            var amountString = HttpContext.Session.GetString("PaymentAmount");
+            paymentInfo.Amount = HttpContext.Session.GetString("PaymentAmount");
+            paymentInfo.ConfigurationId = HttpContext.Session.GetString("ConfigurationId");
+            paymentInfo.UserId = this.User.GetId();
 
-            var clientSecret = await this.service.CreatePaymentIntent_ClientSecret(paymentInfo, amountString);
+            var clientSecret = await this.service.CreatePaymentIntent_ClientSecret(paymentInfo);
             return Json(new { clientSecret });
-
-        }
-        public async Task<IActionResult> SavePayment([FromBody] PaymentIdModel paymentIdModel)
-        {
-            paymentIdModel.Amount = HttpContext.Session.GetString("PaymentAmount");
-            paymentIdModel.ConfigurationId = HttpContext.Session.GetString("ConfigurationId");
-            paymentIdModel.UserId = this.User.GetId();
-            var result = await this.service.ProcessPaymentAsync(paymentIdModel);
-
-            if (result)
-            {
-                return RedirectToAction("Success");
-            }
-
-            return RedirectToAction("Fail");
 
         }
     }
