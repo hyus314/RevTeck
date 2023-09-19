@@ -56,7 +56,7 @@ namespace RevTech.Core.Services
             return await PopulateCollectionOfOrderedParts(configuration);
         }
 
-        public async Task<string> CreatePaymentIntent_ClientSecret(PaymentIdModel paymentInfo)
+        public async Task<bool> ProcessPaymentAsync(PaymentIdModel paymentInfo)
         {
             try
             {
@@ -65,22 +65,47 @@ namespace RevTech.Core.Services
                     Amount = CalculateAmount(paymentInfo.Amount!),
                     Currency = "usd",
                     PaymentMethod = paymentInfo.PaymentMethodId,
-                    Confirm = false,
-                    ConfirmationMethod = "manual"
+                    Confirm = true,  // No auto-confirmation
+                    ConfirmationMethod = "manual",
+                    ReturnUrl = "https://localhost:7130/Home/Index"
                 };
 
                 var service = new PaymentIntentService();
                 var paymentIntent = await service.CreateAsync(options);
 
-                return paymentIntent.ClientSecret;
+                if (paymentIntent.Status == "succeeded" && paymentInfo.IsValid())
+                {
+                    await this.SavePaymentAsync(paymentInfo);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
-            catch (StripeException e)
+            catch (Exception)
             {
-                // Log the exception or take other appropriate actions
-                return null;
+                return false;
             }
         }
 
+        private async Task SavePaymentAsync(PaymentIdModel paymentInfo)
+        {
+            var payment = new UserPayment()
+            {
+                ClientId = paymentInfo.UserId!,
+                ConfigurationId = configDataProtector.Decrypt(paymentInfo.ConfigurationId!),
+                Amount = Decimal.Parse(paymentInfo.Amount!),
+                PaymentId = paymentInfo.PaymentMethodId,
+                OrderedDate = DateTime.UtcNow,
+                DeliveredDate = DateTime.UtcNow.AddDays(14),
+            };
+
+            await this.data.Payments.AddAsync(payment);
+            await this.data.AddAsync(payment);
+
+        }
 
         private static long? CalculateAmount(string amountString)
         {
@@ -89,14 +114,6 @@ namespace RevTech.Core.Services
         }
 
 
-        public async Task<bool> ProcessPaymentAsync(PaymentIdModel paymentModel)
-        {
-            var service = new PaymentIntentService();
-
-            var confirmOptions = new PaymentIntentConfirmOptions();
-
-            return default;
-        }
         private async Task<ICollection<OrderedPartViewModel>> PopulateCollectionOfOrderedParts(Configuration configuration)
         {
             ICollection<OrderedPartViewModel> orderedParts = new HashSet<OrderedPartViewModel>();
@@ -204,7 +221,7 @@ namespace RevTech.Core.Services
             }
 
             var tcu = await this.data.TCUTunings.FindAsync(configuration.TCUTuningId);
-            if ( tcu != null )
+            if (tcu != null)
             {
                 var tcuViewModel = new OrderedPartViewModel()
                 {
@@ -219,5 +236,6 @@ namespace RevTech.Core.Services
                 .ToArray();
 
         }
+
     }
 }
