@@ -48,8 +48,8 @@
             paymentInfo.ConfigurationId = HttpContext.Session.GetString("ConfigurationId");
             paymentInfo.UserId = this.User.GetId();
 
-            var clientSecret = await this.service.ProcessPaymentAsync(paymentInfo);
-            return Json(new { clientSecret });
+            var result = await this.service.ProcessPaymentAsync(paymentInfo);
+            return Json(new { result });
 
         }
     }

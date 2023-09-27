@@ -17,9 +17,10 @@ StripeConfiguration.ApiKey = builder.Configuration.GetSection("StripeKeys")["Sec
 
 // Add services to the container.
 var defaultConnection = builder.Configuration.GetConnectionString("DefaultConnection");
-var connectionString = Environment.GetEnvironmentVariable("DeployedConnection");
+var connectionString = builder.Configuration.GetConnectionString("DeployedConnection");
+//var connectionString = Environment.GetEnvironmentVariable("DeployedConnection");
 builder.Services.AddDbContext<RevtechDbContext>(options =>
-    options.UseSqlServer(defaultConnection));
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddSingleton(provider =>
 {

@@ -75,48 +75,57 @@ namespace RevTech.Core.Services
 
         public async Task CreateConfigurationForUserAsync(Dictionary<string, int> selectedParts, string userId, int engineId, int carModelId)
         {
-            var turbo = await this.data.TurboKits.FindAsync(selectedParts["turbo"]);
-            var exhaustKit = await this.data.ExhaustKits.FindAsync(selectedParts["exhaustKit"]);
-            var supercharger = await this.data.SuperchargerKits.FindAsync(selectedParts["supercharger"]);
-            var ecu = await this.data.ECUTunings.FindAsync(selectedParts["ecu"]);
-            var fuelPump = await this.data.FuelPumps.FindAsync(selectedParts["fuelPump"]);
-            var injectorKit = await this.data.InjectorKits.FindAsync(selectedParts["injectorKit"]);
-            var oilCooler = await this.data.OilCoolers.FindAsync(selectedParts["oilCooler"]);
-            var sparkPlug = await this.data.SparkPlugsKits.FindAsync(selectedParts["sparkPlug"]);
-
-
-            var totalPowerBoost = GetTotalUpgradeSums(turbo, exhaustKit, supercharger, ecu, fuelPump, injectorKit);
-            var totalPrice = GetPricesFromParts(turbo, exhaustKit, supercharger, ecu, fuelPump, injectorKit, oilCooler, sparkPlug);
-
-            var configuration = new Configuration()
+            try
             {
-                EngineId = engineId,
-                CarModelId = carModelId,
-                TurboKitId = selectedParts["turbo"] == 0 ? null : selectedParts["turbo"],
-                TCUTuningId = selectedParts["tcu"] == 0 ? null : selectedParts["tcu"],
-                ExhaustKitId = selectedParts["exhaustKit"] == 0 ? null : selectedParts["exhaustKit"],
-                SuperchargerKitId = selectedParts["supercharger"] == 0 ? null : selectedParts["supercharger"],
-                ECUTuningId = selectedParts["ecu"] == 0 ? null : selectedParts["ecu"],
-                FuelPumpId = selectedParts["fuelPump"] == 0 ? null : selectedParts["fuelPump"],
-                InjectorKitId = selectedParts["injectorKit"] == 0 ? null : selectedParts["injectorKit"],
-                OilCoolerId = selectedParts["oilCooler"] == 0 ? null : selectedParts["oilCooler"],
-                SparkPlugsId = selectedParts["sparkPlug"] == 0 ? null : selectedParts["sparkPlug"],
-                HorsePowerBoostTotal = totalPowerBoost[0],
-                TorqueBoostTotal = totalPowerBoost[1],
-                TotalPrice = totalPrice
-            };
 
-            await this.data.Configurations.AddAsync(configuration);
-            await this.data.SaveChangesAsync();
+                var turbo = await this.data.TurboKits.FindAsync(selectedParts["turbo"]);
+                var exhaustKit = await this.data.ExhaustKits.FindAsync(selectedParts["exhaustKit"]);
+                var supercharger = await this.data.SuperchargerKits.FindAsync(selectedParts["supercharger"]);
+                var ecu = await this.data.ECUTunings.FindAsync(selectedParts["ecu"]);
+                var fuelPump = await this.data.FuelPumps.FindAsync(selectedParts["fuelPump"]);
+                var injectorKit = await this.data.InjectorKits.FindAsync(selectedParts["injectorKit"]);
+                var oilCooler = await this.data.OilCoolers.FindAsync(selectedParts["oilCooler"]);
+                var sparkPlug = await this.data.SparkPlugsKits.FindAsync(selectedParts["sparkPlug"]);
 
-            var userConfiguration = new UserConfiguration()
+
+                var totalPowerBoost = GetTotalUpgradeSums(turbo, exhaustKit, supercharger, ecu, fuelPump, injectorKit);
+                var totalPrice = GetPricesFromParts(turbo, exhaustKit, supercharger, ecu, fuelPump, injectorKit, oilCooler, sparkPlug);
+
+                var configuration = new Configuration()
+                {
+                    EngineId = engineId,
+                    CarModelId = carModelId,
+                    TurboKitId = selectedParts["turbo"] == 0 ? null : selectedParts["turbo"],
+                    TCUTuningId = selectedParts["tcu"] == 0 ? null : selectedParts["tcu"],
+                    ExhaustKitId = selectedParts["exhaustKit"] == 0 ? null : selectedParts["exhaustKit"],
+                    SuperchargerKitId = selectedParts["supercharger"] == 0 ? null : selectedParts["supercharger"],
+                    ECUTuningId = selectedParts["ecu"] == 0 ? null : selectedParts["ecu"],
+                    FuelPumpId = selectedParts["fuelPump"] == 0 ? null : selectedParts["fuelPump"],
+                    InjectorKitId = selectedParts["injectorKit"] == 0 ? null : selectedParts["injectorKit"],
+                    OilCoolerId = selectedParts["oilCooler"] == 0 ? null : selectedParts["oilCooler"],
+                    SparkPlugsId = selectedParts["sparkPlug"] == 0 ? null : selectedParts["sparkPlug"],
+                    HorsePowerBoostTotal = totalPowerBoost[0],
+                    TorqueBoostTotal = totalPowerBoost[1],
+                    TotalPrice = totalPrice
+                };
+
+                await this.data.Configurations.AddAsync(configuration);
+                await this.data.SaveChangesAsync();
+
+                var userConfiguration = new UserConfiguration()
+                {
+                    UserId = userId,
+                    Configuration = configuration
+                };
+
+                await this.data.UsersConfiguration.AddAsync(userConfiguration);
+                await this.data.SaveChangesAsync();
+            }
+            catch (Exception e)
             {
-                UserId = userId,
-                Configuration = configuration
-            };
-
-            await this.data.UsersConfiguration.AddAsync(userConfiguration);
-            await this.data.SaveChangesAsync();
+                var message = e.Message;
+                throw;
+            }
         }
 
 
@@ -221,7 +230,7 @@ namespace RevTech.Core.Services
 
         public async Task<UserEditConfigurationViewModel> GenerateEditViewModelAsync(string encryptedConfigurationId)
         {
-           var configurationId = this.configDataProtector.Decrypt(encryptedConfigurationId);
+            var configurationId = this.configDataProtector.Decrypt(encryptedConfigurationId);
             var entity = await this.data.Configurations.FirstAsync(x => x.Id == configurationId);
 
             var model = new UserEditConfigurationViewModel();

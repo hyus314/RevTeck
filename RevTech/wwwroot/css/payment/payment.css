@@ -77,7 +77,31 @@
     }
 
 /* Make form fields wider */
+.loading-spinner {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
 
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: #4CAF50;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-border {
+    margin: 0 auto;
+    display: block;
+}
 
 /* Additional Styling for Stripe Elements */
 .StripeElement {
@@ -103,6 +127,90 @@
 .form-group {
     flex: 1;
     margin-right: 10px;
+}
+.custom-modal-content {
+    border-radius: 12px;
+    background-color: #f1f1f1;
+}
+
+.custom-modal-header {
+    background-color: #cccccc;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.custom-modal-title {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.custom-modal-body {
+    font-family: Arial, sans-serif;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: #000;
+    animation: spin 1s linear infinite;
+}
+
+#success-icon {
+    width: 16px; /* Width of the SVG */
+    height: 16px; /* Height of the SVG */
+}
+
+.success-circle {
+    fill: #ffffff; /* white circle */
+    stroke: #4CAF50; /* green border */
+}
+
+.success-check {
+    stroke: #4CAF50; /* green check */
+}
+
+
+
+.fail-icon {
+    background-color: red;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    position: relative;
+}
+
+    .fail-icon::before,
+    .fail-icon::after {
+        content: '';
+        background-color: white;
+        position: absolute;
+    }
+
+    .fail-icon::before,
+    .fail-icon::after {
+        width: 5px;
+        height: 15px;
+        top: 10px;
+        left: 15px;
+    }
+
+    .fail-icon::before {
+        transform: rotate(45deg);
+    }
+
+    .fail-icon::after {
+        transform: rotate(-45deg);
+    }
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none;
 }
 
 /* The Modal (background) */

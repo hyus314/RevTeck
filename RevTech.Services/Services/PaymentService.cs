@@ -1,4 +1,5 @@
-﻿using RevTech.Core.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using RevTech.Core.Contracts;
 using RevTech.Data;
 using RevTech.Data.Models.UserConfiguration;
 using RevTech.Data.User;
@@ -84,14 +85,16 @@ namespace RevTech.Core.Services
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                var message = e.Message;
                 return false;
             }
         }
 
         private async Task SavePaymentAsync(PaymentIdModel paymentInfo)
         {
+            var configToRemove = await this.data.UsersConfiguration.FirstOrDefaultAsync(x => x.ConfigurationId == configDataProtector.Decrypt(paymentInfo.ConfigurationId!));
             var payment = new UserPayment()
             {
                 ClientId = paymentInfo.UserId!,
@@ -100,10 +103,16 @@ namespace RevTech.Core.Services
                 PaymentId = paymentInfo.PaymentMethodId,
                 OrderedDate = DateTime.UtcNow,
                 DeliveredDate = DateTime.UtcNow.AddDays(14),
+                FirstName = paymentInfo.FirstName,
+                LastName = paymentInfo.LastName,
+                Country = paymentInfo.Country,
+                City = paymentInfo.City,
+                DeliveryAddress = paymentInfo.DeliveryAddress
             };
 
             await this.data.Payments.AddAsync(payment);
-            await this.data.AddAsync(payment);
+            this.data.UsersConfiguration.Remove(configToRemove!);
+            await this.data.SaveChangesAsync();
 
         }
 

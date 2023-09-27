@@ -141,11 +141,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const form = document.getElementById('paymentForm');
+    // Assuming you have a reference to your submit button and form elements
     const submitButton = document.getElementById('submit-button');
-
+    const form = document.querySelector("#paymentForm");
+    // Add a loading spinner next to the button when clicked
     submitButton.addEventListener('click', async function (event) {
         event.preventDefault();
+
+        // Show loading spinner and disable button
+        submitButton.innerHTML = 'Processing... <div class="loader"></div>';
+        submitButton.disabled = true;
+
+        // Show the processing modal
+        $('#paymentModal').modal('show');
+        document.getElementById('processingState').style.display = 'block';
+        document.getElementById('successState').style.display = 'none';
+        document.getElementById('failState').style.display = 'none';
 
         const firstName = form.querySelector("[name='FirstName']").value;
         const lastName = form.querySelector("[name='LastName']").value;
@@ -172,6 +183,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (result.error) {
             const displayError = document.getElementById('card-errors');
             displayError.textContent = result.error.message;
+            // Revert button to original state
+            submitButton.textContent = 'Pay Now';
+            submitButton.disabled = false;
         } else {
             formData['PaymentMethodId'] = result.paymentMethod.id;
             const response = await fetch('Payment/ProceedToPaymentIntent', {
@@ -189,49 +203,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
             });
 
+            const success = await response.json();
 
-            const data = await response.json();
-            const clientSecret = data.clientSecret;
+            // Update modal based on payment success or failure
+            if (success.result == true) {
+                document.getElementById('processingState').style.display = 'none';
+                document.getElementById('successState').style.display = 'block';
 
-            const confirmResult = await stripe.confirmCardPayment(clientSecret, {
-                payment_method: formData['PaymentMethodId']
-            });
-
-            if (confirmResult.error) {
-                //const errorModal = document.getElementById('errorModal');
-                //const errorMessage = document.getElementById('errorMessage');
-                //errorMessage.textContent = confirmResult.error.message;
-                //errorModal.style.display = "block";
-                //errorModal.querySelector('.close').onclick = function () {
-                //    errorModal.style.display = "none";
-                //};
+                // Redirect to home page after 3 seconds
+                setTimeout(function () {
+                    window.location.href = "/"; // Change this to your home page URL
+                }, 3000);
             } else {
-                if (confirmResult.paymentIntent && confirmResult.paymentIntent.status === 'succeeded') {
-                    //const successModal = document.getElementById('successModal');
-                    //successModal.style.display = "block";
-                    //successModal.querySelector('.close').onclick = function () {
-                    //    successModal.style.display = "none";
-                    //};
-
-                    const paymentResponse = await fetch('Payment/SavePayment', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            paymentId: confirmResult.paymentIntent.id,
-                            city: formData.City,
-                            country: formData.Country,
-                            firstName: formData.FirstName,
-                            lastName: formData.LastName,
-                            deliveryAddress: formData.DeliveryAddress
-                        })
-                    });
-
-                    const paymentData = await paymentResponse.json();
-                    console.log("Payment saved:", paymentData);
-                }
+                document.getElementById('processingState').style.display = 'none';
+                document.getElementById('failState').style.display = 'block';
             }
+
+            // Revert button to original state
+            submitButton.textContent = 'Pay Now';
+            submitButton.disabled = false;
         }
     });
+
 });

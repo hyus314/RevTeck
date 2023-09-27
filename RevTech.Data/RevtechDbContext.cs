@@ -97,8 +97,8 @@
 
             builder.Entity<UserPayment>()
      .HasOne(e => e.Client)
-     .WithOne() 
-     .HasForeignKey<UserPayment>(e => e.ClientId)
+     .WithMany() 
+     .HasForeignKey(e => e.ClientId)
      .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<UserPayment>()

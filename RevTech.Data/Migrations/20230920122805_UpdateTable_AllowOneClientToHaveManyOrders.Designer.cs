@@ -12,14 +12,14 @@ using RevTech.Data;
 namespace RevTech.Data.Migrations
 {
     [DbContext(typeof(RevtechDbContext))]
-    [Migration("20230702115055_AddConnectionBetweenModelAndExhaustKit")]
-    partial class AddConnectionBetweenModelAndExhaustKit
+    [Migration("20230920122805_UpdateTable_AllowOneClientToHaveManyOrders")]
+    partial class UpdateTable_AllowOneClientToHaveManyOrders
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.18")
+                .HasAnnotation("ProductVersion", "6.0.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -74,71 +74,6 @@ namespace RevTech.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -226,263 +161,6 @@ namespace RevTech.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.ECU_TCU_ConnectionTable", b =>
-                {
-                    b.Property<int>("ECUTuningId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TCUTuningId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ECUTuningId", "TCUTuningId");
-
-                    b.HasIndex("TCUTuningId");
-
-                    b.ToTable("ECU_TCU_Connection");
-
-                    b.HasData(
-                        new
-                        {
-                            ECUTuningId = 1,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 1,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 1,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 2,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 2,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 2,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 3,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 3,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 3,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 4,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 4,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 4,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 5,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 5,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 5,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 6,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 6,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 6,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 7,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 7,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 7,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 8,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 8,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 8,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 9,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 9,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 9,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 10,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 10,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 10,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 11,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 11,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 11,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 12,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 12,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 12,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 13,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 13,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 13,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 14,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 14,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 14,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 15,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 15,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 15,
-                            TCUTuningId = 3
-                        },
-                        new
-                        {
-                            ECUTuningId = 16,
-                            TCUTuningId = 1
-                        },
-                        new
-                        {
-                            ECUTuningId = 16,
-                            TCUTuningId = 2
-                        },
-                        new
-                        {
-                            ECUTuningId = 16,
-                            TCUTuningId = 3
-                        });
-                });
-
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.ECUTuning", b =>
                 {
                     b.Property<int>("Id")
@@ -504,8 +182,8 @@ namespace RevTech.Data.Migrations
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -674,7 +352,7 @@ namespace RevTech.Data.Migrations
                             Id = 14,
                             EngineId = 14,
                             HorsePowerBoost = 120,
-                            ImageURL = "http://www.goapr.co.uk/includes/img/icons/apr-ecu.png",
+                            ImageURL = "/img/apr-ecu-for-3.0-tfsi.png",
                             Manufacturer = "APR",
                             Name = "ECU Upgrade for 3.0 TFSI",
                             Price = 900.00m,
@@ -685,7 +363,7 @@ namespace RevTech.Data.Migrations
                             Id = 15,
                             EngineId = 15,
                             HorsePowerBoost = 120,
-                            ImageURL = "http://www.goapr.co.uk/includes/img/icons/apr-ecu.png",
+                            ImageURL = "/img/apr-ecu-for-3.0-tfsi.png",
                             Manufacturer = "APR",
                             Name = "ECU Upgrade for 3.0 TFSI",
                             Price = 900.00m,
@@ -696,7 +374,7 @@ namespace RevTech.Data.Migrations
                             Id = 16,
                             EngineId = 16,
                             HorsePowerBoost = 120,
-                            ImageURL = "http://www.goapr.co.uk/includes/img/icons/apr-ecu.png",
+                            ImageURL = "/img/apr-ecu-for-3.0-tfsi.png",
                             Manufacturer = "APR",
                             Name = "ECU Upgrade for 3.0 TFSI",
                             Price = 900.00m,
@@ -728,13 +406,13 @@ namespace RevTech.Data.Migrations
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Model")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(18, 2)
@@ -750,6 +428,500 @@ namespace RevTech.Data.Migrations
                     b.HasIndex("EngineId");
 
                     b.ToTable("ExhaustKits");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CarModelId = 1,
+                            EngineId = 1,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://www.dcperformance.co.uk/images/products/wm/a9fa2e54659e70c582722017b3c60776.jpg",
+                            Manufacturer = "Jetex",
+                            Model = "1.8t A6 C5 Exhaust Kit",
+                            Price = 800.85m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CarModelId = 1,
+                            EngineId = 3,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://www.dcperformance.co.uk/images/products/wm/a9fa2e54659e70c582722017b3c60776.jpg",
+                            Manufacturer = "Jetex",
+                            Model = "1.8t A6 C5 Exhaust Kit",
+                            Price = 800.85m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CarModelId = 1,
+                            EngineId = 4,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://www.vividracing.com/images/bbexhaust-a6-catback.jpg",
+                            Manufacturer = "B&B",
+                            Model = "2.7t A6 C5 Exhaust Kit",
+                            Price = 1292.40m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CarModelId = 1,
+                            EngineId = 5,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://www.vividracing.com/images/bbexhaust-a6-catback.jpg",
+                            Manufacturer = "B&B",
+                            Model = "2.7t A6 C5 Exhaust Kit",
+                            Price = 1292.40m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CarModelId = 1,
+                            EngineId = 4,
+                            HorsePowerBoost = 17,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/697789_x450.webp",
+                            Manufacturer = "Milltek",
+                            Model = "2.7t A6 C5 Exhaust Kit",
+                            Price = 1800.00m,
+                            TorqueBoost = 35
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CarModelId = 1,
+                            EngineId = 5,
+                            HorsePowerBoost = 17,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/697789_x450.webp",
+                            Manufacturer = "Milltek",
+                            Model = "2.7t A6 C5 Exhaust Kit",
+                            Price = 1800.00m,
+                            TorqueBoost = 35
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CarModelId = 2,
+                            EngineId = 1,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://en.bsr.se/assets/images/products/big/737962_big.jpg",
+                            Manufacturer = "Simons",
+                            Model = "1.8t A4 B5 Exhaust Kit",
+                            Price = 681.20m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CarModelId = 2,
+                            EngineId = 3,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://en.bsr.se/assets/images/products/big/737962_big.jpg",
+                            Manufacturer = "Simons",
+                            Model = "1.8t A4 B5 Exhaust Kit",
+                            Price = 681.20m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CarModelId = 2,
+                            EngineId = 1,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://i.ebayimg.com/images/g/1jAAAOSwXGxgQND4/s-l1600.jpg",
+                            Manufacturer = "Jetex",
+                            Model = "1.8t A4 B5 Exhaust Kit",
+                            Price = 528.14m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CarModelId = 2,
+                            EngineId = 3,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://i.ebayimg.com/images/g/1jAAAOSwXGxgQND4/s-l1600.jpg",
+                            Manufacturer = "Jetex",
+                            Model = "1.8t A4 B5 Exhaust Kit",
+                            Price = 528.14m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CarModelId = 3,
+                            EngineId = 4,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://www.bbexhaust.com/wp-content/uploads/2016/05/FPIM-0530-2.jpg",
+                            Manufacturer = "Billy Boat Exhaust",
+                            Model = "2.7tt S4 B5 Exhaust Kit",
+                            Price = 1579.93m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CarModelId = 5,
+                            EngineId = 6,
+                            HorsePowerBoost = 20,
+                            ImageURL = "https://cmwheels.com/wp-content/uploads/2018/01/products-SSXAU116.jpg",
+                            Manufacturer = "Milltek",
+                            Model = "4.2FSI RS4 B7 Exhaust Kit",
+                            Price = 2234.31m,
+                            TorqueBoost = 40
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CarModelId = 5,
+                            EngineId = 6,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://media.vwpartsinternational.com/wp-content/uploads/2018/05/21162655/Audi-RS4-B7-4.2-V8-Saloon-Avant-Milltek-Sport-Performance-Non-Resonated-Cat-Back-Exhaust-System-Inc-Satin-Sheen-Black-Tips-SSXAU218.jpeg",
+                            Manufacturer = "Milltek",
+                            Model = "4.2FSI RS4 B7 Exhaust Kit",
+                            Price = 1816.85m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CarModelId = 6,
+                            EngineId = 7,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://cmwheels.com/wp-content/uploads/2018/04/SSXAU190.jpg",
+                            Manufacturer = "Milltek",
+                            Model = "4.2FSI S5 B8 Exhaust Kit",
+                            Price = 1105.44m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CarModelId = 7,
+                            EngineId = 7,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://cmwheels.com/wp-content/uploads/2018/04/SSXAU190.jpg",
+                            Manufacturer = "Milltek",
+                            Model = "4.2FSI S5 B8.5 Exhaust Kit",
+                            Price = 1105.44m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CarModelId = 7,
+                            EngineId = 14,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://clptuning.co.uk/product/milltek-cat-back-exhaust-system-audi-s4-s5-b8-5-3-0tfsi/",
+                            Manufacturer = "Milltek",
+                            Model = "3.0TFSI S5 B8.5 Exhaust Kit",
+                            Price = 2726.91m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CarModelId = 8,
+                            EngineId = 6,
+                            HorsePowerBoost = 13,
+                            ImageURL = "https://www.armytrix.com/cdn/800_530_80_ff_cdn/audi-rs5-b8/audi-rs5-v8-exhaust-16.jpg",
+                            Manufacturer = "Armytrix",
+                            Model = "4.2 FSI RS5 B8.5 VALVETRONIC Exhaust Kit",
+                            Price = 5440.69m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CarModelId = 8,
+                            EngineId = 6,
+                            HorsePowerBoost = 13,
+                            ImageURL = "https://clptuning.co.uk/wp-content/uploads/2018/01/SSXAU261_1-300x300.jpg",
+                            Manufacturer = "Milltek",
+                            Model = "4.2 FSI RS5 B8.5 Exhaust Kit",
+                            Price = 3341.50m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CarModelId = 9,
+                            EngineId = 8,
+                            HorsePowerBoost = 5,
+                            ImageURL = "https://balancemotorsport.co.uk/media/catalog/product/cache/58eb3c1ce7095e93eebc6663a89e40bb/4/4/44534_1.jpg",
+                            Manufacturer = "SuperSprint",
+                            Model = "4.2 FSI A6 C6 Centre Exhaust + X-Pipe",
+                            Price = 1665.06m,
+                            TorqueBoost = 9
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CarModelId = 9,
+                            EngineId = 15,
+                            HorsePowerBoost = 5,
+                            ImageURL = "https://balancemotorsport.co.uk/media/catalog/product/cache/58eb3c1ce7095e93eebc6663a89e40bb/4/4/44534_1.jpg",
+                            Manufacturer = "SuperSprint",
+                            Model = "3.0 TFSI A6 C6 Centre Exhaust + X-Pipe",
+                            Price = 1581.80m,
+                            TorqueBoost = 9
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CarModelId = 9,
+                            EngineId = 15,
+                            HorsePowerBoost = 7,
+                            ImageURL = "https://cdn11.bigcommerce.com/s-ov4aejck1y/images/stencil/1920w/products/296179/35616535/840756122694944651_jhm-c6a630tcbe-thmb__05028.1668196184.jpg?c=1",
+                            Manufacturer = "JHM",
+                            Model = "3.0 TFSI A6 C6 Cat Back Exhaust",
+                            Price = 1750.59m,
+                            TorqueBoost = 10
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CarModelId = 10,
+                            EngineId = 9,
+                            HorsePowerBoost = 5,
+                            ImageURL = "https://www.milltekexhaust-roadrunnermotorsport.co.uk/30048-large_default/milltek-exhaust-audi-a4-2-0-tfsi-b7-quattro-and-dtm-cat-back-exhaust-ssxau517.jpg",
+                            Manufacturer = "Milltek",
+                            Model = "2.0 TFSI A4 B7 Cat Back Exhaust",
+                            Price = 1524.78m,
+                            TorqueBoost = 8
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CarModelId = 10,
+                            EngineId = 9,
+                            HorsePowerBoost = 5,
+                            ImageURL = "https://media.vwpartsinternational.com/wp-content/uploads/2018/03/14235412/Audi-A4-B7-1.8T-2.0TFSI-Quattro-Jetex-Performance-Stainless-Steel-Resonated-Half-Exhaust-System-with-Round-100mm-LR-Tail-Pipes-EC-44DH5R-416x258.jpg",
+                            Manufacturer = "Jetex",
+                            Model = "2.0 TFSI A4 B7 Half Exhaust Kit",
+                            Price = 773.83m,
+                            TorqueBoost = 8
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CarModelId = 10,
+                            EngineId = 9,
+                            HorsePowerBoost = 7,
+                            ImageURL = "https://en.bsr.se/assets/images/products/big/4383_big.jpg",
+                            Manufacturer = "Ferrita",
+                            Model = "2.0 TFSI A4 B7 Exhaust Kit",
+                            Price = 1144.67m,
+                            TorqueBoost = 11
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CarModelId = 11,
+                            EngineId = 10,
+                            HorsePowerBoost = 5,
+                            ImageURL = "https://www.milltekexhaust-roadrunnermotorsport.co.uk/30048-large_default/milltek-exhaust-audi-a4-2-0-tfsi-b7-quattro-and-dtm-cat-back-exhaust-ssxau517.jpg",
+                            Manufacturer = "Milltek",
+                            Model = "2.0 TFSI A4 B7 Cat Back Exhaust",
+                            Price = 1524.78m,
+                            TorqueBoost = 8
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CarModelId = 11,
+                            EngineId = 10,
+                            HorsePowerBoost = 5,
+                            ImageURL = "https://media.vwpartsinternational.com/wp-content/uploads/2018/03/14235412/Audi-A4-B7-1.8T-2.0TFSI-Quattro-Jetex-Performance-Stainless-Steel-Resonated-Half-Exhaust-System-with-Round-100mm-LR-Tail-Pipes-EC-44DH5R-416x258.jpg",
+                            Manufacturer = "Jetex",
+                            Model = "2.0 TFSI A4 B7 Half Exhaust Kit",
+                            Price = 773.83m,
+                            TorqueBoost = 8
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CarModelId = 11,
+                            EngineId = 10,
+                            HorsePowerBoost = 7,
+                            ImageURL = "https://en.bsr.se/assets/images/products/big/4383_big.jpg",
+                            Manufacturer = "Ferrita",
+                            Model = "2.0 TFSI A4 B7 Exhaust Kit",
+                            Price = 1144.67m,
+                            TorqueBoost = 11
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CarModelId = 12,
+                            EngineId = 11,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://cdn.shopify.com/s/files/1/0070/1779/1577/products/DSC01072_53eeb7bc-42ea-4166-837b-1b16ee4022d2_1200x1200.jpg?v=1590075728",
+                            Manufacturer = "TNEER",
+                            Model = "4.0 TFSI S6 C7 Exhaust Kit",
+                            Price = 7513.22m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CarModelId = 12,
+                            EngineId = 11,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://cdn.shopify.com/s/files/1/2493/0960/products/a9f1f012a32f87a8ca5b762158af25b7.jpg?v=1610140343",
+                            Manufacturer = "APR",
+                            Model = "4.0 TFSI S6 C7 Cat Back Exhaust ",
+                            Price = 3500.00m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CarModelId = 13,
+                            EngineId = 12,
+                            HorsePowerBoost = 20,
+                            ImageURL = "https://www.wrsauto.it/161-thickbox_default/akrapovic-evolution-exhaust-system-audi-rs6-avant-c7-2014-2018.jpg",
+                            Manufacturer = "Akrapovic",
+                            Model = "4.0 TFSI RS6 C7 Cat Back Exhaust",
+                            Price = 10417.38m,
+                            TorqueBoost = 25
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CarModelId = 13,
+                            EngineId = 12,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://www.armytrix.com/cdn/800_530_80_ff_cdn/audi-rs6-rs7/audi-rs6-c7-armytrix-exhaust-1.jpg",
+                            Manufacturer = "Armytrix",
+                            Model = "4.0 TFSI RS6 C7 VALVETRONIC Exhaust Kit",
+                            Price = 7604.22m,
+                            TorqueBoost = 25
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CarModelId = 16,
+                            EngineId = 11,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://germanmuscle.co/wp-content/uploads/2022/05/FI-Exhaust-2012-2017-Audi-S6-C7-4.0T-Valvetronic-Exhaust-System-1.jpg",
+                            Manufacturer = "FI",
+                            Model = "4.0 TFSI S7 C7 VALVETRONIC Exhaust Kit",
+                            Price = 4500.99m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CarModelId = 16,
+                            EngineId = 11,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://www.futurez.fi/wp-content/uploads/76ae3060571a43ba82ef55d2f9617482-1.png",
+                            Manufacturer = "Akrapovic",
+                            Model = "4.0 TFSI S7 C7 VALVETRONIC Exhaust Kit",
+                            Price = 10344.74m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CarModelId = 17,
+                            EngineId = 12,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://www.armytrix.com/cdn/800_530_80_ff_cdn/audi-rs7/audi-rs7-c7-armytrix-exhaust-9.jpg",
+                            Manufacturer = "Armytrix",
+                            Model = "4.0 TFSI RS7 C7 VALVETRONIC Exhaust Kit",
+                            Price = 7804.22m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CarModelId = 17,
+                            EngineId = 12,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://www.motorsport24.nl/wp-content/uploads/2022/04/SAUTI4H-1.png",
+                            Manufacturer = "Akrapovic",
+                            Model = "4.0 TFSI RS7 C7 VALVETRONIC Exhaust Kit",
+                            Price = 11042.88m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CarModelId = 14,
+                            EngineId = 12,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://dtm-tuning.com/image/cache/catalog/goods_ad_eqip/milltek/a8-d4/milltek-ssxau466_1-1000x690.jpg",
+                            Manufacturer = "Milltek",
+                            Model = "4.0 TFSI S8 D4 Exhaust Kit",
+                            Price = 11042.88m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CarModelId = 14,
+                            EngineId = 12,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://cdn.capristoexhaust.com/wp-content/uploads/sites/3/IMG_0710-Audi-S8-20171109-600x400.jpg",
+                            Manufacturer = "Capristo",
+                            Model = "4.0 TFSI S8 D4 Cat Back Exhaust",
+                            Price = 7300.00m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CarModelId = 14,
+                            EngineId = 12,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://dtm-tuning.com/image/cache/catalog/goods_ad_eqip/milltek/a8-d4/milltek-ssxau466_1-1000x690.jpg",
+                            Manufacturer = "Milltek",
+                            Model = "4.0 TFSI S8 D4 Exhaust Kit",
+                            Price = 11042.88m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CarModelId = 15,
+                            EngineId = 13,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://cdn.capristoexhaust.com/wp-content/uploads/sites/3/IMG_0710-Audi-S8-20171109-600x400.jpg",
+                            Manufacturer = "Capristo",
+                            Model = "4.0 TFSI S8 D4 Cat Back Exhaust",
+                            Price = 7300.00m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CarModelId = 18,
+                            EngineId = 16,
+                            HorsePowerBoost = 5,
+                            ImageURL = "https://martelius.com/media/catalog/product/cache/c1e92043d4ce1e523c981de3ee6acbf8/5/3/530041.jpg",
+                            Manufacturer = "Martellius",
+                            Model = "3.0 TFSI A6 C7 Cat Back Exhaust",
+                            Price = 1415.60m,
+                            TorqueBoost = 8
+                        },
+                        new
+                        {
+                            Id = 41,
+                            CarModelId = 18,
+                            EngineId = 16,
+                            HorsePowerBoost = 5,
+                            ImageURL = "https://martelius.com/media/catalog/product/cache/c1e92043d4ce1e523c981de3ee6acbf8/5/3/530041.jpg",
+                            Manufacturer = "Milltek",
+                            Model = "4.2 FSI Q7 4L Exhaust Kit",
+                            Price = 2700.00m,
+                            TorqueBoost = 8
+                        });
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.FuelPump", b =>
@@ -773,13 +945,13 @@ namespace RevTech.Data.Migrations
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Model")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(18, 2)
@@ -793,6 +965,184 @@ namespace RevTech.Data.Migrations
                     b.HasIndex("EngineId");
 
                     b.ToTable("FuelPumps");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EngineId = 1,
+                            HorsePowerBoost = 50,
+                            ImageURL = "https://strperformance.com/42122-large_default/high-flow-fuel-pump-assembly-bosch-044-034motorsport-for-audi-a4-s4-b5-s2-rs2-a6-c5-s6-c7-18t-22-27-40-fsi.jpg",
+                            Manufacturer = "Bosch",
+                            Model = "High Flow Fuel Pump",
+                            Price = 589.13m,
+                            TorqueBoost = 70
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EngineId = 2,
+                            HorsePowerBoost = 50,
+                            ImageURL = "https://strperformance.com/42122-large_default/high-flow-fuel-pump-assembly-bosch-044-034motorsport-for-audi-a4-s4-b5-s2-rs2-a6-c5-s6-c7-18t-22-27-40-fsi.jpg",
+                            Manufacturer = "Bosch",
+                            Model = "High Flow Fuel Pump",
+                            Price = 589.13m,
+                            TorqueBoost = 70
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EngineId = 3,
+                            HorsePowerBoost = 50,
+                            ImageURL = "https://strperformance.com/42122-large_default/high-flow-fuel-pump-assembly-bosch-044-034motorsport-for-audi-a4-s4-b5-s2-rs2-a6-c5-s6-c7-18t-22-27-40-fsi.jpg",
+                            Manufacturer = "Bosch",
+                            Model = "High Flow Fuel Pump",
+                            Price = 589.13m,
+                            TorqueBoost = 70
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EngineId = 4,
+                            HorsePowerBoost = 50,
+                            ImageURL = "https://strperformance.com/42122-large_default/high-flow-fuel-pump-assembly-bosch-044-034motorsport-for-audi-a4-s4-b5-s2-rs2-a6-c5-s6-c7-18t-22-27-40-fsi.jpg",
+                            Manufacturer = "Bosch",
+                            Model = "High Flow Fuel Pump",
+                            Price = 589.13m,
+                            TorqueBoost = 70
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EngineId = 5,
+                            HorsePowerBoost = 50,
+                            ImageURL = "https://strperformance.com/42122-large_default/high-flow-fuel-pump-assembly-bosch-044-034motorsport-for-audi-a4-s4-b5-s2-rs2-a6-c5-s6-c7-18t-22-27-40-fsi.jpg",
+                            Manufacturer = "Bosch",
+                            Model = "High Flow Fuel Pump",
+                            Price = 589.13m,
+                            TorqueBoost = 70
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EngineId = 11,
+                            HorsePowerBoost = 50,
+                            ImageURL = "https://strperformance.com/42122-large_default/high-flow-fuel-pump-assembly-bosch-044-034motorsport-for-audi-a4-s4-b5-s2-rs2-a6-c5-s6-c7-18t-22-27-40-fsi.jpg",
+                            Manufacturer = "Bosch",
+                            Model = "High Flow Fuel Pump",
+                            Price = 589.13m,
+                            TorqueBoost = 70
+                        },
+                        new
+                        {
+                            Id = 7,
+                            EngineId = 6,
+                            HorsePowerBoost = 70,
+                            ImageURL = "https://cdn11.bigcommerce.com/s-6y7pa5d/images/stencil/1280x1280/products/24113/25401/stage_3__b7rs4_hpfps_1_1__82083.1542907995.jpg?c=2",
+                            Manufacturer = "APR",
+                            Model = "High Pressure Fuel Pump For 4.2 FSI",
+                            Price = 3172.55m,
+                            TorqueBoost = 90
+                        },
+                        new
+                        {
+                            Id = 8,
+                            EngineId = 7,
+                            HorsePowerBoost = 70,
+                            ImageURL = "https://cdn11.bigcommerce.com/s-6y7pa5d/images/stencil/1280x1280/products/24113/25401/stage_3__b7rs4_hpfps_1_1__82083.1542907995.jpg?c=2",
+                            Manufacturer = "APR",
+                            Model = "High Pressure Fuel Pump For 4.2 FSI",
+                            Price = 3172.55m,
+                            TorqueBoost = 90
+                        },
+                        new
+                        {
+                            Id = 9,
+                            EngineId = 9,
+                            HorsePowerBoost = 35,
+                            ImageURL = "https://clptuning.co.uk/wp-content/uploads/2016/11/fsi_pump__11368.1449608918.1280.1280-300x300.jpg",
+                            Manufacturer = "APR",
+                            Model = "High Pressure Fuel Pump For 2.0 TFSI",
+                            Price = 1713.18m,
+                            TorqueBoost = 45
+                        },
+                        new
+                        {
+                            Id = 10,
+                            EngineId = 10,
+                            HorsePowerBoost = 35,
+                            ImageURL = "https://clptuning.co.uk/wp-content/uploads/2016/11/fsi_pump__11368.1449608918.1280.1280-300x300.jpg",
+                            Manufacturer = "APR",
+                            Model = "High Pressure Fuel Pump For 2.0 TFSI",
+                            Price = 1713.18m,
+                            TorqueBoost = 45
+                        },
+                        new
+                        {
+                            Id = 11,
+                            EngineId = 11,
+                            HorsePowerBoost = 145,
+                            ImageURL = "https://cdn11.bigcommerce.com/s-a4fc6cbe36/images/stencil/1280x1280/products/209/1324/4.0L_Audi_TT_High_Pressure_Fuel_Pump_Kit__06817.1671545289.jpg?c=1",
+                            Manufacturer = "Nostrum High Performance",
+                            Model = "High Pressure Fuel Pump Kit For 4.0 TFSI",
+                            Price = 2450.00m,
+                            TorqueBoost = 180
+                        },
+                        new
+                        {
+                            Id = 12,
+                            EngineId = 12,
+                            HorsePowerBoost = 145,
+                            ImageURL = "https://cdn11.bigcommerce.com/s-a4fc6cbe36/images/stencil/1280x1280/products/209/1324/4.0L_Audi_TT_High_Pressure_Fuel_Pump_Kit__06817.1671545289.jpg?c=1",
+                            Manufacturer = "Nostrum High Performance",
+                            Model = "High Pressure Fuel Pump Kit For 4.0 TFSI",
+                            Price = 2450.00m,
+                            TorqueBoost = 180
+                        },
+                        new
+                        {
+                            Id = 13,
+                            EngineId = 13,
+                            HorsePowerBoost = 145,
+                            ImageURL = "https://cdn11.bigcommerce.com/s-a4fc6cbe36/images/stencil/1280x1280/products/209/1324/4.0L_Audi_TT_High_Pressure_Fuel_Pump_Kit__06817.1671545289.jpg?c=1",
+                            Manufacturer = "Nostrum High Performance",
+                            Model = "High Pressure Fuel Pump Kit For 4.0 TFSI",
+                            Price = 2450.00m,
+                            TorqueBoost = 180
+                        },
+                        new
+                        {
+                            Id = 14,
+                            EngineId = 14,
+                            HorsePowerBoost = 50,
+                            ImageURL = "https://images.goapr.com/583x/ms100207_001.jpg",
+                            Manufacturer = "APR",
+                            Model = "High Pressure Fuel Pump For 3.0 TFSI",
+                            Price = 1199.95m,
+                            TorqueBoost = 90
+                        },
+                        new
+                        {
+                            Id = 15,
+                            EngineId = 15,
+                            HorsePowerBoost = 50,
+                            ImageURL = "https://images.goapr.com/583x/ms100207_001.jpg",
+                            Manufacturer = "APR",
+                            Model = "High Pressure Fuel Pump For 3.0 TFSI",
+                            Price = 1199.95m,
+                            TorqueBoost = 90
+                        },
+                        new
+                        {
+                            Id = 16,
+                            EngineId = 16,
+                            HorsePowerBoost = 50,
+                            ImageURL = "https://images.goapr.com/583x/ms100207_001.jpg",
+                            Manufacturer = "APR",
+                            Model = "High Pressure Fuel Pump For 3.0 TFSI",
+                            Price = 1199.95m,
+                            TorqueBoost = 90
+                        });
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.InjectorKit", b =>
@@ -816,13 +1166,13 @@ namespace RevTech.Data.Migrations
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Model")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(18, 2)
@@ -836,6 +1186,272 @@ namespace RevTech.Data.Migrations
                     b.HasIndex("EngineId");
 
                     b.ToTable("InjectorKits");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EngineId = 1,
+                            HorsePowerBoost = 8,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/87249_x450.webp",
+                            Manufacturer = "Bosch",
+                            Model = "550 cc Fuel Injectors - Set Of Four",
+                            Price = 291.25m,
+                            TorqueBoost = 16
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EngineId = 2,
+                            HorsePowerBoost = 8,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/87249_x450.webp",
+                            Manufacturer = "Bosch",
+                            Model = "550 cc Fuel Injectors - Set Of Four",
+                            Price = 291.25m,
+                            TorqueBoost = 16
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EngineId = 3,
+                            HorsePowerBoost = 8,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/87249_x450.webp",
+                            Manufacturer = "Bosch",
+                            Model = "550 cc Fuel Injectors - Set Of Four",
+                            Price = 291.25m,
+                            TorqueBoost = 16
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EngineId = 1,
+                            HorsePowerBoost = 9,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/75141_x450.webp",
+                            Manufacturer = "Siemens",
+                            Model = "630 cc Fuel Injectors - Set Of Four",
+                            Price = 312.80m,
+                            TorqueBoost = 18
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EngineId = 2,
+                            HorsePowerBoost = 9,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/75141_x450.webp",
+                            Manufacturer = "Siemens",
+                            Model = "630 cc Fuel Injectors - Set Of Four",
+                            Price = 312.80m,
+                            TorqueBoost = 18
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EngineId = 3,
+                            HorsePowerBoost = 9,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/75141_x450.webp",
+                            Manufacturer = "Siemens",
+                            Model = "630 cc Fuel Injectors - Set Of Four",
+                            Price = 312.80m,
+                            TorqueBoost = 18
+                        },
+                        new
+                        {
+                            Id = 7,
+                            EngineId = 1,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1581767_x450.webp",
+                            Manufacturer = "Bosch",
+                            Model = "750 cc Fuel Injectors - Set Of Four",
+                            Price = 411.72m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 8,
+                            EngineId = 2,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1581767_x450.webp",
+                            Manufacturer = "Bosch",
+                            Model = "750 cc Fuel Injectors - Set Of Four",
+                            Price = 411.72m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 9,
+                            EngineId = 3,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1581767_x450.webp",
+                            Manufacturer = "Bosch",
+                            Model = "750 cc Fuel Injectors - Set Of Four",
+                            Price = 411.72m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 10,
+                            EngineId = 4,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1581767_x450.webp",
+                            Manufacturer = "Bosch",
+                            Model = "750 cc Fuel Injectors - Set Of Six",
+                            Price = 617.58m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 11,
+                            EngineId = 5,
+                            HorsePowerBoost = 10,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1581767_x450.webp",
+                            Manufacturer = "Bosch",
+                            Model = "750 cc Fuel Injectors - Set Of Six",
+                            Price = 617.58m,
+                            TorqueBoost = 20
+                        },
+                        new
+                        {
+                            Id = 12,
+                            EngineId = 4,
+                            HorsePowerBoost = 12,
+                            ImageURL = "https://cdn.shopify.com/s/files/1/0109/5814/3547/products/32_710e4d04-15b1-40cf-8c72-48dc955e88d5_695x695.jpg?v=1670590394",
+                            Manufacturer = "Bosch",
+                            Model = "1000 cc Fuel Injectors - Set Of Six",
+                            Price = 650.12m,
+                            TorqueBoost = 22
+                        },
+                        new
+                        {
+                            Id = 13,
+                            EngineId = 5,
+                            HorsePowerBoost = 12,
+                            ImageURL = "https://cdn.shopify.com/s/files/1/0109/5814/3547/products/32_710e4d04-15b1-40cf-8c72-48dc955e88d5_695x695.jpg?v=1670590394",
+                            Manufacturer = "Bosch",
+                            Model = "1000 cc Fuel Injectors - Set Of Six",
+                            Price = 650.12m,
+                            TorqueBoost = 22
+                        },
+                        new
+                        {
+                            Id = 14,
+                            EngineId = 6,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Eight",
+                            Price = 1525.21m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 15,
+                            EngineId = 7,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Eight",
+                            Price = 1525.21m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 16,
+                            EngineId = 8,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Eight",
+                            Price = 1525.21m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 17,
+                            EngineId = 11,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Eight",
+                            Price = 1525.21m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 18,
+                            EngineId = 12,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Eight",
+                            Price = 1525.21m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 19,
+                            EngineId = 13,
+                            HorsePowerBoost = 15,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Eight",
+                            Price = 1525.21m,
+                            TorqueBoost = 30
+                        },
+                        new
+                        {
+                            Id = 20,
+                            EngineId = 9,
+                            HorsePowerBoost = 7,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Four",
+                            Price = 762.61m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 21,
+                            EngineId = 10,
+                            HorsePowerBoost = 7,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Four",
+                            Price = 762.61m,
+                            TorqueBoost = 15
+                        },
+                        new
+                        {
+                            Id = 22,
+                            EngineId = 14,
+                            HorsePowerBoost = 9,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Six",
+                            Price = 1143.92m,
+                            TorqueBoost = 22
+                        },
+                        new
+                        {
+                            Id = 23,
+                            EngineId = 15,
+                            HorsePowerBoost = 9,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Six",
+                            Price = 1143.92m,
+                            TorqueBoost = 22
+                        },
+                        new
+                        {
+                            Id = 24,
+                            EngineId = 16,
+                            HorsePowerBoost = 9,
+                            ImageURL = "https://www.kmdtuning.com/image/cache/data/productimage/injrs4-500x500.jpg",
+                            Manufacturer = "OEM",
+                            Model = "Tuning Fuel Injectors - Set Of Six",
+                            Price = 1143.92m,
+                            TorqueBoost = 22
+                        });
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.OilCooler", b =>
@@ -856,13 +1472,13 @@ namespace RevTech.Data.Migrations
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Model")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(18, 2)
@@ -873,6 +1489,242 @@ namespace RevTech.Data.Migrations
                     b.HasIndex("EngineId");
 
                     b.ToTable("OilCoolers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EngineId = 1,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/42/68/50/1652867207/oelkuehler_13reihen_dash_kl99c4c_1280x1280.webp",
+                            Manufacturer = "BAR-TEK",
+                            Model = "Oil Cooler Kit for 1.8t",
+                            Price = 299.71m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EngineId = 2,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/42/68/50/1652867207/oelkuehler_13reihen_dash_kl99c4c_1280x1280.webp",
+                            Manufacturer = "BAR-TEK",
+                            Model = "Oil Cooler Kit for 1.8t",
+                            Price = 299.71m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EngineId = 3,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/42/68/50/1652867207/oelkuehler_13reihen_dash_kl99c4c_1280x1280.webp",
+                            Manufacturer = "BAR-TEK",
+                            Model = "Oil Cooler Kit for 1.8t",
+                            Price = 299.71m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EngineId = 4,
+                            ImageURL = "https://r-parts-store.com/media/image/product/120679/lg/wt-250001001_wagnertuning-upgrade-oil-cooler-kit-audi-rs4-b5-27biturbo.jpg",
+                            Manufacturer = "WAGNERTUNING",
+                            Model = "Oil Cooler Kit for 2.7tt",
+                            Price = 1035.35m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EngineId = 5,
+                            ImageURL = "https://r-parts-store.com/media/image/product/120679/lg/wt-250001001_wagnertuning-upgrade-oil-cooler-kit-audi-rs4-b5-27biturbo.jpg",
+                            Manufacturer = "WAGNERTUNING",
+                            Model = "Oil Cooler Kit for 2.7tt",
+                            Price = 1035.35m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EngineId = 6,
+                            ImageURL = "https://cdn11.bigcommerce.com/s-6y7pa5d/images/stencil/1280x1280/products/23136/24066/fmocrs4__35308.1449614047.jpg?c=2",
+                            Manufacturer = "Forge",
+                            Model = "Oil Cooler Kit for 4.2 FSI",
+                            Price = 1144.33m
+                        },
+                        new
+                        {
+                            Id = 7,
+                            EngineId = 7,
+                            ImageURL = "https://cdn11.bigcommerce.com/s-6y7pa5d/images/stencil/1280x1280/products/23136/24066/fmocrs4__35308.1449614047.jpg?c=2",
+                            Manufacturer = "Forge",
+                            Model = "Oil Cooler Kit for 4.2 FSI",
+                            Price = 1144.33m
+                        },
+                        new
+                        {
+                            Id = 8,
+                            EngineId = 8,
+                            ImageURL = "https://cdn11.bigcommerce.com/s-6y7pa5d/images/stencil/1280x1280/products/23136/24066/fmocrs4__35308.1449614047.jpg?c=2",
+                            Manufacturer = "Forge",
+                            Model = "Oil Cooler Kit for 4.2 FSI",
+                            Price = 1144.33m
+                        },
+                        new
+                        {
+                            Id = 9,
+                            EngineId = 9,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/5a/a4/f2/1652886657/13_reiher_ea113b5d62_1280x1280.webp",
+                            Manufacturer = "Bar-Tek",
+                            Model = "Oil Cooler Kit for 2.0 TFSI",
+                            Price = 544.92m
+                        },
+                        new
+                        {
+                            Id = 10,
+                            EngineId = 10,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/5a/a4/f2/1652886657/13_reiher_ea113b5d62_1280x1280.webp",
+                            Manufacturer = "Bar-Tek",
+                            Model = "Oil Cooler Kit for 2.0 TFSI",
+                            Price = 544.92m
+                        },
+                        new
+                        {
+                            Id = 11,
+                            EngineId = 1,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 12,
+                            EngineId = 2,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 13,
+                            EngineId = 3,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 14,
+                            EngineId = 4,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 15,
+                            EngineId = 5,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 16,
+                            EngineId = 6,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 17,
+                            EngineId = 7,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 18,
+                            EngineId = 8,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 19,
+                            EngineId = 9,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 20,
+                            EngineId = 10,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 21,
+                            EngineId = 11,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 22,
+                            EngineId = 12,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 23,
+                            EngineId = 13,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 24,
+                            EngineId = 14,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 25,
+                            EngineId = 15,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        },
+                        new
+                        {
+                            Id = 26,
+                            EngineId = 16,
+                            ImageURL = "https://c1552172.ssl.cf0.rackcdn.com/1509007_x450.webp",
+                            Manufacturer = "ECSTuning",
+                            Model = "Universal Oil Cooler With Thermostat",
+                            Price = 512.95m
+                        });
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.SparkPlugs", b =>
@@ -882,9 +1734,6 @@ namespace RevTech.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
 
                     b.Property<int>("EngineId")
                         .HasColumnType("int");
@@ -896,10 +1745,10 @@ namespace RevTech.Data.Migrations
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
-                    b.Property<decimal>("PriceForKit")
+                    b.Property<decimal>("Price")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
@@ -908,6 +1757,136 @@ namespace RevTech.Data.Migrations
                     b.HasIndex("EngineId");
 
                     b.ToTable("SparkPlugsKits");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EngineId = 1,
+                            ImageURL = "https://i.ebayimg.com/images/g/ceQAAOSwiDFYQVzW/s-l1600.jpg",
+                            Manufacturer = "NGK",
+                            Price = 44.42m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EngineId = 2,
+                            ImageURL = "https://i.ebayimg.com/images/g/ceQAAOSwiDFYQVzW/s-l1600.jpg",
+                            Manufacturer = "NGK",
+                            Price = 44.42m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EngineId = 3,
+                            ImageURL = "https://i.ebayimg.com/images/g/ceQAAOSwiDFYQVzW/s-l1600.jpg",
+                            Manufacturer = "NGK",
+                            Price = 44.42m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EngineId = 4,
+                            ImageURL = "https://strperformance.com/25328-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-audi-s4-b5-and-rs4-v6-27-biturbo.jpg",
+                            Manufacturer = "NGK",
+                            Price = 130.55m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EngineId = 5,
+                            ImageURL = "https://strperformance.com/25328-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-audi-s4-b5-and-rs4-v6-27-biturbo.jpg",
+                            Manufacturer = "NGK",
+                            Price = 130.55m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EngineId = 6,
+                            ImageURL = "https://strperformance.com/24726-large_default/ngk-platinum-pfr7w-tg-high-performance-spark-plugs-for-audi-r8-v8-42-fsi-quattro-420hp.jpg",
+                            Manufacturer = "NGK",
+                            Price = 195.82m
+                        },
+                        new
+                        {
+                            Id = 7,
+                            EngineId = 7,
+                            ImageURL = "https://strperformance.com/24726-large_default/ngk-platinum-pfr7w-tg-high-performance-spark-plugs-for-audi-r8-v8-42-fsi-quattro-420hp.jpg",
+                            Manufacturer = "NGK",
+                            Price = 195.82m
+                        },
+                        new
+                        {
+                            Id = 8,
+                            EngineId = 8,
+                            ImageURL = "https://strperformance.com/24726-large_default/ngk-platinum-pfr7w-tg-high-performance-spark-plugs-for-audi-r8-v8-42-fsi-quattro-420hp.jpg",
+                            Manufacturer = "NGK",
+                            Price = 195.82m
+                        },
+                        new
+                        {
+                            Id = 9,
+                            EngineId = 9,
+                            ImageURL = "https://strperformance.com/24718-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-20-tfsi-ea113-20-tsi-ea8881-engine.jpg",
+                            Manufacturer = "NGK",
+                            Price = 87.03m
+                        },
+                        new
+                        {
+                            Id = 10,
+                            EngineId = 10,
+                            ImageURL = "https://strperformance.com/24718-large_default/ngk-iridium-ix-bkr8eix-high-performance-spark-plugs-for-20-tfsi-ea113-20-tsi-ea8881-engine.jpg",
+                            Manufacturer = "NGK",
+                            Price = 87.03m
+                        },
+                        new
+                        {
+                            Id = 11,
+                            EngineId = 11,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/90/17/7e/1652886624/kerzenspa1okj0ueef9c6svpg2c0pr6pb6970_1280x1280.webp",
+                            Manufacturer = "NGK",
+                            Price = 489.55m
+                        },
+                        new
+                        {
+                            Id = 12,
+                            EngineId = 12,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/90/17/7e/1652886624/kerzenspa1okj0ueef9c6svpg2c0pr6pb6970_1280x1280.webp",
+                            Manufacturer = "NGK",
+                            Price = 489.55m
+                        },
+                        new
+                        {
+                            Id = 13,
+                            EngineId = 13,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/90/17/7e/1652886624/kerzenspa1okj0ueef9c6svpg2c0pr6pb6970_1280x1280.webp",
+                            Manufacturer = "NGK",
+                            Price = 489.55m
+                        },
+                        new
+                        {
+                            Id = 14,
+                            EngineId = 14,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/b8/30/1f/1652867091/3-0l-tfsi-audi-s4-s5-ngk-z-ndkerzen-race476dd_1280x1280.webp",
+                            Manufacturer = "NGK",
+                            Price = 108.79m
+                        },
+                        new
+                        {
+                            Id = 15,
+                            EngineId = 15,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/b8/30/1f/1652867091/3-0l-tfsi-audi-s4-s5-ngk-z-ndkerzen-race476dd_1280x1280.webp",
+                            Manufacturer = "NGK",
+                            Price = 108.79m
+                        },
+                        new
+                        {
+                            Id = 16,
+                            EngineId = 16,
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/b8/30/1f/1652867091/3-0l-tfsi-audi-s4-s5-ngk-z-ndkerzen-race476dd_1280x1280.webp",
+                            Manufacturer = "NGK",
+                            Price = 108.79m
+                        });
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.SuperchargerKit", b =>
@@ -931,13 +1910,13 @@ namespace RevTech.Data.Migrations
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("ModelName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(18, 2)
@@ -958,7 +1937,7 @@ namespace RevTech.Data.Migrations
                             Id = 1,
                             EngineId = 6,
                             HorsePowerBoost = 200,
-                            ImageURL = "http://goapr.jp/includes/img/products/stage_3+_b7rs4_kit_mid.jpg",
+                            ImageURL = "/img/superchargerKitId1.jpg",
                             Manufacturer = "APR",
                             ModelName = "TVS1740 Stage 3+",
                             Price = 18000.99m,
@@ -969,7 +1948,7 @@ namespace RevTech.Data.Migrations
                             Id = 2,
                             EngineId = 7,
                             HorsePowerBoost = 180,
-                            ImageURL = "http://www.goapr.co.uk/includes/img/products/b8_s5_42l_stage_3_kit_mid.jpg",
+                            ImageURL = "/img/superchargerKitId2.jpg",
                             Manufacturer = "APR",
                             ModelName = "95 RON",
                             Price = 17000.99m,
@@ -1093,13 +2072,13 @@ namespace RevTech.Data.Migrations
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("ModelName")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<decimal>("PressureBoost")
                         .HasPrecision(3, 1)
@@ -1268,7 +2247,7 @@ namespace RevTech.Data.Migrations
                             Id = 13,
                             EngineId = 10,
                             HorsePowerBoost = 180,
-                            ImageURL = "https://shop.gmcracing.com/1161-large_default/turbo-kit-audivw-20-tfsi-for-powers-up-to-450hp-with-tial-recirculation-wastegate.jpg",
+                            ImageURL = "https://www.bar-tek-tuning.com/cdn-cgi/image/fit=scale-down,quality=50,sharpen=1,format=auto,width=1280/https://www.bar-tek-tuning.com/thumbnail/52/d0/2c/1652867184/1460914175-17347gcxpvr99dwrhl_1280x1280.webp",
                             Manufacturer = "BAR-TEK",
                             ModelName = "Tuning-Kit K04",
                             PressureBoost = 1.8m,
@@ -1409,7 +2388,7 @@ namespace RevTech.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RevTech.Data.Models.UserConfiguration.UserConfiguration", b =>
+            modelBuilder.Entity("RevTech.Data.Models.UserConfiguration.Configuration", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1421,6 +2400,9 @@ namespace RevTech.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("ECUTuningId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EngineId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ExhaustKitId")
@@ -1463,6 +2445,8 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("ECUTuningId");
 
+                    b.HasIndex("EngineId");
+
                     b.HasIndex("ExhaustKitId");
 
                     b.HasIndex("FuelPumpId");
@@ -1479,7 +2463,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("TurboKitId");
 
-                    b.ToTable("UsersConfigurations");
+                    b.ToTable("Configurations");
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.Vehicles.CarModel", b =>
@@ -1627,7 +2611,7 @@ namespace RevTech.Data.Migrations
                         new
                         {
                             Id = 13,
-                            ImageURL = "https://img.md-exclusive-cardesign.com/wp-content/uploads/2019/10/audi-a6-c7-limousine-breitbau-tuning-pd600r-widebody-kit-artform-af-401-felgen-in-105x21-md-exclusive-cardesign-16-455x179.jpg",
+                            ImageURL = "https://www.tuningblog.eu/wp-content/uploads/2022/08/Verrueckter-Stage-4-Audi-RS6-C7-Avant-1200-PS-1-e1661412369854.jpg",
                             ManufacturerId = 1,
                             ModelName = "RS6 C7",
                             YearCreated_End = 2018,
@@ -2015,24 +2999,97 @@ namespace RevTech.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ImageURL = "https://w7.pngwing.com/pngs/115/486/png-transparent-audi-tt-car-volkswagen-group-audi-rs-6-audi-text-trademark-logo.png",
+                            ImageURL = "https://www.freepnglogos.com/uploads/audi-logo-29.png",
                             Name = "Audi"
                         },
                         new
                         {
                             Id = 2,
-                            ImageURL = "https://w7.pngwing.com/pngs/986/859/png-transparent-mercedes-benz-u-s-international-car-daimler-ag-mercedes-benz-angle-trademark-logo.png",
+                            ImageURL = "https://www.freepnglogos.com/uploads/mercedes-logo-png/mercedes-logo-world-car-mercedes-benz-class-cdi-1.png",
                             Name = "Mercedes-Benz"
                         },
                         new
                         {
                             Id = 3,
-                            ImageURL = "https://image.similarpng.com/very-thumbnail/2020/06/Logo-bmw-vector-transparent-PNG.png",
+                            ImageURL = "https://cdn.freebiesupply.com/logos/large/2x/bmw-logo-png-transparent.png",
                             Name = "BMW"
                         });
                 });
 
-            modelBuilder.Entity("RevTech.Data.User.UserVehicleConfiguration", b =>
+            modelBuilder.Entity("RevTech.Data.User.RevTeckUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("RevTech.Data.User.UserConfiguration", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -2044,7 +3101,69 @@ namespace RevTech.Data.Migrations
 
                     b.HasIndex("ConfigurationId");
 
-                    b.ToTable("UserVehicleConfiguration");
+                    b.ToTable("UsersConfiguration");
+                });
+
+            modelBuilder.Entity("RevTech.Data.User.UserPayment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ConfigurationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DeliveredDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeliveryAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelivered")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("ConfigurationId")
+                        .IsUnique();
+
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -2058,7 +3177,7 @@ namespace RevTech.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("RevTech.Data.User.RevTeckUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2067,7 +3186,7 @@ namespace RevTech.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("RevTech.Data.User.RevTeckUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2082,7 +3201,7 @@ namespace RevTech.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("RevTech.Data.User.RevTeckUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2091,30 +3210,11 @@ namespace RevTech.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("RevTech.Data.User.RevTeckUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.ECU_TCU_ConnectionTable", b =>
-                {
-                    b.HasOne("RevTech.Data.Models.PerformanceParts.ECUTuning", "ECUTuning")
-                        .WithMany("TCUConnections")
-                        .HasForeignKey("ECUTuningId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RevTech.Data.Models.PerformanceParts.TCUTuning", "TCUTuning")
-                        .WithMany("TCUConnections")
-                        .HasForeignKey("TCUTuningId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ECUTuning");
-
-                    b.Navigation("TCUTuning");
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.ECUTuning", b =>
@@ -2183,7 +3283,7 @@ namespace RevTech.Data.Migrations
             modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.SparkPlugs", b =>
                 {
                     b.HasOne("RevTech.Data.Models.Vehicles.Engine", "Engine")
-                        .WithMany("SparkPlugs")
+                        .WithMany("EngineSparkPlugs")
                         .HasForeignKey("EngineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2213,7 +3313,7 @@ namespace RevTech.Data.Migrations
                     b.Navigation("Engine");
                 });
 
-            modelBuilder.Entity("RevTech.Data.Models.UserConfiguration.UserConfiguration", b =>
+            modelBuilder.Entity("RevTech.Data.Models.UserConfiguration.Configuration", b =>
                 {
                     b.HasOne("RevTech.Data.Models.Vehicles.CarModel", "CarModel")
                         .WithMany()
@@ -2224,6 +3324,12 @@ namespace RevTech.Data.Migrations
                     b.HasOne("RevTech.Data.Models.PerformanceParts.ECUTuning", "ECUTuning")
                         .WithMany()
                         .HasForeignKey("ECUTuningId");
+
+                    b.HasOne("RevTech.Data.Models.Vehicles.Engine", "Engine")
+                        .WithMany()
+                        .HasForeignKey("EngineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("RevTech.Data.Models.PerformanceParts.ExhaustKit", "ExhaustKit")
                         .WithMany()
@@ -2261,6 +3367,8 @@ namespace RevTech.Data.Migrations
 
                     b.Navigation("ECUTuning");
 
+                    b.Navigation("Engine");
+
                     b.Navigation("ExhaustKit");
 
                     b.Navigation("FuelPump");
@@ -2281,7 +3389,7 @@ namespace RevTech.Data.Migrations
             modelBuilder.Entity("RevTech.Data.Models.Vehicles.CarModel", b =>
                 {
                     b.HasOne("RevTech.Data.Models.Vehicles.Manufacturer", "Manufacturer")
-                        .WithMany("CarModel")
+                        .WithMany("CarModels")
                         .HasForeignKey("ManufacturerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -2308,15 +3416,15 @@ namespace RevTech.Data.Migrations
                     b.Navigation("Engine");
                 });
 
-            modelBuilder.Entity("RevTech.Data.User.UserVehicleConfiguration", b =>
+            modelBuilder.Entity("RevTech.Data.User.UserConfiguration", b =>
                 {
-                    b.HasOne("RevTech.Data.Models.UserConfiguration.UserConfiguration", "Configuration")
+                    b.HasOne("RevTech.Data.Models.UserConfiguration.Configuration", "Configuration")
                         .WithMany()
                         .HasForeignKey("ConfigurationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                    b.HasOne("RevTech.Data.User.RevTeckUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2327,14 +3435,23 @@ namespace RevTech.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.ECUTuning", b =>
+            modelBuilder.Entity("RevTech.Data.User.UserPayment", b =>
                 {
-                    b.Navigation("TCUConnections");
-                });
+                    b.HasOne("RevTech.Data.User.RevTeckUser", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-            modelBuilder.Entity("RevTech.Data.Models.PerformanceParts.TCUTuning", b =>
-                {
-                    b.Navigation("TCUConnections");
+                    b.HasOne("RevTech.Data.Models.UserConfiguration.Configuration", "Configuration")
+                        .WithOne()
+                        .HasForeignKey("RevTech.Data.User.UserPayment", "ConfigurationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Configuration");
                 });
 
             modelBuilder.Entity("RevTech.Data.Models.Vehicles.CarModel", b =>
@@ -2350,6 +3467,8 @@ namespace RevTech.Data.Migrations
 
                     b.Navigation("ECUTunings");
 
+                    b.Navigation("EngineSparkPlugs");
+
                     b.Navigation("ExhaustKits");
 
                     b.Navigation("FuelPumps");
@@ -2358,8 +3477,6 @@ namespace RevTech.Data.Migrations
 
                     b.Navigation("OilCoolers");
 
-                    b.Navigation("SparkPlugs");
-
                     b.Navigation("SuperchargerKits");
 
                     b.Navigation("TurboKits");
@@ -2367,7 +3484,7 @@ namespace RevTech.Data.Migrations
 
             modelBuilder.Entity("RevTech.Data.Models.Vehicles.Manufacturer", b =>
                 {
-                    b.Navigation("CarModel");
+                    b.Navigation("CarModels");
                 });
 #pragma warning restore 612, 618
         }

@@ -3156,8 +3156,7 @@ namespace RevTech.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId")
-                        .IsUnique();
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("ConfigurationId")
                         .IsUnique();
@@ -3437,8 +3436,8 @@ namespace RevTech.Data.Migrations
             modelBuilder.Entity("RevTech.Data.User.UserPayment", b =>
                 {
                     b.HasOne("RevTech.Data.User.RevTeckUser", "Client")
-                        .WithOne()
-                        .HasForeignKey("RevTech.Data.User.UserPayment", "ClientId")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
