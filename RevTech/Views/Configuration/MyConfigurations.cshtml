@@ -1,6 +1,7 @@
 ﻿@model ICollection<UserConfigurationViewModel>;
 
 <link rel="stylesheet" href="~/css/configuration/myConfigurations.css?v=2.0">
+<link rel="stylesheet" href="~/css/responsive/myConfigurations.css?v=2.0">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="~/js/configuration/myConfigurations.js"></script>
 @if (Model.Count == 0)
@@ -17,11 +18,16 @@ else
         @foreach (var configuration in Model)
         {
             <div class="configuration-box">
-                <h2>@configuration.Manufacturer</h2>
-                <h3>@configuration.CarModel </h3>
-                <img src="@configuration.CarModelImageURL" alt="@configuration.CarModel" />
-                <p class="price">Configuration Price: $@configuration.Price</p>
-                <p class="horsePower">Total Horse Power Boost: @configuration.HorsePowerBoost</p>
+                <div class="vehicle-info">
+                    <h2>@configuration.Manufacturer @configuration.CarModel</h2>
+                    <div class="image-container">
+                        <img src="@configuration.CarModelImageURL" alt="@configuration.CarModel" />
+                    </div>
+                </div>
+                <div class="configuration-info">
+                    <p class="price">Configuration Price: $@configuration.Price</p>
+                    <p class="horsePower">Total Horse Power Boost: @configuration.HorsePowerBoost</p>
+                </div>
                 <div class="buttons-container">
                     <a class="edit-btn" asp-controller="Configuration" asp-action="Edit" asp-route-configurationId="@configuration.ConfigurationId" onclick="storeInformation('@configuration.ConfigurationId', @configuration.EngineId, @configuration.CarModelId)">Edit</a>
                     <a asp-controller="Payment" asp-action="Index" asp-route-configurationId="@configuration.ConfigurationId" data-configuration-id="@configuration.ConfigurationId" class="checkout-btn">Checkout</a>

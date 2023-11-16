@@ -1,0 +1,31 @@
+﻿body {
+}
+
+@media (max-width: 600px){
+    .title{
+        font-size: 39px;
+    }
+
+    .configuration-box{
+        width: 44%;
+    }
+    .configuration-info{
+        height: 30%;
+        font-size: 16px;
+    }
+
+    .vehicle-info h2{
+        font-size: 22px;
+    }
+
+    .buttons-container .edit-btn,
+    .buttons-container .checkout-btn,
+    .buttons-container .remove-btn {
+        font-size: 15px;
+    }
+}
+
+/*<a class="edit-btn" asp-controller="Configuration" asp-action="Edit" asp-route-configurationId="@configuration.ConfigurationId" onclick="storeInformation('@configuration.ConfigurationId', @configuration.EngineId, @configuration.CarModelId)" > Edit</a >
+<a asp-controller="Payment" asp-action="Index" asp-route-configurationId="@configuration.ConfigurationId" data-configuration-id="@configuration.ConfigurationId" class="checkout-btn" > Checkout</a >
+
+<button class="remove-btn" onclick="showConfirmation('@configuration.ConfigurationId','@configuration.Manufacturer', '@configuration.CarModel')" > Remove</button >*/
