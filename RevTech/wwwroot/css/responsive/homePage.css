@@ -1,0 +1,36 @@
+﻿body {
+}
+
+@media (max-width: 600px){
+   .home-page-title{
+       margin-top:2em;
+       font-size: 44px;
+   }
+
+   .about-revteck p{
+       font-size: 20px;
+   }
+
+    .configuration-button{
+        width: auto;
+        font-size: 20px;
+        padding-top: 0.5em;
+        text-align: center;
+        height: 2.5em;
+    }
+
+    .image-overlay-text{
+        margin-left: 23em;
+        width: inherit;
+    }
+
+    .image-with-text{
+        text-align:center;
+    }
+
+    .video_title{
+        margin-bottom: 2em;
+        font-size: 18px;
+    }
+}
+

@@ -20,7 +20,7 @@ var defaultConnection = builder.Configuration.GetConnectionString("DefaultConnec
 var connectionString = builder.Configuration.GetConnectionString("DeployedConnection");
 //var connectionString = Environment.GetEnvironmentVariable("DeployedConnection");
 builder.Services.AddDbContext<RevtechDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(defaultConnection));
 
 builder.Services.AddSingleton(provider =>
 {
