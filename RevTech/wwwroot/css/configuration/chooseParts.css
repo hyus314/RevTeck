@@ -2,7 +2,6 @@
 }
 
 .title {
-    
     font-size: 68px;
     color: #ff4c00;
     margin-bottom: 100px;
@@ -12,10 +11,7 @@
     background-color: #f2f2f2;
     border-radius: 10px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 1300px;
+    width: 100%;
 }
 
 .user-vehicle-edit {
@@ -36,7 +32,10 @@
 
 }
 .vehicle-details {
-    margin-right: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     color: #333333;
 }
 
@@ -44,26 +43,40 @@
     font-size: 100px;
 }
 
+.vehicle-details *{
+    margin-left: auto;
+}
+
 .vehicle-info {
+    gap: 2em;
     display: flex;
     flex-direction: row;
-    align-items: center;
     margin-top: 20px;
 }
 
 
+.vehicle-image{
+    width: 50%;
+    justify-self: flex-start;
+    align-self: center;
+}
+
 .vehicle-image img {
-    margin-left: 100px;
-    width: 75%;
-    border-radius: 10px;
+    display: block;
+    width: 100%;
+    height:auto;
 }
 
 .line {
+    width: 70%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 80px;
     margin-top: 80px;
+    margin: 80px auto;
+    
 }
 
 .find-parts-button,
@@ -71,7 +84,7 @@
 .edit-configuration-button{
     position: absolute;
     border-radius: 8px;
-    width: 1300px;
+    width: 85.5%;
     height: 100px;
     background-color: white;
     color: black;
