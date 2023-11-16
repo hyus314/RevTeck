@@ -1,0 +1,10 @@
+﻿body {
+}
+
+@media (max-width: 600px){
+    .modal-title{
+        font-size: 26px;
+    }
+
+
+}

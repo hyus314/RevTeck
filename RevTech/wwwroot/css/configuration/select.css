@@ -162,7 +162,6 @@
 }
 
 #enginesModal .select-engine-button {
-    width: 390px;
     background-color: transparent;
     color: black;
     border: 1px solid black;
@@ -170,6 +169,11 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.select-engine-button{
+    width: 100%;
+    margin-top: 2em;
 }
 
     #enginesModal .select-engine-button:hover {
@@ -189,4 +193,10 @@
     .manufacturer_img:hover {
         transform: scale(1.05);
         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .engine{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
