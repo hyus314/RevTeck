@@ -10,10 +10,10 @@
     border: 2px solid black;
     padding: 20px;
     margin-bottom: 100px;
+    justify-content: space-between;
 }
 
 .model-info {
-    flex: 1;
     padding-top: 30px;
 }
 
@@ -47,12 +47,17 @@
         opacity: 1;
     }
 
+    .model-car img{
+        display: block;
+        width: 30vw;
+        height: auto;
+    }
+
 .model-year {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 10px;
-    margin-right: 250px;
 }
 
     .model-year p {
@@ -73,9 +78,8 @@
     cursor: pointer;
     padding: 10px 20px;
     text-align: center;
-    margin-right: 50px;
     display: inline-block;
-    width: 200px;
+    width: 20em;
 }
 
     .select-button:hover {
@@ -84,9 +88,11 @@
 
 
 .manufacturers-container {
+    margin-block: 4em;
     display: flex;
-    width: 80%;
     justify-content: space-between;
+    gap: 2em;
+    width:100%;
 }
 
 .selected {
@@ -172,15 +178,14 @@
     }
 
 .manufacturer_img {
-    width: 30%;
+    width: 20vw;
     height: auto;
     padding: 10px;
-    margin: 50px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+  
     .manufacturer_img:hover {
         transform: scale(1.05);
         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);

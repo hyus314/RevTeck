@@ -29,7 +29,7 @@ function getModelsByManufacturer(manufacturerId) {
                     '<div class="model-info">' +
                     '<h2>' + model.modelName + '</h2>' +
                     '<div class="model-car-img">' +
-                    '<img style="width: 50%" src="' + model.imageURL + '" alt="Model Image">' +
+                    '<img src="' + model.imageURL + '" alt="Model Image">' +
                     '</div>' +
                     '</div>' +
                     '<div class="model-year">' +

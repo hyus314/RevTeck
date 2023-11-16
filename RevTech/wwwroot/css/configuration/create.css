@@ -4,6 +4,31 @@
     text-align: center; /* Add this line to center the .configuration-button div */
 }
 
+h2{
+    margin-top:3em;
+    text-align: center;
+    color: orangered;
+    font-size: 44px;
+    background-color: black;
+    padding: 0.5em 0.5em;
+    border-radius: 1em;
+    border: 1px solid;
+}
+
+/*<h2 > You can begin by selecting your Vehicle first!</h2 >
+<div class="line" >
+<a asp-controller="Vehicle" asp-action="Select" class="select-vehicle-button" > Click here to Select Your Vehicle</a >
+</div >
+*/
+
+.line{
+    margin-top: 4em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
 .select-vehicle-button {
     background-color: black;
     color: white;
@@ -16,26 +41,9 @@
     transition-duration: 0.4s;
     cursor: pointer;
     width: 400px;
-    margin-right: 50px;
-    margin-top: 50px;
 }
-
-.begin-text {
-    margin-top: 80px;
-    margin-left: 180px;
-    color: orangered;
-}
-
-.begin-text h2{
-    font-size: 48px;
-}
-
 
 .select-vehicle-button:hover {
-    background-color: red;
-    color: white;
+    color: red;
 }
 
-.select-vehicle-button span {
-    color: white;
-}

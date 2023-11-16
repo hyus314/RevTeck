@@ -1,0 +1,61 @@
+﻿body {
+}
+
+@media (max-width: 600px) {
+
+    .model-car .model-year p {
+        font-size: 9px;
+        text-align: center;
+        align-self: center;
+        margin-block: auto;
+    }
+
+    body{
+        box-sizing:border-box;
+    }
+
+    .manufacturers-container{
+        margin: 4em auto;
+    }
+    .manufacturer_img {
+        width: 27%;
+    }
+
+    .model-info{
+        align-self: center;
+        padding: 0;
+    }
+
+    .model-info h2{
+        font-size: 20px;
+    }
+
+    .model-car{
+        gap: 2em;
+    }
+
+    .model-car {
+        margin:0;
+        margin-block: 3em;
+    }
+
+    .select-button{
+        justify-self: flex-end;
+        width: 10em;
+        font-size: 10px;
+    }
+
+}
+
+@media (max-width: 400px){
+    .select-button {
+        justify-self: flex-end;
+        width: 7em;
+        font-size: 10px;
+    }
+    .model-car .model-year p {
+        font-size: 9px;
+        text-align: center;
+    }
+
+}
