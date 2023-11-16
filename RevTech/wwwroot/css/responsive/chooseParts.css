@@ -10,6 +10,34 @@
     .vehicle-details h2{
         font-size: 40px;
     }
+
+    .part-view {
+        width: 40%;
+        height: 60%;
+    }
+
+    .find-parts-button,
+    .create-configuration-button,
+    .edit-configuration-button{
+        font-size: 25px;
+        width: 95%;
+    }
+
+    .part-title{
+        font-size: 17px;
+    }
+
+    .part-view h4 {
+        font-size: 15px
+    }
+
+    .part-view p {
+        font-size: 10px;
+    }
+
+    .part-tcu-description{
+        width: 100%
+    }
 }
 
 /*<h1 class="title" > Configuration Creation</h1 >
