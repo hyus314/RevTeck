@@ -13,9 +13,12 @@
     <div class="col-md-4">
         <section>
             <form id="account" method="post" class="bg-white p-3 rounded shadow">
-                @if ((bool)ViewData["FromAuthController"])
+                @if (ViewData["FromAuthController"] != null)
                 {
-                    <h2>You need an account to create a configuration.</h2>
+                    @if ((bool)ViewData["FromAuthController"])
+                    {
+                        <h2>You need an account to create a configuration.</h2>
+                    }
                 }
                 else
                 {

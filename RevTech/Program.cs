@@ -76,7 +76,7 @@ app.UseRouting();
     app.UseMigrationsEndPoint();
 }
 
-app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}"); // Handles status code
+//app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}"); // Handles status code
 app.UseExceptionHandler("/Home/Error"); // Handles exception
 
 app.UseHsts();
