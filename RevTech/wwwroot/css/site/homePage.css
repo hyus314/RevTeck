@@ -7,7 +7,7 @@
     color: orangered;
     text-align: center;
     margin: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 1px 1px 2px rgba(0, 0, 0, 0.3), -1px -1px 2px rgba(0, 0, 0, 0.3), 0px 0px 6px rgba(0, 0, 0, 0.7), 3px 3px 2px rgba(0, 0, 0, 0.4); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 1px 1px 2px rgba(0, 0, 0, 0.3), -1px -1px 2px rgba(0, 0, 0, 0.3), 0px 0px 6px rgba(0, 0, 0, 0.7), 3px 3px 2px rgba(0, 0, 0, 0.4);
     overflow: hidden;
 }
 
@@ -72,12 +72,11 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 36px;
+    font-size: 1.5em;
     transition-duration: 0.4s;
     cursor: pointer;
-    width: 500px;
-    height: 70px;
-    margin-right: 50px;
+    width: 80%;
+    height: auto;
     margin-bottom: 100px;
     border-radius: 15px;
 }
@@ -92,7 +91,10 @@
     }
 
 .introduction_video {
-    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 100px;
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
@@ -103,12 +105,10 @@
     font-family: 'Raleway', sans-serif;
     color: white;
     font-size: 22px;
-    margin-bottom: 16px;
     text-align: left;
 }
 
 .rs6_video {
-    margin-top: 35px;
     position: absolute;
     top: 0;
     left: 0;
@@ -126,32 +126,22 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.image-with-text {
-    position: relative;
-    width: 500px;
-    text-align: center;
-    margin: auto;
-    margin-bottom: 50px;
+.image-line {
+    margin-bottom: 159px;
 }
 
 .introduction_img {
-    border-radius: 10px;
-    width: 80%;
+    border-radius: 2em;
+    margin-inline: auto;
+    display: block;
+    width: 50%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.image-overlay-text {
-    width: 1000px;
-    position: absolute;
-    top: 30%;
-    left: -50%;
-    right: -15%;
-    font-family: 'Raleway', sans-serif;
-    color: #e8e7e7;
-    font-size: 24px;
-    line-height: 1.5;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    white-space: pre-wrap;
-    z-index: 1;
-}
+
+
+/*<div class="image-with-text" >
+<img class="introduction_img" src="~/img/RevTeck_Logo2.png" >
+<div class="image-overlay-text" > We in RevTeck are aware that every car can be pushed to its limits, those boosted vehicles should be operated either by professionals or in the limits of the law! We value your health, but we do not take account in the consequences.</div >
+</div >*/
