@@ -16,11 +16,12 @@ Stripe for Payments: Enabling secure and seamless financial transactions.
 
 SQL & Entity Framework Core: Managing and persisting data with efficiency.
 
-HTML & CSS: Crafting an aesthetically pleasing and user-friendly interface.
+HTML & CSS: Crafting an aesthetically pleasing and user-friendly interface, dynamically responsive across devices.
 
 ASP.NET Web APIs: Facilitating seamless communication between client and server.
 
-This project seamlessly blends technical expertise with a user-centric design, creating an interactive platform for crafting bespoke tuning configurations.
+This project seamlessly blends technical expertise with a user-centric design, creating an interactive platform for crafting bespoke tuning configurations while ensuring a responsive experience on diverse screens.
+
 
 ## Functionality Screenshots:
 ![screenshot 1](https://github.com/hyus314/RevTeck/assets/114900079/ccd05b75-7b4a-459e-a04f-7f7731effa90)
