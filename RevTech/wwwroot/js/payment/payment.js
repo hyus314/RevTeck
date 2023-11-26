@@ -6,10 +6,10 @@
         dataType: 'json',
         success: function (data) {
             if (data && data.length > 0) {
-                var listItems = '';
+                let listItems = '';
 
-                for (var i = 0; i < data.length; i++) {
-                    var partItem = '<li class="part-item">';
+                for (let i = 0; i < data.length; i++) {
+                    let partItem = '<li class="part-item">';
 
                     partItem += '<div class="part-info">';
 
@@ -60,7 +60,7 @@ document.querySelector("[name='PhoneNumber']").addEventListener('input', functio
     e.target.value = value.replace(/[^0-9]/g, '');
 });
 
-const validCities = ['Sofia', 'Plovdiv', 'Varna', 'Burgas', 'Ruse']; // Add more cities if needed
+const validCities = ['Sofia', 'Plovdiv', 'letna', 'Burgas', 'Ruse']; // Add more cities if needed
 
 // Function to enforce valid city names and alphabets only
 function enforceValidCities(event) {

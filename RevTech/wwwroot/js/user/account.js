@@ -1,7 +1,7 @@
-﻿var modal = document.getElementById("modal");
-var btn = document.getElementById('admin-reg-button');
-var span = document.getElementById("close");
-var registerButton = document.getElementById("register-button");
+﻿let modal = document.getElementById("modal");
+let btn = document.getElementById('admin-reg-button');
+let span = document.getElementById("close");
+let registerButton = document.getElementById("register-button");
 
 btn.onclick = function () {
     modal.style.display = "block";
@@ -19,7 +19,7 @@ window.onclick = function (event) {
 
 
 function submitAdminForm() {
-    var inputPassword = $("#admin-password").val();
+    let inputPassword = $("#admin-password").val();
 
     $.ajax({
         url: '/Admin/Register',

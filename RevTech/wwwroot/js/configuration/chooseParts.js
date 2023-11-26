@@ -1,7 +1,7 @@
 ﻿// Initially hide the button
 
 // When the user scrolls down from the top of the document, show the button
-var hasGoToTopAppearedOnce = false;
+let hasGoToTopAppearedOnce = false;
 
 window.addEventListener('scroll', function () {
     if (document.documentElement.scrollTop < 500) {  // You can adjust the value "50" as needed
@@ -14,10 +14,10 @@ window.addEventListener('scroll', function () {
 });
 
 document.getElementById('scrollToTopButton').addEventListener('click', function () {
-    var targetElement = document.getElementById('user-vehicle');
-    var rect = targetElement.getBoundingClientRect();
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    var finalPosition = rect.top + scrollTop + 100; 
+    let targetElement = document.getElementById('user-vehicle');
+    let rect = targetElement.getBoundingClientRect();
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let finalPosition = rect.top + scrollTop + 100; 
 
     window.scrollTo({
         top: finalPosition,
@@ -38,7 +38,7 @@ function loadAllParts(engineId, carModelId) {
     loadSparkPlugs(engineId);
 
 
-    var findPartsButton = document.getElementById('find-parts-button');
+    let findPartsButton = document.getElementById('find-parts-button');
 
     findPartsButton.style.display = 'none';
 
@@ -64,15 +64,15 @@ function loadTurbos(engineId) {
 function generateTurboViews(turbos) {
 
     document.getElementById('turbo-container').scrollIntoView();
-    var turboContainer = document.getElementById('turbo-container');
+    let turboContainer = document.getElementById('turbo-container');
     turboContainer.innerHTML = '';
 
-    var turboWrapper = document.createElement('div');
+    let turboWrapper = document.createElement('div');
     turboWrapper.classList.add('part-wrapper');
 
-    var turbosCount = turbos.length;
+    let turbosCount = turbos.length;
 
-    var titleView = document.createElement('div');
+    let titleView = document.createElement('div');
     titleView.classList.add('part-title');
 
     if (turbosCount === 0) {
@@ -87,7 +87,7 @@ function generateTurboViews(turbos) {
 
     if (turbosCount > 0) {
         turbos.forEach(function (turbo) {
-            var turboView = document.createElement('div');
+            let turboView = document.createElement('div');
             turboView.classList.add('part-view');
             turboView.classList.add('selectable');
             turboView.setAttribute('id', `turbo-${turbo.id}`);
@@ -131,15 +131,15 @@ function loadExhaustKits(engineId, carModelId) {
 }
 
 function generateExhaustKitViews(exhaustKits) {
-    var exhaustKitContainer = document.getElementById('exhaustKit-container');
+    let exhaustKitContainer = document.getElementById('exhaustKit-container');
     exhaustKitContainer.innerHTML = '';
 
-    var exhaustKitWrapper = document.createElement('div');
+    let exhaustKitWrapper = document.createElement('div');
     exhaustKitWrapper.classList.add('part-wrapper');
 
-    var exhaustKitsCount = exhaustKits.length;
+    let exhaustKitsCount = exhaustKits.length;
 
-    var titleView = document.createElement('div');
+    let titleView = document.createElement('div');
     titleView.classList.add('part-title');
 
     if (exhaustKitsCount === 0) {
@@ -154,7 +154,7 @@ function generateExhaustKitViews(exhaustKits) {
 
     if (exhaustKitsCount > 0) {
         exhaustKits.forEach(function (exhaustKit) {
-            var exhaustKitView = document.createElement('div');
+            let exhaustKitView = document.createElement('div');
             exhaustKitView.classList.add('part-view');
             exhaustKitView.classList.add('selectable');
             exhaustKitView.setAttribute('id', `exhaustKit-${exhaustKit.id}`);
@@ -196,16 +196,16 @@ function loadSuperchargers(engineId) {
 }
 
 function generateSuperchargerViews(superchargers) {
-    var superchargerContainer = document.getElementById('supercharger-container');
+    let superchargerContainer = document.getElementById('supercharger-container');
     superchargerContainer.innerHTML = '';
 
-    var superchargerWrapper = document.createElement('div');
+    let superchargerWrapper = document.createElement('div');
     superchargerWrapper.classList.add('part-wrapper');
 
-    var superchargersCount = superchargers.length;
+    let superchargersCount = superchargers.length;
 
     // Create title div to display the count or message
-    var titleView = document.createElement('div');
+    let titleView = document.createElement('div');
     titleView.classList.add('part-title');
 
     if (superchargersCount === 0) {
@@ -222,7 +222,7 @@ function generateSuperchargerViews(superchargers) {
     // Only run this loop if there are superchargers available
     if (superchargersCount > 0) {
         superchargers.forEach(function (supercharger) {
-            var superchargerView = document.createElement('div');
+            let superchargerView = document.createElement('div');
             superchargerView.classList.add('part-view');
             superchargerView.classList.add('selectable');
             superchargerView.setAttribute('id', `supercharger-${supercharger.id}`);
@@ -266,16 +266,16 @@ function loadEcus(engineId) {
 }
 
 function generateEcuViews(ecus) {
-    var ecuContainer = document.getElementById('ecu-container');
+    let ecuContainer = document.getElementById('ecu-container');
     ecuContainer.innerHTML = '';
 
-    var ecuWrapper = document.createElement('div');
+    let ecuWrapper = document.createElement('div');
     ecuWrapper.classList.add('part-wrapper');
 
-    var ecusCount = ecus.length;
+    let ecusCount = ecus.length;
 
     // Create title div to display the count or message
-    var titleView = document.createElement('div');
+    let titleView = document.createElement('div');
     titleView.classList.add('part-title');
 
     if (ecusCount === 0) {
@@ -292,7 +292,7 @@ function generateEcuViews(ecus) {
     // Only run this loop if there are ECUs available
     if (ecusCount > 0) {
         ecus.forEach(function (ecu) {
-            var ecuView = document.createElement('div');
+            let ecuView = document.createElement('div');
             ecuView.classList.add('part-view');
             ecuView.classList.add('selectable');
             ecuView.setAttribute('id', `ecu-${ecu.id}`);
@@ -332,14 +332,14 @@ function loadTcus() {
 }
 
 function generateTcuViews(tcus) {
-    var tcuContainer = document.getElementById('tcu-container');
+    let tcuContainer = document.getElementById('tcu-container');
     tcuContainer.innerHTML = ''; // Clear the existing content
 
-    var tcuWrapper = document.createElement('div');
+    let tcuWrapper = document.createElement('div');
     tcuWrapper.classList.add('part-wrapper');
 
     // Create title div to display the static message
-    var titleView = document.createElement('div');
+    let titleView = document.createElement('div');
     titleView.classList.add('part-title');
     titleView.innerHTML = 'Select a TCU Adaptation Software:';
 
@@ -347,7 +347,7 @@ function generateTcuViews(tcus) {
     tcuContainer.appendChild(titleView);
 
     tcus.forEach(function (tcu) {
-        var tcuView = document.createElement('div');
+        let tcuView = document.createElement('div');
         tcuView.classList.add('part-view');
         tcuView.classList.add('selectable');
         tcuView.setAttribute('id', `tcu-${tcu.id}`);
@@ -387,14 +387,14 @@ function loadFuelPumps(engineId) {
 }
 
 function generateFuelPumpViews(fuelPumps) {
-    var fuelPumpContainer = document.getElementById('fuelPump-container');
+    let fuelPumpContainer = document.getElementById('fuelPump-container');
     fuelPumpContainer.innerHTML = ''; // Clear the existing content
 
-    var fuelPumpWrapper = document.createElement('div');
+    let fuelPumpWrapper = document.createElement('div');
     fuelPumpWrapper.classList.add('part-wrapper');
 
     // Adding title element
-    var fuelPumpTitle = document.createElement('div');
+    let fuelPumpTitle = document.createElement('div');
     fuelPumpTitle.classList.add('part-title');
 
     if (fuelPumps.length === 0) {
@@ -407,7 +407,7 @@ function generateFuelPumpViews(fuelPumps) {
     fuelPumpContainer.appendChild(fuelPumpTitle);
 
     fuelPumps.forEach(function (fuelPump) {
-        var fuelPumpView = document.createElement('div');
+        let fuelPumpView = document.createElement('div');
         fuelPumpView.classList.add('part-view');
         fuelPumpView.classList.add('selectable');
         fuelPumpView.setAttribute('id', `fuelPump-${fuelPump.id}`);
@@ -450,14 +450,14 @@ function loadInjectorKits(engineId) {
 }
 
 function generateInjectorKitsViews(injectorKits) {
-    var injectorKitContainer = document.getElementById('injectorKit-container');
+    let injectorKitContainer = document.getElementById('injectorKit-container');
     injectorKitContainer.innerHTML = ''; // Clear the existing content
 
-    var injectorKitWrapper = document.createElement('div');
+    let injectorKitWrapper = document.createElement('div');
     injectorKitWrapper.classList.add('part-wrapper');
 
     // Adding title element
-    var injectorKitTitle = document.createElement('div');
+    let injectorKitTitle = document.createElement('div');
     injectorKitTitle.classList.add('part-title');
 
     if (injectorKits.length === 0) {
@@ -470,7 +470,7 @@ function generateInjectorKitsViews(injectorKits) {
     injectorKitContainer.appendChild(injectorKitTitle);
 
     injectorKits.forEach(function (injectorKit) {
-        var injectorKitView = document.createElement('div');
+        let injectorKitView = document.createElement('div');
         injectorKitView.classList.add('part-view');
         injectorKitView.classList.add('selectable');
         injectorKitView.setAttribute('id', `injectorKit-${injectorKit.id}`);
@@ -512,14 +512,14 @@ function loadOilCoolers(engineId) {
     });
 }
 function generateOilCoolersViews(oilCoolers) {
-    var oilCoolerContainer = document.getElementById('oilCooler-container');
+    let oilCoolerContainer = document.getElementById('oilCooler-container');
     oilCoolerContainer.innerHTML = ''; // Clear the existing content
 
-    var oilCoolerWrapper = document.createElement('div');
+    let oilCoolerWrapper = document.createElement('div');
     oilCoolerWrapper.classList.add('part-wrapper');
 
     // Adding title element
-    var oilCoolerTitle = document.createElement('div');
+    let oilCoolerTitle = document.createElement('div');
     oilCoolerTitle.classList.add('part-title');
 
     if (oilCoolers.length === 0) {
@@ -532,7 +532,7 @@ function generateOilCoolersViews(oilCoolers) {
     oilCoolerContainer.appendChild(oilCoolerTitle);
 
     oilCoolers.forEach(function (oilCooler) {
-        var oilCoolerView = document.createElement('div');
+        let oilCoolerView = document.createElement('div');
         oilCoolerView.classList.add('part-view');
         oilCoolerView.classList.add('selectable');
         oilCoolerView.setAttribute('id', `oilCooler-${oilCooler.id}`);
@@ -572,14 +572,14 @@ function loadSparkPlugs(engineId) {
     });
 }
 function generateSparkPlugsViews(sparkPlugs) {
-    var sparkPlugContainer = document.getElementById('sparkPlug-container');
+    let sparkPlugContainer = document.getElementById('sparkPlug-container');
     sparkPlugContainer.innerHTML = ''; // Clear the existing content
 
-    var sparkPlugWrapper = document.createElement('div');
+    let sparkPlugWrapper = document.createElement('div');
     sparkPlugWrapper.classList.add('part-wrapper');
 
     // Adding title element
-    var sparkPlugTitle = document.createElement('div');
+    let sparkPlugTitle = document.createElement('div');
     sparkPlugTitle.classList.add('part-title');
 
     if (sparkPlugs.length === 0) {
@@ -592,7 +592,7 @@ function generateSparkPlugsViews(sparkPlugs) {
     sparkPlugContainer.appendChild(sparkPlugTitle);
 
     sparkPlugs.forEach(function (sparkplug) {
-        var sparkPlugView = document.createElement('div');
+        let sparkPlugView = document.createElement('div');
         sparkPlugView.classList.add('part-view');
         sparkPlugView.classList.add('selectable');
         sparkPlugView.setAttribute('id', `sparkPlug-${sparkplug.id}`); // Set a unique ID for each spark plug
@@ -614,7 +614,7 @@ function generateSparkPlugsViews(sparkPlugs) {
 }
 
 
-var selectedParts = {
+let selectedParts = {
     tcu: null,
     turbo: null,
     exhaustKit: null,
@@ -626,22 +626,23 @@ var selectedParts = {
     sparkPlug: null
 };
 
-var selectedPartsJson = JSON.stringify(selectedParts);
+let selectedPartsJson = JSON.stringify(selectedParts);
 
 function selectPart(partType, partId) {
     hasGoToTopAppearedOnce = true;
+    let isAnyPartSelected = Object.values(selectedParts).some(partId => partId !== null);
     if (isAnyPartSelected) {
         hasGoToTopAppearedOnce = false;
     }
-    var selectedPartView = document.getElementById(`${partType}-${partId}`);
-    var isSelected = selectedPartView.classList.contains('selected');
+    let selectedPartView = document.getElementById(`${partType}-${partId}`);
+    let isSelected = selectedPartView.classList.contains('selected');
 
     // Get the ID of the previously selected part of the same type
-    var previousPartId = selectedParts[partType];
+    let previousPartId = selectedParts[partType];
 
     // Deselect the previously selected part of the same type, if any
     if (previousPartId !== null) {
-        var previousPartView = document.getElementById(`${partType}-${previousPartId}`);
+        let previousPartView = document.getElementById(`${partType}-${previousPartId}`);
         if (previousPartId !== partId) {
             previousPartView.classList.remove('selected');
             selectedParts[partType] = null;
@@ -655,22 +656,21 @@ function selectPart(partType, partId) {
     selectedParts[partType] = isSelected ? null : partId;
 
     // Check if at least one part is selected
-    var isAnyPartSelected = Object.values(selectedParts).some(partId => partId !== null);
-    var createConfigurationButton = document.getElementById('create-configuration-button');
+    let createConfigurationButton = document.getElementById('create-configuration-button');
     createConfigurationButton.style.display = isAnyPartSelected ? 'block' : 'none';
-    var scrollToTopButton = document.getElementById('scrollToTopButton');
+    let scrollToTopButton = document.getElementById('scrollToTopButton');
     scrollToTopButton.style.display = 'none';
     scrollToTopButton.style.display = isAnyPartSelected ? 'block' : 'none';
 
 
 }
 
-var isButtonClicked = false;
+let isButtonClicked = false;
 
 function createConfiguration() {
     if (!isButtonClicked) {
-        var carModelId = document.getElementById('create-configuration-button').getAttribute('data-carModel-id');
-        var engineId = document.getElementById('create-configuration-button').getAttribute('data-engine-id');
+        let carModelId = document.getElementById('create-configuration-button').getAttribute('data-carModel-id');
+        let engineId = document.getElementById('create-configuration-button').getAttribute('data-engine-id');
 
         // Transfer the selectedParts dictionary to the controller action
         // using an AJAX request

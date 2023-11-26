@@ -1,10 +1,10 @@
-﻿var configuration;
-var configurationId;
+﻿let configuration;
+let configurationId;
 
 window.onload = async function () {
      configurationId = localStorage.getItem('editConfigurationId');
-    var engineId = localStorage.getItem('engineId');
-    var carModelId = localStorage.getItem('carModelId');
+    let engineId = localStorage.getItem('engineId');
+    let carModelId = localStorage.getItem('carModelId');
     await generateConfiguration(configurationId);
     loadTurbos(engineId);
     loadExhaustKits(engineId, carModelId);
@@ -119,7 +119,7 @@ function loadTurbos(engineId) {
         }
     });
 }
-var selectedParts = {
+let selectedParts = {
     tcu: null,
     turbo: null,
     exhaustKit: null,
@@ -134,10 +134,10 @@ var selectedParts = {
 
 function generateTurboViews(turbos) {
     document.getElementById('turbo-container').scrollIntoView();
-    var turboContainer = document.getElementById('turbo-container');
+    let turboContainer = document.getElementById('turbo-container');
     turboContainer.innerHTML = ''; // Clear the existing content
 
-    var titleElement = document.createElement('div');
+    let titleElement = document.createElement('div');
     titleElement.classList.add('part-title');
     if (turbos.length === 0) {
         titleElement.innerHTML = 'No Turbos are available for this model!';
@@ -148,11 +148,11 @@ function generateTurboViews(turbos) {
     }
     turboContainer.appendChild(titleElement);
 
-    var turboWrapper = document.createElement('div');
+    let turboWrapper = document.createElement('div');
     turboWrapper.classList.add('part-wrapper');
 
     turbos.forEach(function (turbo) {
-        var turboView = document.createElement('div');
+        let turboView = document.createElement('div');
         turboView.classList.add('part-view');
         turboView.classList.add('selectable');
         turboView.setAttribute('id', `turbo-${turbo.id}`);
@@ -200,10 +200,10 @@ function loadExhaustKits(engineId, carModelId) {
 }
 
 function generateExhaustKitViews(exhaustKits) {
-    var exhaustKitContainer = document.getElementById('exhaustKit-container');
+    let exhaustKitContainer = document.getElementById('exhaustKit-container');
     exhaustKitContainer.innerHTML = ''; // Clear the existing content
 
-    var titleElement = document.createElement('div');
+    let titleElement = document.createElement('div');
     titleElement.classList.add('part-title');
     if (exhaustKits.length === 0) {
         titleElement.innerHTML = 'No Exhaust Kits are available for this model!';
@@ -214,11 +214,11 @@ function generateExhaustKitViews(exhaustKits) {
     }
     exhaustKitContainer.appendChild(titleElement);
 
-    var exhaustKitWrapper = document.createElement('div');
+    let exhaustKitWrapper = document.createElement('div');
     exhaustKitWrapper.classList.add('part-wrapper');
 
     exhaustKits.forEach(function (exhaustKit) {
-        var exhaustKitView = document.createElement('div');
+        let exhaustKitView = document.createElement('div');
         exhaustKitView.classList.add('part-view');
         exhaustKitView.classList.add('selectable');
         exhaustKitView.setAttribute('id', `exhaustKit-${exhaustKit.id}`);
@@ -263,10 +263,10 @@ function loadSuperchargers(engineId) {
 }
 
 function generateSuperchargerViews(superchargers) {
-    var superchargerContainer = document.getElementById('supercharger-container');
+    let superchargerContainer = document.getElementById('supercharger-container');
     superchargerContainer.innerHTML = ''; // Clear the existing content
 
-    var titleElement = document.createElement('div');
+    let titleElement = document.createElement('div');
     titleElement.classList.add('part-title');
     if (superchargers.length === 0) {
         titleElement.innerHTML = 'No Superchargers are available for this model!';
@@ -278,11 +278,11 @@ function generateSuperchargerViews(superchargers) {
     superchargerContainer.appendChild(titleElement);
 
 
-    var superchargerWrapper = document.createElement('div');
+    let superchargerWrapper = document.createElement('div');
     superchargerWrapper.classList.add('part-wrapper');
 
     superchargers.forEach(function (supercharger) {
-        var superchargerView = document.createElement('div');
+        let superchargerView = document.createElement('div');
         superchargerView.classList.add('part-view');
         superchargerView.classList.add('selectable');
         superchargerView.setAttribute('id', `supercharger-${supercharger.id}`);
@@ -327,11 +327,11 @@ function loadEcus(engineId) {
 }
 
 function generateEcuViews(ecus) {
-    var ecuContainer = document.getElementById('ecu-container');
+    let ecuContainer = document.getElementById('ecu-container');
     ecuContainer.innerHTML = ''; // Clear the existing content
 
 
-    var titleElement = document.createElement('div');
+    let titleElement = document.createElement('div');
     titleElement.classList.add('part-title');
     if (ecus.length === 0) {
         titleElement.innerHTML = 'No ECUs are available for this model!';
@@ -343,11 +343,11 @@ function generateEcuViews(ecus) {
     ecuContainer.appendChild(titleElement);
 
 
-    var ecuWrapper = document.createElement('div');
+    let ecuWrapper = document.createElement('div');
     ecuWrapper.classList.add('part-wrapper');
 
     ecus.forEach(function (ecu) {
-        var ecuView = document.createElement('div');
+        let ecuView = document.createElement('div');
         ecuView.classList.add('part-view');
         ecuView.classList.add('selectable');
         ecuView.setAttribute('id', `ecu-${ecu.id}`);
@@ -389,20 +389,20 @@ function loadTcus() {
 }
 
 function generateTcuViews(tcus) {
-    var tcuContainer = document.getElementById('tcu-container');
+    let tcuContainer = document.getElementById('tcu-container');
     tcuContainer.innerHTML = ''; // Clear the existing content
 
-    var titleView = document.createElement('div');
+    let titleView = document.createElement('div');
     titleView.classList.add('part-title');
     titleView.innerHTML = 'Select a TCU Adaptation Software:';
 
     tcuContainer.appendChild(titleView);
 
-    var tcuWrapper = document.createElement('div');
+    let tcuWrapper = document.createElement('div');
     tcuWrapper.classList.add('part-wrapper');
 
     tcus.forEach(function (tcu) {
-        var tcuView = document.createElement('div');
+        let tcuView = document.createElement('div');
         tcuView.classList.add('part-view');
         tcuView.classList.add('selectable');
         tcuView.setAttribute('id', `tcu-${tcu.id}`);
@@ -444,10 +444,10 @@ function loadFuelPumps(engineId) {
 }
 
 function generateFuelPumpViews(fuelPumps) {
-    var fuelPumpContainer = document.getElementById('fuelPump-container');
+    let fuelPumpContainer = document.getElementById('fuelPump-container');
     fuelPumpContainer.innerHTML = ''; // Clear the existing content
 
-    var titleElement = document.createElement('div');
+    let titleElement = document.createElement('div');
     titleElement.classList.add('part-title');
     if (fuelPumps.length === 0) {
         titleElement.innerHTML = 'No Fuel Pumps are available for this model!';
@@ -460,11 +460,11 @@ function generateFuelPumpViews(fuelPumps) {
 
 
 
-    var fuelPumpWrapper = document.createElement('div');
+    let fuelPumpWrapper = document.createElement('div');
     fuelPumpWrapper.classList.add('part-wrapper');
 
     fuelPumps.forEach(function (fuelPump) {
-        var fuelPumpView = document.createElement('div');
+        let fuelPumpView = document.createElement('div');
         fuelPumpView.classList.add('part-view');
         fuelPumpView.classList.add('selectable');
         fuelPumpView.setAttribute('id', `fuelPump-${fuelPump.id}`);
@@ -509,10 +509,10 @@ function loadInjectorKits(engineId) {
 }
 
 function generateInjectorKitsViews(injectorKits) {
-    var injectorKitContainer = document.getElementById('injectorKit-container');
+    let injectorKitContainer = document.getElementById('injectorKit-container');
     injectorKitContainer.innerHTML = ''; // Clear the existing content
 
-    var titleElement = document.createElement('div');
+    let titleElement = document.createElement('div');
     titleElement.classList.add('part-title');
     if (injectorKits.length === 0) {
         titleElement.innerHTML = 'No Injector Kits are available for this model!';
@@ -524,11 +524,11 @@ function generateInjectorKitsViews(injectorKits) {
     injectorKitContainer.appendChild(titleElement);
 
 
-    var injectorKitWrapper = document.createElement('div');
+    let injectorKitWrapper = document.createElement('div');
     injectorKitWrapper.classList.add('part-wrapper');
 
     injectorKits.forEach(function (injectorKit) {
-        var injectorKitView = document.createElement('div');
+        let injectorKitView = document.createElement('div');
         injectorKitView.classList.add('part-view');
         injectorKitView.classList.add('selectable');
         injectorKitView.setAttribute('id', `injectorKit-${injectorKit.id}`);
@@ -572,10 +572,10 @@ function loadOilCoolers(engineId) {
     });
 }
 function generateOilCoolersViews(oilCoolers) {
-    var oilCoolerContainer = document.getElementById('oilCooler-container');
+    let oilCoolerContainer = document.getElementById('oilCooler-container');
     oilCoolerContainer.innerHTML = ''; // Clear the existing content
 
-    var titleElement = document.createElement('div');
+    let titleElement = document.createElement('div');
     titleElement.classList.add('part-title');
     if (oilCoolers.length === 0) {
         titleElement.innerHTML = 'No Oil Coolers are available for this model!';
@@ -587,11 +587,11 @@ function generateOilCoolersViews(oilCoolers) {
     oilCoolerContainer.appendChild(titleElement);
 
 
-    var oilCoolerWrapper = document.createElement('div');
+    let oilCoolerWrapper = document.createElement('div');
     oilCoolerWrapper.classList.add('part-wrapper');
 
     oilCoolers.forEach(function (oilCooler) {
-        var oilCoolerView = document.createElement('div');
+        let oilCoolerView = document.createElement('div');
         oilCoolerView.classList.add('part-view');
         oilCoolerView.classList.add('selectable');
         oilCoolerView.setAttribute('id', `oilCooler-${oilCooler.id}`);
@@ -633,10 +633,10 @@ function loadSparkPlugs(engineId) {
     });
 }
 function generateSparkPlugsViews(sparkPlugs) {
-    var sparkPlugContainer = document.getElementById('sparkPlug-container');
+    let sparkPlugContainer = document.getElementById('sparkPlug-container');
     sparkPlugContainer.innerHTML = ''; // Clear the existing content
 
-    var titleElement = document.createElement('div');
+    let titleElement = document.createElement('div');
     titleElement.classList.add('part-title');
     if (sparkPlugs.length === 0) {
         titleElement.innerHTML = 'No Spark Plugs Kits are available for this model!';
@@ -648,11 +648,11 @@ function generateSparkPlugsViews(sparkPlugs) {
     sparkPlugContainer.appendChild(titleElement);
 
 
-    var sparkPlugWrapper = document.createElement('div');
+    let sparkPlugWrapper = document.createElement('div');
     sparkPlugWrapper.classList.add('part-wrapper');
 
     sparkPlugs.forEach(function (sparkplug) {
-        var sparkPlugView = document.createElement('div');
+        let sparkPlugView = document.createElement('div');
         sparkPlugView.classList.add('part-view');
         sparkPlugView.classList.add('selectable');
         sparkPlugView.setAttribute('id', `sparkPlug-${sparkplug.id}`);
@@ -679,15 +679,15 @@ function generateSparkPlugsViews(sparkPlugs) {
 
 
 function selectPart(partType, partId) {
-    var selectedPartView = document.getElementById(`${partType}-${partId}`);
-    var isSelected = selectedPartView.classList.contains('selected');
+    let selectedPartView = document.getElementById(`${partType}-${partId}`);
+    let isSelected = selectedPartView.classList.contains('selected');
 
     // Get the ID of the previously selected part of the same type
-    var previousPartId = selectedParts[partType];
+    let previousPartId = selectedParts[partType];
 
     // Deselect the previously selected part of the same type, if any
     if (previousPartId !== null) {
-        var previousPartView = document.getElementById(`${partType}-${previousPartId}`);
+        let previousPartView = document.getElementById(`${partType}-${previousPartId}`);
         if (previousPartId !== partId) {
             previousPartView.classList.remove('selected');
             selectedParts[partType] = null;
@@ -696,7 +696,7 @@ function selectPart(partType, partId) {
 
     // Toggle the selection state of the part view
     selectedPartView.classList.toggle('selected', !isSelected);
-    var editConfigurationButton = document.getElementById('edit-configuration-button');
+    let editConfigurationButton = document.getElementById('edit-configuration-button');
     // Update the selected parts object
     selectedParts[partType] = isSelected ? null : partId;
     if (hasChangesMade(configuration)) {

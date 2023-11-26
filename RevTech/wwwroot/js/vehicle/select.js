@@ -1,9 +1,9 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
-    var images = document.querySelectorAll(".manufacturer_img");
+    let images = document.querySelectorAll(".manufacturer_img");
 
     images.forEach(function (image) {
         image.addEventListener("click", function () {
-            var selectedImage = document.querySelector(".manufacturer_img.selected");
+            let selectedImage = document.querySelector(".manufacturer_img.selected");
             if (selectedImage) {
                 selectedImage.classList.remove("selected");
             }
@@ -19,12 +19,12 @@ function getModelsByManufacturer(manufacturerId) {
         success: function (response) {
             console.log(response); // Log the response object to the console
 
-            var modelsContainer = $("#modelsContainer");
+            let modelsContainer = $("#modelsContainer");
             modelsContainer.empty();
 
-            for (var i = 0; i < response.length; i++) {
-                var model = response[i];
-                var modelHTML =
+            for (let i = 0; i < response.length; i++) {
+                let model = response[i];
+                let modelHTML =
                     '<div class="model-car">' +
                     '<div class="model-info">' +
                     '<h2>' + model.modelName + '</h2>' +
@@ -49,7 +49,7 @@ function getModelsByManufacturer(manufacturerId) {
     });
 }
 $(document).on("click", ".select-button", function () {
-    var modelId = $(this).closest(".model-car").data("model-id");
+    let modelId = $(this).closest(".model-car").data("model-id");
     getEnginesByModel(modelId); // Call a function to retrieve and display the engines
 });
 
@@ -62,12 +62,12 @@ function getEnginesByModel(carModelId) {
         success: function (response) {
             console.log(response); // Log the response object to the console
 
-            var enginesContainer = $("#enginesContainer");
+            let enginesContainer = $("#enginesContainer");
             enginesContainer.empty();
 
-            for (var i = 0; i < response.length; i++) {
-                var engine = response[i];
-                var engineHTML ='<div  class="engine">' +
+            for (let i = 0; i < response.length; i++) {
+                let engine = response[i];
+                let engineHTML ='<div  class="engine">' +
                     '<h3>' + engine.name + '</h3>' +
                     '<p>Horsepower: ' + engine.horsePower + '</p>' +
                     '<p>Torque: ' + engine.torque + '</p>' +
